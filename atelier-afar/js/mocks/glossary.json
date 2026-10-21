@@ -1,0 +1,128 @@
+[
+  {
+    "id": "gl_001",
+    "fr": "cotisation",
+    "afar": "lakqo kalta",
+    "domaine": "Sécurité sociale",
+    "notes": "Proposition fictive de démonstration — à vérifier par un linguiste.",
+    "status": "non_verifie",
+    "source": "demo"
+  },
+  {
+    "id": "gl_002",
+    "fr": "retraite",
+    "afar": "taamak gexso",
+    "domaine": "Retraite",
+    "notes": "Proposition fictive de démonstration — à vérifier par un linguiste.",
+    "status": "non_verifie",
+    "source": "demo"
+  },
+  {
+    "id": "gl_003",
+    "fr": "salaire brut",
+    "afar": "salaire brutak",
+    "domaine": "Travail",
+    "notes": "Proposition fictive de démonstration — à vérifier par un linguiste.",
+    "status": "non_verifie",
+    "source": "demo"
+  },
+  {
+    "id": "gl_004",
+    "fr": "assurance maladie",
+    "afar": "qaafiyat dacrisô",
+    "domaine": "Assurance maladie",
+    "notes": "Proposition fictive de démonstration — à vérifier par un linguiste.",
+    "status": "non_verifie",
+    "source": "demo"
+  },
+  {
+    "id": "gl_005",
+    "fr": "prestations familiales",
+    "afar": "xaylo qokol",
+    "domaine": "Prestations familiales",
+    "notes": "Proposition fictive de démonstration — à vérifier par un linguiste.",
+    "status": "non_verifie",
+    "source": "demo"
+  },
+  {
+    "id": "gl_006",
+    "fr": "accident du travail",
+    "afar": "taama balaa",
+    "domaine": "Travail",
+    "notes": "Proposition fictive de démonstration — à vérifier par un linguiste.",
+    "status": "non_verifie",
+    "source": "demo"
+  },
+  {
+    "id": "gl_007",
+    "fr": "salarié",
+    "afar": "taamâ abeyni",
+    "domaine": "Travail",
+    "notes": "Proposition fictive de démonstration — à vérifier par un linguiste.",
+    "status": "non_verifie",
+    "source": "demo"
+  },
+  {
+    "id": "gl_008",
+    "fr": "employeur",
+    "afar": "taamâ abeynitih abba",
+    "domaine": "Travail",
+    "notes": "Proposition fictive de démonstration — à vérifier par un linguiste.",
+    "status": "non_verifie",
+    "source": "demo"
+  },
+  {
+    "id": "gl_009",
+    "fr": "pension",
+    "afar": "alsâ lakqo",
+    "domaine": "Retraite",
+    "notes": "Proposition fictive de démonstration — à vérifier par un linguiste.",
+    "status": "non_verifie",
+    "source": "demo"
+  },
+  {
+    "id": "gl_010",
+    "fr": "immatriculation",
+    "afar": "lakal culsa",
+    "domaine": "Sécurité sociale",
+    "notes": "Proposition fictive de démonstration — à vérifier par un linguiste.",
+    "status": "non_verifie",
+    "source": "demo"
+  },
+  {
+    "id": "gl_011",
+    "fr": "allocation",
+    "afar": "qokol",
+    "domaine": "Prestations familiales",
+    "notes": "Proposition fictive de démonstration — à vérifier par un linguiste.",
+    "status": "non_verifie",
+    "source": "demo"
+  },
+  {
+    "id": "gl_012",
+    "fr": "ordonnance",
+    "afar": "daawa warqat",
+    "domaine": "Santé",
+    "notes": "Proposition fictive de démonstration — à vérifier par un linguiste.",
+    "status": "non_verifie",
+    "source": "demo"
+  },
+  {
+    "id": "gl_013",
+    "fr": "impôt",
+    "afar": "gibri",
+    "domaine": "Fiscalité",
+    "notes": "Proposition fictive de démonstration — à vérifier par un linguiste.",
+    "status": "non_verifie",
+    "source": "demo"
+  },
+  {
+    "id": "gl_014",
+    "fr": "déclaration",
+    "afar": "baxxaqqa abtô",
+    "domaine": "Administration",
+    "notes": "Proposition fictive de démonstration — à vérifier par un linguiste.",
+    "status": "non_verifie",
+    "source": "demo"
+  }
+]

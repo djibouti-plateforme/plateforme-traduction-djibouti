@@ -1,0 +1,252 @@
+[
+  {
+    "id": "seg_001",
+    "lot": "Lot A — Brochure CNSS",
+    "domaine": "Sécurité sociale",
+    "source_fr": "Brève explication en afar : la cotisation CNSS est calculée sur le salaire brut. Le salarié verse 6 %, et l'entreprise verse en plus 15,7 %. Cet argent sert à couvrir la retraite, la santé, les prestations familiales et les accidents du travail.",
+    "mt_afar": "Qafar afat gaba kalta baxxaqqo: CNSS cotisation salaire brutak loowimta. Taamâ abeyni 6% yaceh, entreprise 15,7% ossah yaceh. Tama lakqo retraite, qaafiyat, xaylo qokol kee taama balaa dacrisoh taamita.",
+    "mt_model": "claude-sonnet-4-5 (fictif)",
+    "mt_prompt_version": "fr-aa-v0.3 (fictif)",
+    "created_at": "2026-10-14T09:12:00Z"
+  },
+  {
+    "id": "seg_002",
+    "lot": "Lot A — Brochure CNSS",
+    "domaine": "Sécurité sociale",
+    "source_fr": "Tout employeur doit immatriculer ses salariés à la CNSS dans les 8 jours suivant leur embauche.",
+    "mt_afar": "Taamâ abeynit inkih CNSS addal 8 ayro taamah culen gabak lakal immatriculation abtam faxximta.",
+    "mt_model": "claude-sonnet-4-5 (fictif)",
+    "mt_prompt_version": "fr-aa-v0.3 (fictif)",
+    "created_at": "2026-10-10T08:05:00Z"
+  },
+  {
+    "id": "seg_003",
+    "lot": "Lot A — Brochure CNSS",
+    "domaine": "Retraite",
+    "source_fr": "L'âge légal de départ à la retraite est fixé à 60 ans pour les salariés du secteur privé.",
+    "mt_afar": "Retraite gexxa umri 60 liggida le, dowlah taamat kaxxa le taamâ abeynitte faxximta.",
+    "mt_model": "claude-opus-4-1 (fictif)",
+    "mt_prompt_version": "fr-aa-v0.3 (fictif)",
+    "created_at": "2026-10-10T10:40:00Z"
+  },
+  {
+    "id": "seg_004",
+    "lot": "Lot A — Brochure CNSS",
+    "domaine": "Retraite",
+    "source_fr": "Pour bénéficier d'une pension complète, l'assuré doit justifier d'au moins 180 mois de cotisation.",
+    "mt_afar": "Pension inkih geytimtam, assuré 180 alsa cotisation tacsubeh yanim yaybulle faxximta.",
+    "mt_model": "claude-opus-4-1 (fictif)",
+    "mt_prompt_version": "fr-aa-v0.4 (fictif)",
+    "created_at": "2026-10-11T14:22:00Z"
+  },
+  {
+    "id": "seg_005",
+    "lot": "Lot A — Brochure CNSS",
+    "domaine": "Assurance maladie",
+    "source_fr": "L'AMU garantit à chaque assuré l'accès aux soins de base dans les centres de santé publics.",
+    "mt_afar": "AMU assuré inkih qaafiyat buxah qaafiyat xagaana geyam ruubeh fooca kah haysitta.",
+    "mt_model": "claude-sonnet-4-5 (fictif)",
+    "mt_prompt_version": "fr-aa-v0.4 (fictif)",
+    "created_at": "2026-10-11T15:03:00Z"
+  },
+  {
+    "id": "seg_006",
+    "lot": "Lot A — Brochure CNSS",
+    "domaine": "Prestations familiales",
+    "source_fr": "Les allocations familiales sont versées chaque mois pour chaque enfant à charge âgé de moins de 18 ans.",
+    "mt_afar": "Xaylo qokol alsa ken alsa 18 liggida umrik cubbuta xaylok tiak ummaanem yacinta.",
+    "mt_model": "claude-sonnet-4-5 (fictif)",
+    "mt_prompt_version": "fr-aa-v0.3 (fictif)",
+    "created_at": "2026-10-12T09:30:00Z"
+  },
+  {
+    "id": "seg_007",
+    "lot": "Lot A — Brochure CNSS",
+    "domaine": "Travail",
+    "source_fr": "Tout accident du travail doit être déclaré par l'employeur dans un délai de 48 heures.",
+    "mt_afar": "Taama balaa inkih taamâ abeynitih abba 48 saaqat addal baxxaqqa abam faxximta.",
+    "mt_model": "claude-opus-4-1 (fictif)",
+    "mt_prompt_version": "fr-aa-v0.4 (fictif)",
+    "created_at": "2026-10-12T11:18:00Z"
+  },
+  {
+    "id": "seg_008",
+    "lot": "Lot A — Brochure CNSS",
+    "domaine": "Santé",
+    "source_fr": "La vaccination des enfants est gratuite dans tous les centres de santé.",
+    "mt_afar": "Xaylo talaal qaafiyat buxa inkih addal lakqo maleh yakkeh.",
+    "mt_model": "claude-sonnet-4-5 (fictif)",
+    "mt_prompt_version": "fr-aa-v0.3 (fictif)",
+    "created_at": "2026-10-12T16:45:00Z"
+  },
+  {
+    "id": "seg_009",
+    "lot": "Lot A — Brochure CNSS",
+    "domaine": "Sécurité sociale",
+    "source_fr": "Le taux global de cotisation s'élève à 21,7 % du salaire brut, dont 15,7 % à la charge de l'employeur.",
+    "mt_afar": "Cotisation inkih 21,7% salaire brutak yakke, kaak 15,7% taamâ abeynitih abbâ yaceh.",
+    "mt_model": "claude-opus-4-1 (fictif)",
+    "mt_prompt_version": "fr-aa-v0.4 (fictif)",
+    "created_at": "2026-10-13T08:50:00Z"
+  },
+  {
+    "id": "seg_010",
+    "lot": "Lot B — Guide de l'assuré",
+    "domaine": "Assurance maladie",
+    "source_fr": "Présentez votre carte d'assuré et votre ordonnance à la pharmacie conventionnée.",
+    "mt_afar": "Assuré kartat kee ordonnance farmasiyah taysiisa.",
+    "mt_model": "claude-sonnet-4-5 (fictif)",
+    "mt_prompt_version": "fr-aa-v0.4 (fictif)",
+    "created_at": "2026-10-13T10:12:00Z"
+  },
+  {
+    "id": "seg_011",
+    "lot": "Lot B — Guide de l'assuré",
+    "domaine": "Assurance maladie",
+    "source_fr": "Le ticket modérateur reste à la charge de l'assuré, soit 20 % du montant des médicaments.",
+    "mt_afar": "Daawa lakqo 20% assuré bagul raaqa, ticket modérateur kinnih yamaatem.",
+    "mt_model": "claude-opus-4-1 (fictif)",
+    "mt_prompt_version": "fr-aa-v0.3 (fictif)",
+    "created_at": "2026-10-13T13:37:00Z"
+  },
+  {
+    "id": "seg_012",
+    "lot": "Lot B — Guide de l'assuré",
+    "domaine": "Retraite",
+    "source_fr": "La demande de pension doit être déposée au moins 3 mois avant la date de cessation d'activité.",
+    "mt_afar": "Pension esserit taama tacabbiseh gaba 3 alsa duma yaybulle faxximta.",
+    "mt_model": "claude-sonnet-4-5 (fictif)",
+    "mt_prompt_version": "fr-aa-v0.4 (fictif)",
+    "created_at": "2026-10-14T11:00:00Z"
+  },
+  {
+    "id": "seg_013",
+    "lot": "Lot B — Guide de l'assuré",
+    "domaine": "Prestations familiales",
+    "source_fr": "Les indemnités journalières de maternité représentent 50 % du salaire pendant 14 semaines.",
+    "mt_afar": "Xalay kee ayrô lakqo 50% salaire 14 ayyaamah addal yacinta.",
+    "mt_model": "claude-opus-4-1 (fictif)",
+    "mt_prompt_version": "fr-aa-v0.4 (fictif)",
+    "created_at": "2026-10-14T14:28:00Z"
+  },
+  {
+    "id": "seg_014",
+    "lot": "Lot B — Guide de l'assuré",
+    "domaine": "Santé",
+    "source_fr": "En cas d'urgence, appelez le 18 ou présentez-vous au service des urgences le plus proche.",
+    "mt_afar": "Sissikki taamal 18 seeca, hinnay qaafiyat buxa xiqqi taamah gexa.",
+    "mt_model": "claude-sonnet-4-5 (fictif)",
+    "mt_prompt_version": "fr-aa-v0.3 (fictif)",
+    "created_at": "2026-10-15T09:02:00Z"
+  },
+  {
+    "id": "seg_015",
+    "lot": "Lot B — Guide de l'assuré",
+    "domaine": "Travail",
+    "source_fr": "Le salaire minimum interprofessionnel garanti est révisé par arrêté ministériel.",
+    "mt_afar": "Salaire xiqqi tan gexso ministeerih amri tet hayta.",
+    "mt_model": "claude-opus-4-1 (fictif)",
+    "mt_prompt_version": "fr-aa-v0.3 (fictif)",
+    "created_at": "2026-10-15T10:55:00Z"
+  },
+  {
+    "id": "seg_016",
+    "lot": "Lot B — Guide de l'assuré",
+    "domaine": "Sécurité sociale",
+    "source_fr": "Conservez vos bulletins de paie : ils prouvent vos droits auprès de la CNSS, y compris pour les périodes cotisées à l'ancien OPS.",
+    "mt_afar": "Lakqo warqat dacrisa: CNSS fanah sin xaq baxxaqqa abta, OPS waqtih lakqo kalta inkih.",
+    "mt_model": "claude-sonnet-4-5 (fictif)",
+    "mt_prompt_version": "fr-aa-v0.4 (fictif)",
+    "created_at": "2026-10-15T15:20:00Z"
+  },
+  {
+    "id": "seg_017",
+    "lot": "Lot B — Guide de l'assuré",
+    "domaine": "Fiscalité",
+    "source_fr": "L'ITS est retenu à la source par l'employeur sur le salaire mensuel.",
+    "mt_afar": "ITS taamâ abeynitih abbâ alsa salaire fanak kalta.",
+    "mt_model": "claude-opus-4-1 (fictif)",
+    "mt_prompt_version": "fr-aa-v0.4 (fictif)",
+    "created_at": "2026-10-16T08:14:00Z"
+  },
+  {
+    "id": "seg_018",
+    "lot": "Lot C — Démarches administratives",
+    "domaine": "Administration",
+    "source_fr": "Le formulaire n° 12 doit être signé, daté et remis au guichet avant le 31/12/2026.",
+    "mt_afar": "Formulaire n° 12 saxxiiq, ayro kee guichet 31/12/2026 duma yaybulle faxximta.",
+    "mt_model": "claude-sonnet-4-5 (fictif)",
+    "mt_prompt_version": "fr-aa-v0.3 (fictif)",
+    "created_at": "2026-10-16T09:41:00Z"
+  },
+  {
+    "id": "seg_019",
+    "lot": "Lot C — Démarches administratives",
+    "domaine": "Administration",
+    "source_fr": "Les dossiers incomplets ne seront pas traités.",
+    "mt_afar": "Dossier inkih mayan taamal magaltan.",
+    "mt_model": "claude-opus-4-1 (fictif)",
+    "mt_prompt_version": "fr-aa-v0.4 (fictif)",
+    "created_at": "2026-10-16T13:09:00Z"
+  },
+  {
+    "id": "seg_020",
+    "lot": "Lot C — Démarches administratives",
+    "domaine": "Fiscalité",
+    "source_fr": "La déclaration annuelle des revenus doit être déposée avant le 31 mars auprès de la Direction des impôts.",
+    "mt_afar": "Liggida dakhli déclaration 31 mars duma Direction des impôts fanah yaybulle faxximta.",
+    "mt_model": "claude-sonnet-4-5 (fictif)",
+    "mt_prompt_version": "fr-aa-v0.4 (fictif)",
+    "created_at": "2026-10-17T08:33:00Z"
+  },
+  {
+    "id": "seg_021",
+    "lot": "Lot C — Démarches administratives",
+    "domaine": "Fiscalité",
+    "source_fr": "Une pénalité de 10 % est appliquée en cas de retard, avec un minimum de 5 000 FDJ.",
+    "mt_afar": "Raaqisak 10% ciggiile yakke, xiqqi 5 000 FDJ kinni.",
+    "mt_model": "claude-opus-4-1 (fictif)",
+    "mt_prompt_version": "fr-aa-v0.3 (fictif)",
+    "created_at": "2026-10-17T10:47:00Z"
+  },
+  {
+    "id": "seg_022",
+    "lot": "Lot C — Démarches administratives",
+    "domaine": "Administration",
+    "source_fr": "Pour obtenir une attestation d'affiliation, M. le Directeur de la CNSS reçoit les demandes du dimanche au jeudi.",
+    "mt_afar": "Affiliation warqat geytimtam, CNSS Directeur M. esserit acaddi ayrok kamiisi fan beyta.",
+    "mt_model": "claude-sonnet-4-5 (fictif)",
+    "mt_prompt_version": "fr-aa-v0.4 (fictif)",
+    "created_at": "2026-10-17T14:16:00Z"
+  },
+  {
+    "id": "seg_023",
+    "lot": "Lot C — Démarches administratives",
+    "domaine": "Prestations familiales",
+    "source_fr": "La prime de naissance de 15 000 FDJ est versée sur présentation de l'acte de naissance.",
+    "mt_afar": "Xaylo hayso lakqo 15 000 FDJ, xaylo hayso warqat taysiisak yacinta.",
+    "mt_model": "claude-opus-4-1 (fictif)",
+    "mt_prompt_version": "fr-aa-v0.4 (fictif)",
+    "created_at": "2026-10-18T09:25:00Z"
+  },
+  {
+    "id": "seg_024",
+    "lot": "Lot C — Démarches administratives",
+    "domaine": "Travail",
+    "source_fr": "Le contrat de travail précise la durée, le salaire et les horaires convenus entre les parties.",
+    "mt_afar": "Taama contrat waqti, salaire kee taama saaqat baxxaqqa abta.",
+    "mt_model": "claude-sonnet-4-5 (fictif)",
+    "mt_prompt_version": "fr-aa-v0.3 (fictif)",
+    "created_at": "2026-10-18T11:52:00Z"
+  },
+  {
+    "id": "seg_025",
+    "lot": "Lot C — Démarches administratives",
+    "domaine": "Santé",
+    "source_fr": "Les agents de la CAMME assurent le contrôle médical des arrêts de travail de plus de 15 jours.",
+    "mt_afar": "CAMME taamitte 15 ayrok tolil taama raaqisa qaafiyat ableenih baxxaqqa abta.",
+    "mt_model": "claude-opus-4-1 (fictif)",
+    "mt_prompt_version": "fr-aa-v0.4 (fictif)",
+    "created_at": "2026-10-18T16:04:00Z"
+  }
+]
