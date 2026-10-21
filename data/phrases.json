@@ -1,0 +1,337 @@
+[
+ {
+  "id": "P0001",
+  "fr": "Bonjour.",
+  "category": "Salutations"
+ },
+ {
+  "id": "P0002",
+  "fr": "Bonsoir.",
+  "category": "Salutations"
+ },
+ {
+  "id": "P0003",
+  "fr": "Comment allez-vous ?",
+  "category": "Salutations"
+ },
+ {
+  "id": "P0004",
+  "fr": "Je vais bien, merci.",
+  "category": "Salutations"
+ },
+ {
+  "id": "P0005",
+  "fr": "Au revoir.",
+  "category": "Salutations"
+ },
+ {
+  "id": "P0006",
+  "fr": "Bienvenue.",
+  "category": "Salutations"
+ },
+ {
+  "id": "P0007",
+  "fr": "Merci beaucoup.",
+  "category": "Salutations"
+ },
+ {
+  "id": "P0008",
+  "fr": "S'il vous plaît.",
+  "category": "Salutations"
+ },
+ {
+  "id": "P0009",
+  "fr": "Excusez-moi.",
+  "category": "Salutations"
+ },
+ {
+  "id": "P0010",
+  "fr": "À demain.",
+  "category": "Salutations"
+ },
+ {
+  "id": "P0011",
+  "fr": "Comment vous appelez-vous ?",
+  "category": "Présentation"
+ },
+ {
+  "id": "P0012",
+  "fr": "Je m'appelle Ali.",
+  "category": "Présentation"
+ },
+ {
+  "id": "P0013",
+  "fr": "D'où venez-vous ?",
+  "category": "Présentation"
+ },
+ {
+  "id": "P0014",
+  "fr": "Je viens de Tadjourah.",
+  "category": "Présentation"
+ },
+ {
+  "id": "P0015",
+  "fr": "Quel âge avez-vous ?",
+  "category": "Présentation"
+ },
+ {
+  "id": "P0016",
+  "fr": "Je parle un peu le français.",
+  "category": "Présentation"
+ },
+ {
+  "id": "P0017",
+  "fr": "Je ne comprends pas.",
+  "category": "Présentation"
+ },
+ {
+  "id": "P0018",
+  "fr": "Pouvez-vous répéter, s'il vous plaît ?",
+  "category": "Présentation"
+ },
+ {
+  "id": "P0019",
+  "fr": "mon père",
+  "category": "Famille"
+ },
+ {
+  "id": "P0020",
+  "fr": "ma mère",
+  "category": "Famille"
+ },
+ {
+  "id": "P0021",
+  "fr": "mon frère",
+  "category": "Famille"
+ },
+ {
+  "id": "P0022",
+  "fr": "ma sœur",
+  "category": "Famille"
+ },
+ {
+  "id": "P0023",
+  "fr": "mon fils",
+  "category": "Famille"
+ },
+ {
+  "id": "P0024",
+  "fr": "ma fille",
+  "category": "Famille"
+ },
+ {
+  "id": "P0025",
+  "fr": "Combien d'enfants avez-vous ?",
+  "category": "Famille"
+ },
+ {
+  "id": "P0026",
+  "fr": "Ma famille habite à Djibouti-ville.",
+  "category": "Famille"
+ },
+ {
+  "id": "P0027",
+  "fr": "J'ai mal à la tête.",
+  "category": "Santé"
+ },
+ {
+  "id": "P0028",
+  "fr": "Où est l'hôpital ?",
+  "category": "Santé"
+ },
+ {
+  "id": "P0029",
+  "fr": "J'ai besoin d'un médecin.",
+  "category": "Santé"
+ },
+ {
+  "id": "P0030",
+  "fr": "Prenez ce médicament deux fois par jour.",
+  "category": "Santé"
+ },
+ {
+  "id": "P0031",
+  "fr": "Avez-vous de la fièvre ?",
+  "category": "Santé"
+ },
+ {
+  "id": "P0032",
+  "fr": "L'enfant est malade.",
+  "category": "Santé"
+ },
+ {
+  "id": "P0033",
+  "fr": "Buvez beaucoup d'eau.",
+  "category": "Santé"
+ },
+ {
+  "id": "P0034",
+  "fr": "Avez-vous votre carte d'identité ?",
+  "category": "Administration"
+ },
+ {
+  "id": "P0035",
+  "fr": "Remplissez ce formulaire.",
+  "category": "Administration"
+ },
+ {
+  "id": "P0036",
+  "fr": "Signez ici, s'il vous plaît.",
+  "category": "Administration"
+ },
+ {
+  "id": "P0037",
+  "fr": "Quel est votre numéro de téléphone ?",
+  "category": "Administration"
+ },
+ {
+  "id": "P0038",
+  "fr": "Le bureau est fermé aujourd'hui.",
+  "category": "Administration"
+ },
+ {
+  "id": "P0039",
+  "fr": "Revenez lundi matin.",
+  "category": "Administration"
+ },
+ {
+  "id": "P0040",
+  "fr": "Votre dossier est complet.",
+  "category": "Administration"
+ },
+ {
+  "id": "P0041",
+  "fr": "l'eau",
+  "category": "Vie quotidienne"
+ },
+ {
+  "id": "P0042",
+  "fr": "le pain",
+  "category": "Vie quotidienne"
+ },
+ {
+  "id": "P0043",
+  "fr": "le lait",
+  "category": "Vie quotidienne"
+ },
+ {
+  "id": "P0044",
+  "fr": "la maison",
+  "category": "Vie quotidienne"
+ },
+ {
+  "id": "P0045",
+  "fr": "le marché",
+  "category": "Vie quotidienne"
+ },
+ {
+  "id": "P0046",
+  "fr": "Combien ça coûte ?",
+  "category": "Vie quotidienne"
+ },
+ {
+  "id": "P0047",
+  "fr": "C'est trop cher.",
+  "category": "Vie quotidienne"
+ },
+ {
+  "id": "P0048",
+  "fr": "J'ai faim.",
+  "category": "Vie quotidienne"
+ },
+ {
+  "id": "P0049",
+  "fr": "J'ai soif.",
+  "category": "Vie quotidienne"
+ },
+ {
+  "id": "P0050",
+  "fr": "Il fait très chaud aujourd'hui.",
+  "category": "Vie quotidienne"
+ },
+ {
+  "id": "P0051",
+  "fr": "aujourd'hui",
+  "category": "Temps et nombres"
+ },
+ {
+  "id": "P0052",
+  "fr": "hier",
+  "category": "Temps et nombres"
+ },
+ {
+  "id": "P0053",
+  "fr": "demain",
+  "category": "Temps et nombres"
+ },
+ {
+  "id": "P0054",
+  "fr": "le matin",
+  "category": "Temps et nombres"
+ },
+ {
+  "id": "P0055",
+  "fr": "le soir",
+  "category": "Temps et nombres"
+ },
+ {
+  "id": "P0056",
+  "fr": "un",
+  "category": "Temps et nombres"
+ },
+ {
+  "id": "P0057",
+  "fr": "deux",
+  "category": "Temps et nombres"
+ },
+ {
+  "id": "P0058",
+  "fr": "trois",
+  "category": "Temps et nombres"
+ },
+ {
+  "id": "P0059",
+  "fr": "dix",
+  "category": "Temps et nombres"
+ },
+ {
+  "id": "P0060",
+  "fr": "cent",
+  "category": "Temps et nombres"
+ },
+ {
+  "id": "P0061",
+  "fr": "Quelle heure est-il ?",
+  "category": "Temps et nombres"
+ },
+ {
+  "id": "P0062",
+  "fr": "à droite",
+  "category": "Directions"
+ },
+ {
+  "id": "P0063",
+  "fr": "à gauche",
+  "category": "Directions"
+ },
+ {
+  "id": "P0064",
+  "fr": "tout droit",
+  "category": "Directions"
+ },
+ {
+  "id": "P0065",
+  "fr": "C'est loin ?",
+  "category": "Directions"
+ },
+ {
+  "id": "P0066",
+  "fr": "C'est près d'ici.",
+  "category": "Directions"
+ },
+ {
+  "id": "P0067",
+  "fr": "Où se trouve la gare routière ?",
+  "category": "Directions"
+ }
+]

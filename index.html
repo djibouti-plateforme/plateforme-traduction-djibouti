@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Traduction Français → Afar</title>
+  <meta name="description" content="Plateforme de traduction collaborative du français vers l'afar (Qafar af) de Djibouti.">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">FR → AA</span>
+      <div>
+        <h1>Traduction Français → Afar</h1>
+        <p class="subtitle">Qafar af · Djibouti</p>
+      </div>
+    </div>
+    <div class="user" id="userBox">
+      <label for="translatorName">Traducteur·rice</label>
+      <input id="translatorName" type="text" placeholder="Votre nom" autocomplete="name">
+    </div>
+  </header>
+
+  <main>
+    <section class="toolbar">
+      <div class="progress">
+        <div class="progress-text"><strong id="doneCount">0</strong> / <span id="totalCount">0</span> phrases traduites</div>
+        <div class="bar"><div class="bar-fill" id="barFill"></div></div>
+      </div>
+      <div class="actions">
+        <button id="exportBtn" class="primary">⬇ Exporter en Excel</button>
+        <button id="syncBtn">☁ Enregistrer sur GitHub</button>
+        <label class="button">⬆ Importer un Excel<input id="importInput" type="file" accept=".xlsx,.xls,.csv" hidden></label>
+        <button id="settingsBtn" title="Paramètres">⚙</button>
+      </div>
+    </section>
+
+    <section class="filters">
+      <input id="search" type="search" placeholder="Rechercher en français ou en afar…">
+      <select id="filterStatus">
+        <option value="all">Toutes les phrases</option>
+        <option value="todo">À traduire</option>
+        <option value="done">Traduites</option>
+        <option value="review">À revoir</option>
+      </select>
+      <select id="filterCategory"><option value="all">Toutes les catégories</option></select>
+      <button id="addBtn">＋ Ajouter une phrase</button>
+    </section>
+
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+
+    <section id="list" class="list"></section>
+  </main>
+
+  <dialog id="addDialog">
+    <form method="dialog" id="addForm">
+      <h2>Ajouter une phrase française</h2>
+      <label>Phrase en français<textarea id="newFr" rows="3" required></textarea></label>
+      <label>Catégorie<input id="newCat" type="text" placeholder="ex. Santé, Salutations…"></label>
+      <div class="dialog-actions">
+        <button value="cancel" formnovalidate>Annuler</button>
+        <button value="ok" class="primary">Ajouter</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="settingsDialog">
+    <form method="dialog" id="settingsForm">
+      <h2>Enregistrement sur GitHub</h2>
+      <p class="hint">Les traductions sont toujours sauvegardées automatiquement dans ce navigateur.
+        Pour les centraliser, la plateforme peut déposer le fichier Excel directement dans le dépôt GitHub
+        (dossier <code>data/traductions/</code>). Il faut pour cela un <em>jeton d'accès personnel</em>
+        (fine-grained token) avec la permission <strong>Contents : Read and write</strong> sur ce dépôt.</p>
+      <label>Dépôt (propriétaire/nom)<input id="ghRepo" type="text" placeholder="djibouti-plateforme/traduction-francais-afar"></label>
+      <label>Branche<input id="ghBranch" type="text" placeholder="main"></label>
+      <label>Jeton GitHub<input id="ghToken" type="password" placeholder="github_pat_…" autocomplete="off"></label>
+      <p class="hint">Le jeton reste uniquement dans ce navigateur (localStorage). Ne l'utilisez pas sur un ordinateur partagé.</p>
+      <div class="dialog-actions">
+        <button value="cancel" formnovalidate>Fermer</button>
+        <button value="ok" class="primary">Enregistrer</button>
+      </div>
+    </form>
+  </dialog>
+
+  <footer>
+    <p>Sauvegarde automatique dans le navigateur · Export Excel (.xlsx) · Données : <code>data/phrases.json</code></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

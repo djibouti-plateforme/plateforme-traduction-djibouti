@@ -1,0 +1,108 @@
+:root {
+  --bg: #f6f4ef;
+  --surface: #ffffff;
+  --text: #1f2328;
+  --muted: #5f6670;
+  --border: #dcd8cf;
+  --accent: #0b7a5a;
+  --accent-text: #ffffff;
+  --done: #0b7a5a;
+  --review: #b26a00;
+  --todo: #8a8f98;
+  --focus: #1e66d0;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15171a;
+    --surface: #1e2125;
+    --text: #e8e6e1;
+    --muted: #9aa0a8;
+    --border: #33373d;
+    --accent: #2fb487;
+    --accent-text: #0b1410;
+    --done: #2fb487;
+    --review: #e0a03a;
+    --todo: #6d737c;
+    --focus: #6aa2ff;
+  }
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.topbar {
+  display: flex; flex-wrap: wrap; gap: 16px;
+  justify-content: space-between; align-items: center;
+  padding: 16px max(16px, calc((100% - 1100px) / 2));
+  background: var(--surface); border-bottom: 1px solid var(--border);
+}
+.brand { display: flex; gap: 12px; align-items: center; }
+.logo {
+  background: var(--accent); color: var(--accent-text);
+  font-weight: 700; padding: 8px 10px; border-radius: 8px; font-size: 14px;
+}
+h1 { font-size: 20px; margin: 0; }
+.subtitle { margin: 0; color: var(--muted); font-size: 14px; }
+.user { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--muted); }
+
+main { max-width: 1100px; margin: 0 auto; padding: 16px; }
+
+.toolbar, .filters {
+  display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
+  justify-content: space-between; margin-bottom: 12px;
+}
+.progress { flex: 1 1 260px; }
+.progress-text { font-size: 14px; color: var(--muted); margin-bottom: 4px; }
+.bar { height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
+.bar-fill { height: 100%; width: 0; background: var(--accent); transition: width .3s; }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; }
+
+input, select, textarea, button, .button {
+  font: inherit; color: var(--text);
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 8px 12px;
+}
+button, .button { cursor: pointer; }
+button:hover, .button:hover { border-color: var(--accent); }
+button.primary { background: var(--accent); color: var(--accent-text); border-color: var(--accent); }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.filters input[type=search] { flex: 1 1 240px; }
+textarea { width: 100%; resize: vertical; }
+
+.status { min-height: 1.5em; font-size: 14px; color: var(--muted); margin: 4px 0 12px; }
+.status.error { color: #c0392b; }
+
+.list { display: flex; flex-direction: column; gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-left: 4px solid var(--todo); border-radius: 10px; padding: 14px 16px;
+}
+.card.done { border-left-color: var(--done); }
+.card.review { border-left-color: var(--review); }
+.card-head { display: flex; justify-content: space-between; gap: 8px; font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+.fr { font-size: 17px; font-weight: 600; margin: 0 0 10px; }
+.grid { display: grid; grid-template-columns: 1fr; gap: 8px; }
+@media (min-width: 720px) { .grid { grid-template-columns: 2fr 1fr; } }
+.field label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 2px; }
+.card-foot { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; margin-top: 8px; font-size: 13px; color: var(--muted); }
+.card-foot select { padding: 4px 8px; }
+.badge { border-radius: 999px; padding: 2px 8px; border: 1px solid var(--border); }
+.empty { text-align: center; color: var(--muted); padding: 40px 0; }
+
+dialog {
+  border: 1px solid var(--border); border-radius: 12px; padding: 20px;
+  background: var(--surface); color: var(--text); width: min(520px, calc(100% - 32px));
+}
+dialog::backdrop { background: rgba(0,0,0,.4); }
+dialog h2 { margin-top: 0; font-size: 18px; }
+dialog label { display: block; margin-bottom: 12px; font-size: 14px; }
+dialog label input, dialog label textarea { width: 100%; margin-top: 4px; }
+.dialog-actions { display: flex; justify-content: flex-end; gap: 8px; }
+.hint { font-size: 13px; color: var(--muted); }
+
+footer { text-align: center; font-size: 12px; color: var(--muted); padding: 24px 16px; }
