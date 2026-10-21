@@ -1,0 +1,4114 @@
+[
+ {
+  "id": "seg_0001",
+  "lot": "Lot 01 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Brève explication en afar : la cotisation CNSS est calculée sur le salaire brut. Le salarié verse 6 %, et l'entreprise verse en plus 15,7 %. Cet argent sert à couvrir la retraite, la santé, les prestations familiales et les accidents du travail.",
+  "mt_afar": "Qafar afat gaba kalta baxxaqqo: CNSS cotisation salaire brutak loowimta. Taamâ abeyni 6% yaceh, entreprise 15,7% ossah yaceh. Tama lakqo retraite, qaafiyat, xaylo qokol kee taama balaa dacrisoh taamita.",
+  "position": 1
+ },
+ {
+  "id": "seg_0002",
+  "lot": "Lot 01 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Immatriculation",
+  "mt_afar": "Migaq culussa",
+  "position": 2
+ },
+ {
+  "id": "seg_0003",
+  "lot": "Lot 01 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Carte d'assuré",
+  "mt_afar": "Assuréh karta",
+  "position": 3
+ },
+ {
+  "id": "seg_0004",
+  "lot": "Lot 01 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Cotisations sociales",
+  "mt_afar": "Sinaamah cotisation",
+  "position": 4
+ },
+ {
+  "id": "seg_0005",
+  "lot": "Lot 01 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Numéro d'affiliation",
+  "mt_afar": "Affiliationih lowo",
+  "position": 5
+ },
+ {
+  "id": "seg_0006",
+  "lot": "Lot 01 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Pièces à fournir",
+  "mt_afar": "Tabaahaanam faxximta warqat",
+  "position": 6
+ },
+ {
+  "id": "seg_0007",
+  "lot": "Lot 01 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Prendre rendez-vous",
+  "mt_afar": "Rendez-vous ab",
+  "position": 7
+ },
+ {
+  "id": "seg_0008",
+  "lot": "Lot 01 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Valider",
+  "mt_afar": "Meqqeysi",
+  "position": 8
+ },
+ {
+  "id": "seg_0009",
+  "lot": "Lot 01 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Mot de passe oublié ?",
+  "mt_afar": "Mot de passe hawweenteeh ?",
+  "position": 9
+ },
+ {
+  "id": "seg_0010",
+  "lot": "Lot 01 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Droits de l'assuré",
+  "mt_afar": "Assuréh caqqi",
+  "position": 10
+ },
+ {
+  "id": "seg_0011",
+  "lot": "Lot 01 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Obligations de l'employeur",
+  "mt_afar": "Taamah abbah waajibitte",
+  "position": 11
+ },
+ {
+  "id": "seg_0012",
+  "lot": "Lot 01 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Déclaration trimestrielle des salaires",
+  "mt_afar": "Sidiica alsah mushaarah déclaration",
+  "position": 12
+ },
+ {
+  "id": "seg_0013",
+  "lot": "Lot 01 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Guichet n° 3",
+  "mt_afar": "Guichet lowo 3",
+  "position": 13
+ },
+ {
+  "id": "seg_0014",
+  "lot": "Lot 01 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Accueil",
+  "mt_afar": "Marih edde soolisan bagu",
+  "position": 14
+ },
+ {
+  "id": "seg_0015",
+  "lot": "Lot 01 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Ayant droit",
+  "mt_afar": "Caqqi le num",
+  "position": 15
+ },
+ {
+  "id": "seg_0016",
+  "lot": "Lot 01 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Attestation d'affiliation",
+  "mt_afar": "Affiliationih attestation",
+  "position": 16
+ },
+ {
+  "id": "seg_0017",
+  "lot": "Lot 01 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Tout salarié doit être immatriculé à la CNSS dès son embauche.",
+  "mt_afar": "Taamitu inkih taamal culte ayrok CNSSl migaq culussa faxximta.",
+  "position": 17
+ },
+ {
+  "id": "seg_0018",
+  "lot": "Lot 01 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Votre carte d'assuré est prête, vous pouvez la retirer au guichet 2.",
+  "mt_afar": "Ku assuréh karta qaxxeh tan, guichet 2l bahsitto dudda.",
+  "position": 18
+ },
+ {
+  "id": "seg_0019",
+  "lot": "Lot 01 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "L'employeur doit déclarer chaque nouveau salarié auprès de la CNSS.",
+  "mt_afar": "Taamah abba taamitu qusba inkih CNSSl yaysixxigeh faxximta.",
+  "position": 19
+ },
+ {
+  "id": "seg_0020",
+  "lot": "Lot 01 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Quels documents dois-je apporter pour m'immatriculer ?",
+  "mt_afar": "Migaq culussah maca warqat baahuk faxximta ?",
+  "position": 20
+ },
+ {
+  "id": "seg_0021",
+  "lot": "Lot 01 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Il faut une copie de votre carte d'identité et un extrait d'acte de naissance.",
+  "mt_afar": "Ku carte d'identitéh copie kee ku ubkah warqat faxximta.",
+  "position": 21
+ },
+ {
+  "id": "seg_0022",
+  "lot": "Lot 01 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Votre rendez-vous est fixé au 14 mars à 9 h 30.",
+  "mt_afar": "Ku rendez-vous Mars alsah 14 ayro, saacat 9 h 30l tan.",
+  "position": 22
+ },
+ {
+  "id": "seg_0023",
+  "lot": "Lot 01 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Le montant de 12 500 FDJ figure sur votre relevé de cotisations.",
+  "mt_afar": "12 500 FDJ ku cotisationih relevél yuktubeh tan.",
+  "position": 23
+ },
+ {
+  "id": "seg_0024",
+  "lot": "Lot 01 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Merci de signaler tout changement d'adresse dans les plus brefs délais.",
+  "mt_afar": "Ku adresse tabaddalek, sissikuk nee warsa, gadda haysite.",
+  "position": 24
+ },
+ {
+  "id": "seg_0025",
+  "lot": "Lot 01 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Votre dossier est incomplet : il manque le certificat de travail.",
+  "mt_afar": "Ku dossier inki mari : taamah certificat mayan.",
+  "position": 25
+ },
+ {
+  "id": "seg_0026",
+  "lot": "Lot 01 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "L'assuré a droit à des prestations en cas de maladie ou d'accident du travail.",
+  "mt_afar": "Assuré biyak hinnay taamal accident tekkek prestation beytam caqqi le.",
+  "position": 26
+ },
+ {
+  "id": "seg_0027",
+  "lot": "Lot 01 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Les enfants à charge peuvent être inscrits comme ayants droit.",
+  "mt_afar": "Ku xaylo ayants droit akkuk culsimeenim dudda.",
+  "position": 27
+ },
+ {
+  "id": "seg_0028",
+  "lot": "Lot 01 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Pour toute réclamation, adressez-vous au service clientèle.",
+  "mt_afar": "Réclamation inkih, service clientèle fanah gexa.",
+  "position": 28
+ },
+ {
+  "id": "seg_0029",
+  "lot": "Lot 01 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Le numéro vert de la CNSS est le 21 35 00 00.",
+  "mt_afar": "CNSSh numéro vert 21 35 00 00 kinni.",
+  "position": 29
+ },
+ {
+  "id": "seg_0030",
+  "lot": "Lot 01 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Les bureaux sont ouverts du dimanche au jeudi, de 7 h à 13 h.",
+  "mt_afar": "Biiro Ahadak Kamiisi fanah, saacat 7 h kee 13 h fanah fakkeh tan.",
+  "position": 30
+ },
+ {
+  "id": "seg_0031",
+  "lot": "Lot 01 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Avez-vous déjà travaillé chez un autre employeur ?",
+  "mt_afar": "Duma tu taamah abbal taamitteeh ?",
+  "position": 31
+ },
+ {
+  "id": "seg_0032",
+  "lot": "Lot 01 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Votre employeur n'a versé aucune cotisation depuis six mois.",
+  "mt_afar": "Ku taamah abba lehey alsak sarra cotisation tu maaciinna.",
+  "position": 32
+ },
+ {
+  "id": "seg_0033",
+  "lot": "Lot 01 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "En cas de perte de la carte, une déclaration de perte est exigée.",
+  "mt_afar": "Karta baytek, bayih déclaration faxximta.",
+  "position": 33
+ },
+ {
+  "id": "seg_0034",
+  "lot": "Lot 01 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Le duplicata de la carte coûte 1 000 FDJ.",
+  "mt_afar": "Kartah duplicata 1 000 FDJ kaffalta le.",
+  "position": 34
+ },
+ {
+  "id": "seg_0035",
+  "lot": "Lot 02 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Veuillez vous présenter muni de votre convocation.",
+  "mt_afar": "Sin convocation luk amaatay.",
+  "position": 35
+ },
+ {
+  "id": "seg_0036",
+  "lot": "Lot 02 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Je voudrais savoir si mon employeur me déclare bien.",
+  "mt_afar": "Yi taamah abba yoo meqeh déclarer yabaah aaxaguk faxa.",
+  "position": 36
+ },
+ {
+  "id": "seg_0037",
+  "lot": "Lot 02 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Bien sûr, donnez-moi votre numéro d'immatriculation.",
+  "mt_afar": "Oo, ku immatriculationih lowo yoh ace.",
+  "position": 37
+ },
+ {
+  "id": "seg_0038",
+  "lot": "Lot 02 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Une pension de retraite est versée à partir d'un certain âge et d'une durée de cotisation suffisante.",
+  "mt_afar": "Pension de retraite umrih tu kee cotisationih wakti qaxxeh tan lakal acimta.",
+  "position": 38
+ },
+ {
+  "id": "seg_0039",
+  "lot": "Lot 02 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Conservez précieusement tous vos bulletins de salaire.",
+  "mt_afar": "Ku mushaarah bulletin inkih meqeh dacri.",
+  "position": 39
+ },
+ {
+  "id": "seg_0040",
+  "lot": "Lot 02 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "La CNSS ne vous demandera jamais votre code secret par téléphone.",
+  "mt_afar": "CNSS ku code secret telefoonal ku essera mayta.",
+  "position": 40
+ },
+ {
+  "id": "seg_0041",
+  "lot": "Lot 02 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Pour bénéficier des allocations, les enfants doivent être scolarisés.",
+  "mt_afar": "Allocation beytaanah xaylo madrasal tanaanam faxximta.",
+  "position": 41
+ },
+ {
+  "id": "seg_0042",
+  "lot": "Lot 02 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "L'employeur retient la part salariale sur le salaire de chaque mois.",
+  "mt_afar": "Taamah abba taamituh qadda alsa inkih mushaarak bahsa.",
+  "position": 42
+ },
+ {
+  "id": "seg_0043",
+  "lot": "Lot 02 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Le défaut de déclaration expose l'employeur à des pénalités.",
+  "mt_afar": "Déclaration abe waytek taamah abbah pénalité kah tamaate.",
+  "position": 43
+ },
+ {
+  "id": "seg_0044",
+  "lot": "Lot 02 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Votre demande a bien été enregistrée sous le numéro 2026-04587.",
+  "mt_afar": "Ku esserit 2026-04587 lowoh culsimteh tan.",
+  "position": 44
+ },
+ {
+  "id": "seg_0045",
+  "lot": "Lot 02 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Vous recevrez une réponse par SMS dans un délai de 15 jours.",
+  "mt_afar": "15 ayroh addal SMSl celta beyta.",
+  "position": 45
+ },
+ {
+  "id": "seg_0046",
+  "lot": "Lot 02 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Où se trouve l'agence CNSS la plus proche de Tadjourah ?",
+  "mt_afar": "Tadjuuraak xayi CNSS agence aham tan ?",
+  "position": 46
+ },
+ {
+  "id": "seg_0047",
+  "lot": "Lot 02 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Mon mari est décédé ; puis-je percevoir sa pension ?",
+  "mt_afar": "Yi baqla rabe ; kay pension beyuk duddaah ?",
+  "position": 47
+ },
+ {
+  "id": "seg_0048",
+  "lot": "Lot 02 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Oui, sous certaines conditions, le conjoint survivant peut bénéficier d'une pension de réversion.",
+  "mt_afar": "Oo, condition tu luk, sugte conjoint pension de réversion beytam dudda.",
+  "position": 48
+ },
+ {
+  "id": "seg_0049",
+  "lot": "Lot 02 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Remplissez le formulaire en lettres majuscules et à l'encre noire.",
+  "mt_afar": "Formulaire kaxxa harfih kee data encreh kutub.",
+  "position": 49
+ },
+ {
+  "id": "seg_0050",
+  "lot": "Lot 02 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Chaque assuré dispose d'un espace personnel sur le site de la CNSS.",
+  "mt_afar": "Assuré inkih CNSSh site addal isi espace personnel le.",
+  "position": 50
+ },
+ {
+  "id": "seg_0051",
+  "lot": "Lot 02 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Connectez-vous avec votre identifiant et votre mot de passe.",
+  "mt_afar": "Ku identifiant kee ku mot de passe luk culu.",
+  "position": 51
+ },
+ {
+  "id": "seg_0052",
+  "lot": "Lot 02 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Le certificat médical doit être transmis dans les 48 heures.",
+  "mt_afar": "Certificat médical 48 saacatih addal rubuk faxximta.",
+  "position": 52
+ },
+ {
+  "id": "seg_0053",
+  "lot": "Lot 02 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Une travailleuse enceinte bénéficie d'un congé de maternité.",
+  "mt_afar": "Bolxa taamitte congé de maternité beyta.",
+  "position": 53
+ },
+ {
+  "id": "seg_0054",
+  "lot": "Lot 02 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "La cotisation patronale est plus élevée que la part du salarié.",
+  "mt_afar": "Taamah abbah cotisation taamituh qaddak kaxxa.",
+  "position": 54
+ },
+ {
+  "id": "seg_0055",
+  "lot": "Lot 02 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Nous vous rappelons que votre déclaration du 2e trimestre est attendue avant le 15 juillet.",
+  "mt_afar": "Ku 2 haytoh trimestreh déclaration Juliyo alsah 15 ayroh duma faxximtam ku kassisna.",
+  "position": 55
+ },
+ {
+  "id": "seg_0056",
+  "lot": "Lot 02 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Présentez votre carte d'assuré à chaque consultation médicale.",
+  "mt_afar": "Dakhtar fanah gexxa inkih ku assuréh karta ublis.",
+  "position": 56
+ },
+ {
+  "id": "seg_0057",
+  "lot": "Lot 02 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Votre attestation peut être téléchargée en ligne en quelques minutes.",
+  "mt_afar": "Ku attestation daqiiqa dagoh addal internetik obsissam dudda.",
+  "position": 57
+ },
+ {
+  "id": "seg_0058",
+  "lot": "Lot 02 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Combien de temps faut-il pour obtenir la carte ?",
+  "mt_afar": "Karta beyuh mexxa wakti faxximta ?",
+  "position": 58
+ },
+ {
+  "id": "seg_0059",
+  "lot": "Lot 02 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "En général, comptez environ trois semaines.",
+  "mt_afar": "Kaxxam, sidoc semaine wakti faxximta.",
+  "position": 59
+ },
+ {
+  "id": "seg_0060",
+  "lot": "Lot 02 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Le salarié peut consulter le montant des cotisations versées en son nom.",
+  "mt_afar": "Taamitu isi migaqal acimte cotisationih montant ubluk dudda.",
+  "position": 60
+ },
+ {
+  "id": "seg_0061",
+  "lot": "Lot 02 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Si vous changez d'employeur, votre numéro d'assuré reste le même.",
+  "mt_afar": "Taamah abba tabaddalek, ku assuréh lowo inki akkuk sugta.",
+  "position": 61
+ },
+ {
+  "id": "seg_0062",
+  "lot": "Lot 02 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "L'immatriculation est gratuite.",
+  "mt_afar": "Immatriculation kaffalta mali.",
+  "position": 62
+ },
+ {
+  "id": "seg_0063",
+  "lot": "Lot 02 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Les données personnelles des assurés sont strictement confidentielles.",
+  "mt_afar": "Assuréh données personnelles diggah dacrimteh tan.",
+  "position": 63
+ },
+ {
+  "id": "seg_0064",
+  "lot": "Lot 02 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Pouvez-vous m'expliquer la différence entre affiliation et immatriculation ?",
+  "mt_afar": "Affiliation kee immatriculation fanal tan baxsa yoh warsittoonuu ?",
+  "position": 64
+ },
+ {
+  "id": "seg_0065",
+  "lot": "Lot 02 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "L'employeur s'affilie, le salarié s'immatricule.",
+  "mt_afar": "Taamah abba affilier yaba, taamitu immatriculer yaba.",
+  "position": 65
+ },
+ {
+  "id": "seg_0066",
+  "lot": "Lot 02 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Votre paiement de 45 000 FDJ a bien été reçu le 3 février.",
+  "mt_afar": "Ku 45 000 FDJ kaffalta Febraayo alsah 3 ayro beyteh tan.",
+  "position": 66
+ },
+ {
+  "id": "seg_0067",
+  "lot": "Lot 02 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Le reçu vous sera remis au guichet 5.",
+  "mt_afar": "Reçu guichet 5l sinih acimta.",
+  "position": 67
+ },
+ {
+  "id": "seg_0068",
+  "lot": "Lot 02 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Nous avons constaté une erreur dans votre déclaration de salaires.",
+  "mt_afar": "Ku mushaarah déclarational erreur ubleenih.",
+  "position": 68
+ },
+ {
+  "id": "seg_0069",
+  "lot": "Lot 03 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Merci de régulariser votre situation avant le 28 du mois.",
+  "mt_afar": "Alsah 28 ayroh duma ku situation régulariser abaay.",
+  "position": 69
+ },
+ {
+  "id": "seg_0070",
+  "lot": "Lot 03 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Vos cotisations ouvrent droit à la couverture maladie pour vous et votre famille.",
+  "mt_afar": "Ku cotisation atu kee ku buxah marah biyak couverture caqqi ku acta.",
+  "position": 70
+ },
+ {
+  "id": "seg_0071",
+  "lot": "Lot 03 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Chaque bulletin de paie doit mentionner le numéro CNSS du salarié.",
+  "mt_afar": "Mushaarah bulletin inkih taamituh CNSS lowo luk yanam faxximta.",
+  "position": 71
+ },
+ {
+  "id": "seg_0072",
+  "lot": "Lot 03 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Un accusé de réception vous a été envoyé le 5 octobre.",
+  "mt_afar": "Accusé de réception Oktoobar alsah 5 ayro sinih ruubimteh tan.",
+  "position": 72
+ },
+ {
+  "id": "seg_0073",
+  "lot": "Lot 03 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Dans cet exemple, un taux de 4 % s'applique à la part salariale.",
+  "mt_afar": "Ta exemplel, 4 % taux taamituh qadda tibbixxa.",
+  "position": 73
+ },
+ {
+  "id": "seg_0074",
+  "lot": "Lot 03 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Je n'ai pas reçu ma carte, que dois-je faire ?",
+  "mt_afar": "Yi karta mabeyiyo, maca abuk faxximta ?",
+  "position": 74
+ },
+ {
+  "id": "seg_0075",
+  "lot": "Lot 03 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Vérifiez d'abord que votre adresse est correcte dans notre fichier.",
+  "mt_afar": "Ummaanih duma, ni fichierl ku adresse nummah tanim ubul.",
+  "position": 75
+ },
+ {
+  "id": "seg_0076",
+  "lot": "Lot 03 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Appelez le 21 35 12 34 du dimanche au jeudi.",
+  "mt_afar": "21 35 12 34 Ahadak Kamiisi fanah seecaay.",
+  "position": 76
+ },
+ {
+  "id": "seg_0077",
+  "lot": "Lot 03 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Mise à jour de vos informations",
+  "mt_afar": "Ku warsi qusbaysa",
+  "position": 77
+ },
+ {
+  "id": "seg_0078",
+  "lot": "Lot 03 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Un employeur peut demander un échéancier pour payer ses arriérés.",
+  "mt_afar": "Taamah abba isi arriérés kaffalah échéancier esseram dudda.",
+  "position": 78
+ },
+ {
+  "id": "seg_0079",
+  "lot": "Lot 03 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Prenez un ticket à la borne n° 1 et attendez qu'on appelle votre numéro.",
+  "mt_afar": "Borne lowo 1k ticket bahsa, ku lowo seecimtam fanah sug.",
+  "position": 79
+ },
+ {
+  "id": "seg_0080",
+  "lot": "Lot 03 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Votre conjoint figure-t-il déjà sur votre carte ?",
+  "mt_afar": "Ku conjoint ku kartal duma yaniih ?",
+  "position": 80
+ },
+ {
+  "id": "seg_0081",
+  "lot": "Lot 03 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Oui, mais mes deux derniers enfants n'y sont pas encore.",
+  "mt_afar": "Oo, kinnih yi nammay ellecabo xaylo tet addal yanin.",
+  "position": 81
+ },
+ {
+  "id": "seg_0082",
+  "lot": "Lot 03 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Vous venez d'être embauché ? Votre employeur doit vous déclarer à la CNSS. Vous recevrez ensuite votre carte d'assuré.",
+  "mt_afar": "Away taamal culteeh ? Ku taamah abba CNSSl ku déclarer abuk faxximta. Tohuk lakal ku assuréh karta beyta.",
+  "position": 82
+ },
+ {
+  "id": "seg_0083",
+  "lot": "Lot 03 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "La carte d'assuré est personnelle. Elle ne doit être ni prêtée ni vendue. En cas de fraude, des sanctions sont prévues.",
+  "mt_afar": "Assuréh karta ku inkittoh tiyya. Num kah acaanam hinnay gataanam mayan. Fraude tekkek, sanction yan.",
+  "position": 83
+ },
+ {
+  "id": "seg_0084",
+  "lot": "Lot 03 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Les cotisations financent les prestations familiales, les risques professionnels et les pensions. Elles sont partagées entre l'employeur et le salarié.",
+  "mt_afar": "Cotisation buxah prestation, taamah risque kee pension kaffalta. Taamah abba kee taamitu fanal baxsimta.",
+  "position": 84
+ },
+ {
+  "id": "seg_0085",
+  "lot": "Lot 03 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Madame, Monsieur, nous accusons réception de votre demande d'affiliation. Votre dossier est en cours d'examen. Nous vous tiendrons informés de la suite donnée.",
+  "mt_afar": "Agabuy, labhaw, sin affiliationih esserit beynek. Sin dossier ubluk tan. Lakal tekkem sinih warsenno.",
+  "position": 85
+ },
+ {
+  "id": "seg_0086",
+  "lot": "Lot 03 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "CNSS : votre rendez-vous du 22/11 à 10 h est confirmé. Merci de vous présenter 15 minutes avant.",
+  "mt_afar": "CNSS : ku rendez-vous 22/11 saacat 10 h confirmé tekke. 15 daqiiqa duma amaatay.",
+  "position": 86
+ },
+ {
+  "id": "seg_0087",
+  "lot": "Lot 03 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Bonjour, je viens inscrire mon fils né il y a un mois. – Très bien, avez-vous apporté son acte de naissance ?",
+  "mt_afar": "Maqaane, yi baxa ubkoyteh alsa inki tekke, kay migaq culsaanamah amaateh. – Meqe, kay ubkah acte baahteeh ?",
+  "position": 87
+ },
+ {
+  "id": "seg_0088",
+  "lot": "Lot 03 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Le salarié malade doit prévenir son employeur et envoyer son arrêt de travail. Sans ce document, les indemnités journalières ne peuvent pas être versées.",
+  "mt_afar": "Biyak le taamitu isi taamah abba warsuk kee isi arrêt de travail rubuk faxximta. Ta warqat malaah, indemnités journalières acimtam mayan.",
+  "position": 88
+ },
+ {
+  "id": "seg_0089",
+  "lot": "Lot 03 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Le portail en ligne est ouvert 24 h sur 24. Les employeurs peuvent y déclarer et payer sans se déplacer.",
+  "mt_afar": "Portail en ligne 24 saacat 24l fakkeh tan. Taamah abbitte tet addal déclarer abaanaa kee kaffalaanam dudda, gexuk malaah.",
+  "position": 89
+ },
+ {
+  "id": "seg_0090",
+  "lot": "Lot 03 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Attention aux faux messages ! La CNSS ne demande jamais de paiement par transfert mobile. En cas de doute, contactez directement nos services.",
+  "mt_afar": "Dirab warsik dacrisa ! CNSS transfert mobilel kaffalta mudditaak esserta mayta. Shakki tekkek, ni services tikkaaku seeca.",
+  "position": 90
+ },
+ {
+  "id": "seg_0091",
+  "lot": "Lot 03 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Le montant de votre pension dépend de votre salaire moyen et du nombre d'années cotisées. Une simulation est possible à l'accueil.",
+  "mt_afar": "Ku pensionih montant ku mushaarah gide kee cotisation taacte liggidah lowo gide tan. Accueill simulation tabbaxxaqqa.",
+  "position": 91
+ },
+ {
+  "id": "seg_0092",
+  "lot": "Lot 03 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Un employeur a embauché 12 salariés en mars. Il n'en a déclaré que 9. Les 3 autres doivent être régularisés rapidement.",
+  "mt_afar": "Taamah abba Mars alsal 12 taamitte culse. Ten addak 9 qaxxa déclarer abe. Raaqe 3 sissikuk régulariser akkuk faxximta.",
+  "position": 92
+ },
+ {
+  "id": "seg_0093",
+  "lot": "Lot 03 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Vous partez à la retraite ? Déposez votre demande trois mois avant la date prévue. Joignez vos derniers bulletins de salaire.",
+  "mt_afar": "Retraitel gexxaah ? Ku esserit qaxxeh tan ayrok sidoc alsa duma culus. Ku ellecabo mushaarah bulletin luk culus.",
+  "position": 93
+ },
+ {
+  "id": "seg_0094",
+  "lot": "Lot 03 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "En cas d'accident du travail, l'employeur doit le déclarer dans les meilleurs délais. La victime est prise en charge sans avance de frais.",
+  "mt_afar": "Taamal accident tekkek, taamah abba sissikuk déclarer abuk faxximta. Accident kah tekke num kaffalta duma aceh malaah catoyya beyta.",
+  "position": 94
+ },
+ {
+  "id": "seg_0095",
+  "lot": "Lot 03 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "– Bonjour, je voudrais une attestation pour la banque. – Pas de problème. Votre numéro d'assuré, s'il vous plaît ?",
+  "mt_afar": "– Maqaane, bankah attestation faxa. – Waanih mali. Ku assuréh lowo ?",
+  "position": 95
+ },
+ {
+  "id": "seg_0096",
+  "lot": "Lot 03 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Les travailleurs domestiques ont les mêmes droits que les autres salariés. Leur employeur doit les immatriculer et verser les cotisations.",
+  "mt_afar": "Buxah taamitte tu taamitteh caqqi inkih le. Ten taamah abba ken immatriculer abuk kee cotisation acuk faxximta.",
+  "position": 96
+ },
+ {
+  "id": "seg_0097",
+  "lot": "Lot 03 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Votre espace en ligne a été bloqué après trois tentatives. Cliquez sur « Mot de passe oublié » pour le réactiver.",
+  "mt_afar": "Ku espace en ligne sidoc tentative lakal bloqué tekke. Qusbah fakuh « Mot de passe oublié » cliquer ab.",
+  "position": 97
+ },
+ {
+  "id": "seg_0098",
+  "lot": "Lot 03 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Le montant total dû s'élève à 86 750 FDJ, pénalités comprises. Ce montant est payable avant le 30 avril.",
+  "mt_afar": "Kaffalta faxximta inkih 86 750 FDJ kinni, pénalité luk. Ta montant Abriil alsah 30 ayroh duma kaffalimta.",
+  "position": 98
+ },
+ {
+  "id": "seg_0099",
+  "lot": "Lot 03 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Les étudiants de plus de 18 ans peuvent rester ayants droit sous conditions. Un certificat de scolarité est alors demandé chaque année.",
+  "mt_afar": "18 liggidak sarra le madrasah xaylo condition luk ayants droit akkuk sugeenim dudda. Tohih, certificat de scolarité liggida inkih esserimta.",
+  "position": 99
+ },
+ {
+  "id": "seg_0100",
+  "lot": "Lot 03 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Une permanence est assurée à l'agence d'Ali Sabieh le mardi de 8 h à 12 h. Les assurés peuvent y déposer leurs dossiers sans rendez-vous.",
+  "mt_afar": "Cali Sabiih agencel Talaata saacat 8 h kee 12 h fanah permanence yan. Assuré tet addal isi dossier rendez-vous malaah culsam dudda.",
+  "position": 100
+ },
+ {
+  "id": "seg_0101",
+  "lot": "Lot 03 — Sécurité sociale",
+  "domaine": "Sécurité sociale",
+  "source_fr": "Votre carte arrive à expiration le 31/12/2026. Pensez à la renouveler un mois avant cette date.",
+  "mt_afar": "Ku karta 31/12/2026 tellecabe. Tah duma alsa inki qusbaysuk kassit.",
+  "position": 101
+ },
+ {
+  "id": "seg_0102",
+  "lot": "Lot 04 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Invalidité",
+  "mt_afar": "Taamah duddaa waa",
+  "position": 102
+ },
+ {
+  "id": "seg_0103",
+  "lot": "Lot 04 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Pension de réversion",
+  "mt_afar": "Réversion pension",
+  "position": 103
+ },
+ {
+  "id": "seg_0104",
+  "lot": "Lot 04 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Certificat de vie",
+  "mt_afar": "Nooli kinnimih certificat",
+  "position": 104
+ },
+ {
+  "id": "seg_0105",
+  "lot": "Lot 04 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Mes droits à la retraite",
+  "mt_afar": "Yi retraitih xaqqi",
+  "position": 105
+ },
+ {
+  "id": "seg_0106",
+  "lot": "Lot 04 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Cotisations validées",
+  "mt_afar": "Diggisime cotisation",
+  "position": 106
+ },
+ {
+  "id": "seg_0107",
+  "lot": "Lot 04 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Télécharger l'attestation",
+  "mt_afar": "Attestation obis",
+  "position": 107
+ },
+ {
+  "id": "seg_0108",
+  "lot": "Lot 04 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Âge légal de départ à la retraite",
+  "mt_afar": "Retraite gexxoh qaanuunih umri",
+  "position": 108
+ },
+ {
+  "id": "seg_0109",
+  "lot": "Lot 04 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Votre pension est versée le 5 de chaque mois sur votre compte bancaire.",
+  "mt_afar": "Kin pension alsa inkih 5ih ayro kin bankih compte-l ruubamta.",
+  "position": 109
+ },
+ {
+  "id": "seg_0110",
+  "lot": "Lot 04 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "À quel âge puis-je partir à la retraite si j'ai commencé à travailler à dix-huit ans ?",
+  "mt_afar": "Taban kee bacaara liggida umri le waqdi taama qimbise tekkek, ma umril retraitet gexxo duddah ?",
+  "position": 110
+ },
+ {
+  "id": "seg_0111",
+  "lot": "Lot 04 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Le certificat de vie doit être renvoyé à la CNSS avant le 31 mars.",
+  "mt_afar": "Nooli kinnimih certificat 31 mars dumal CNSS-l gacsimeh faxxa.",
+  "position": 111
+ },
+ {
+  "id": "seg_0112",
+  "lot": "Lot 04 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Sans ce document, le paiement de votre pension risque d'être suspendu.",
+  "mt_afar": "Ah warqat male tekkek, kin pension acuwa soolisamuk takke.",
+  "position": 112
+ },
+ {
+  "id": "seg_0113",
+  "lot": "Lot 04 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Le conjoint survivant peut demander une pension de réversion auprès de nos services.",
+  "mt_afar": "Raqtem barra hinnay labha ni maktabal réversion pension esseroh xaqqi le.",
+  "position": 113
+ },
+ {
+  "id": "seg_0114",
+  "lot": "Lot 04 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Veuillez joindre à votre dossier une copie de votre acte de mariage.",
+  "mt_afar": "Kin dossier-l kin acte de mariage copie osisa.",
+  "position": 114
+ },
+ {
+  "id": "seg_0115",
+  "lot": "Lot 04 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Votre demande de pension d'invalidité a été transmise au médecin-conseil.",
+  "mt_afar": "Kin invalidité pension esserit médecin-conseil fanah ruubime.",
+  "position": 115
+ },
+ {
+  "id": "seg_0116",
+  "lot": "Lot 04 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Le montant de la pension dépend surtout du nombre d'années cotisées et du salaire moyen.",
+  "mt_afar": "Pension lakqo, cotisation acceeh tan liggidawwa lowwo kee salaire moyen elle tan.",
+  "position": 116
+ },
+ {
+  "id": "seg_0117",
+  "lot": "Lot 04 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Bonjour, j'ai rendez-vous à 9 h 15 pour déposer mon dossier de liquidation de pension.",
+  "mt_afar": "Mahisse, yi pension liquidationih dossier haytam fanah 9 h 15-l rendez-vous liyo.",
+  "position": 117
+ },
+ {
+  "id": "seg_0118",
+  "lot": "Lot 04 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Avez-vous apporté votre carte d'identité et votre dernier bulletin de salaire ?",
+  "mt_afar": "Ku carte d'identité kee ku ellecaboh bulletin de salaire baahte ?",
+  "position": 118
+ },
+ {
+  "id": "seg_0119",
+  "lot": "Lot 04 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Il manque l'attestation de cessation d'activité signée par votre employeur.",
+  "mt_afar": "Ku employeur fatte taamah soolih attestation dossier-l maleh.",
+  "position": 119
+ },
+ {
+  "id": "seg_0120",
+  "lot": "Lot 04 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Le traitement d'un dossier complet prend en général entre quatre et six semaines.",
+  "mt_afar": "Kaamil dossier taamit, ummaanih ferey kee lehey ayyaamih addal yamaaqa.",
+  "position": 120
+ },
+ {
+  "id": "seg_0121",
+  "lot": "Lot 04 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Les pensionnés résidant à l'étranger envoient leur certificat de vie une fois par an.",
+  "mt_afar": "Qaxih ayro raqen pensionné mara ken nooli kinnimih certificat liggida inkih inkittinnah ruuba.",
+  "position": 121
+ },
+ {
+  "id": "seg_0122",
+  "lot": "Lot 04 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Votre relevé de carrière fait apparaître 27 années de cotisation.",
+  "mt_afar": "Ku taamah relevé 27 liggidah cotisation yascasse.",
+  "position": 122
+ },
+ {
+  "id": "seg_0123",
+  "lot": "Lot 04 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Pouvez-vous vérifier si mes années de service militaire sont prises en compte ?",
+  "mt_afar": "Yi askarinnih taamah liggidawwa lowwomeenim ublen duddaanaa ?",
+  "position": 123
+ },
+ {
+  "id": "seg_0124",
+  "lot": "Lot 04 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Une pension d'invalidité peut être accordée lorsque l'assuré ne peut plus exercer son emploi.",
+  "mt_afar": "Assuré num kay taama aba duddaa waa tekkek, invalidité pension kah acuwa duddah.",
+  "position": 124
+ },
+ {
+  "id": "seg_0125",
+  "lot": "Lot 04 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Le premier versement interviendra le mois suivant la décision d'attribution.",
+  "mt_afar": "Pension acuwah décision lakal yamaate alsal, awwali acuwa ruubamele.",
+  "position": 125
+ },
+ {
+  "id": "seg_0126",
+  "lot": "Lot 04 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Pour toute question sur votre pension, appelez le 21 35 20 00 du dimanche au jeudi.",
+  "mt_afar": "Kin pension elle esserit liton tekkek, Acad kee Kamiis fanaa 21 35 20 00 telefoonal seeca.",
+  "position": 126
+ },
+ {
+  "id": "seg_0127",
+  "lot": "Lot 04 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Mon mari est décédé en janvier, que dois-je faire pour toucher sa pension ?",
+  "mt_afar": "Yi labha janvier alsal rabe, kay pension beytoh maca abaa faxxa ?",
+  "position": 127
+ },
+ {
+  "id": "seg_0128",
+  "lot": "Lot 04 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Présentez-vous au guichet numéro 3 avec l'original de l'acte de décès.",
+  "mt_afar": "Rabih acte original lih guichet numéro 3 fanah amaata.",
+  "position": 128
+ },
+ {
+  "id": "seg_0129",
+  "lot": "Lot 04 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Les orphelins de moins de vingt et un ans peuvent également bénéficier d'une part de la pension.",
+  "mt_afar": "Labaatanah kee inkih liggidak hoomi tan agay xaylo kaadu pension qeebih xaqqi le.",
+  "position": 129
+ },
+ {
+  "id": "seg_0130",
+  "lot": "Lot 04 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Ce formulaire doit être rempli en lettres majuscules et signé à la dernière page.",
+  "mt_afar": "Ah formulaire kaxxa harfiyal kaamilimeh, ellecaboh qaxal fatimeh faxxa.",
+  "position": 130
+ },
+ {
+  "id": "seg_0131",
+  "lot": "Lot 04 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Rappel CNSS : votre certificat de vie expire le 30/06. Merci de le renouveler.",
+  "mt_afar": "CNSS kassis : ku nooli kinnimih certificat 30/06 duugumta. Qusbis, nagay.",
+  "position": 131
+ },
+ {
+  "id": "seg_0132",
+  "lot": "Lot 05 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Est-ce que je peux continuer à travailler tout en touchant ma retraite ?",
+  "mt_afar": "Yi retraite beyak taama fayya-le abam duddaa ?",
+  "position": 132
+ },
+ {
+  "id": "seg_0133",
+  "lot": "Lot 05 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "La majoration pour tierce personne s'ajoute à la pension d'invalidité dans certains cas.",
+  "mt_afar": "Tierce personne majoration, ixxigah tan gaxxal invalidité pension-l osisamta.",
+  "position": 133
+ },
+ {
+  "id": "seg_0134",
+  "lot": "Lot 05 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Votre attestation de pension est disponible dans votre espace personnel en ligne.",
+  "mt_afar": "Ku pension attestation internet-l tan ku espace personnel addal tan.",
+  "position": 134
+ },
+ {
+  "id": "seg_0135",
+  "lot": "Lot 05 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Nous avons bien reçu votre dossier de retraite le 12 février 2026.",
+  "mt_afar": "Ku retraitih dossier 12 février 2026 ayro diggah beyne.",
+  "position": 135
+ },
+ {
+  "id": "seg_0136",
+  "lot": "Lot 05 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Les périodes de chômage indemnisé peuvent compter pour le calcul de vos droits.",
+  "mt_afar": "Lakqo kah acuwa yen taama-waah wakti kin xaqqi lowwoh caagidal lowwomuk takke.",
+  "position": 136
+ },
+ {
+  "id": "seg_0137",
+  "lot": "Lot 05 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "En cas de changement d'adresse, prévenez la caisse dans un délai de 15 jours.",
+  "mt_afar": "Kin adresse tamboocek, 15 ayroh addal caisse warsa.",
+  "position": 137
+ },
+ {
+  "id": "seg_0138",
+  "lot": "Lot 05 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Je n'ai pas reçu ma pension ce mois-ci, pouvez-vous m'expliquer pourquoi ?",
+  "mt_afar": "Ah alsa yi pension mageyyo, macah tekkem iyyen yoh baxsissaanaa ?",
+  "position": 138
+ },
+ {
+  "id": "seg_0139",
+  "lot": "Lot 05 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Une avance de 45 000 FDJ peut être versée en attendant la décision définitive.",
+  "mt_afar": "Ellecaboh décision qammalak, 45 000 FDJ avance acuwa duddah.",
+  "position": 139
+ },
+ {
+  "id": "seg_0140",
+  "lot": "Lot 05 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Les pièces justificatives doivent dater de moins de trois mois.",
+  "mt_afar": "Diggisoh warqatwa sidoc alsak hoomi tan uddur yan faxxa.",
+  "position": 140
+ },
+ {
+  "id": "seg_0141",
+  "lot": "Lot 05 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Au guichet 7, l'agent vous remettra un récépissé daté et tamponné.",
+  "mt_afar": "Guichet 7-l, agent ayro kee tampon lih récépissé siinih acele.",
+  "position": 141
+ },
+ {
+  "id": "seg_0142",
+  "lot": "Lot 05 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Votre pension sera revalorisée de 3 % à compter du 1er janvier.",
+  "mt_afar": "Ku pension 1 janvier ayrok qimbisak 3 % kaxxa haleh.",
+  "position": 142
+ },
+ {
+  "id": "seg_0143",
+  "lot": "Lot 05 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Le départ anticipé est possible pour les travailleurs ayant exercé des métiers pénibles.",
+  "mt_afar": "Gibdi taama abtem taamitte retraite duma gexxo duddaanah.",
+  "position": 143
+ },
+ {
+  "id": "seg_0144",
+  "lot": "Lot 05 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Pour liquider votre pension, la caisse reconstitue l'ensemble de votre carrière à partir des déclarations de vos employeurs. Si une période manque, fournissez vos anciens bulletins de salaire ou certificats de travail.",
+  "mt_afar": "Ku pension liquider abtam fanah, caisse ku employeurwa déclarationak ku taamah ayyaam inkih gacsissa. Wakti tiya maleh tekkek, ku qaxuk tan bulletin de salaire hinnay taamah certificat baah.",
+  "position": 144
+ },
+ {
+  "id": "seg_0145",
+  "lot": "Lot 05 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Madame, nous avons le regret de vous informer que votre demande de réversion ne peut aboutir en l'état. Le jugement de divorce joint au dossier ne précise pas la date de séparation. Nous vous invitons à nous transmettre ce document complété.",
+  "mt_afar": "Barra, ku réversion esserit tamah tanin gidda gexxo hinnay iyyen siinih warsitnah. Dossier-l osisime divorceh jugement baxxaqqah ayro ma yascassa. Ah warqat kaamilteh nee fanah ruubtam siinih esserra.",
+  "position": 145
+ },
+ {
+  "id": "seg_0146",
+  "lot": "Lot 05 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Le certificat de vie peut être signé à la mairie, au commissariat ou à l'ambassade de Djibouti. Il doit porter un cachet officiel lisible.",
+  "mt_afar": "Nooli kinnimih certificat mairie, commissariat hinnay Jabuutih ambassade-l fatimuk takke. Yeyxeenimih rasmi cachet ellel yanih faxxa.",
+  "position": 146
+ },
+ {
+  "id": "seg_0147",
+  "lot": "Lot 05 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Vous avez soixante ans et vous comptez trente années de cotisation ? Vous remplissez peut-être les conditions pour partir à taux plein. Demandez une simulation à votre agence.",
+  "mt_afar": "Lactam liggida umri le kee sidoctam liggidah cotisation litoo ? Taux plein lih retraite gexxoh shuruud kaamilteh takkem duddah. Ku agence simulation essera.",
+  "position": 147
+ },
+ {
+  "id": "seg_0148",
+  "lot": "Lot 05 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Le dossier de pension d'invalidité comprend un certificat médical détaillé, le formulaire de demande et une pièce d'identité. Une visite de contrôle peut être organisée dans les deux mois.",
+  "mt_afar": "Invalidité pensionih dossier baxsimeh yan cakiimih certificat, esseritih formulaire kee identité warqat yalla. Nammay alsih addal ablah zuyaara xiginisimuk takke.",
+  "position": 148
+ },
+ {
+  "id": "seg_0149",
+  "lot": "Lot 05 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Chaque année, environ 1 200 nouveaux retraités déposent leur demande. Pour éviter les files d'attente, privilégiez le dépôt en ligne entre 7 h 30 et 12 h.",
+  "mt_afar": "Liggida inkih, 1 200 garil yan qusba retraité mara ken esserit hayya. Qammalak soolih file-ak cineh tanih, 7 h 30 kee 12 h fan internetal haya.",
+  "position": 149
+ },
+ {
+  "id": "seg_0150",
+  "lot": "Lot 05 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Si vous percevez une pension d'un autre pays, vous devez le déclarer. Les deux pensions peuvent se cumuler sous certaines conditions. Un conseiller étudiera votre situation.",
+  "mt_afar": "Baaxo tiyak pension beytam tekkek, warsitam faxxa. Nammay pension ixxigah tan shuruudal walaalak beyamuk takke. Conseiller ku xaala ablele.",
+  "position": 150
+ },
+ {
+  "id": "seg_0151",
+  "lot": "Lot 05 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Bulletin de pension",
+  "mt_afar": "Pension bulletin",
+  "position": 151
+ },
+ {
+  "id": "seg_0152",
+  "lot": "Lot 05 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Votre demande de rachat de trimestres doit être déposée avant votre soixantième anniversaire.",
+  "mt_afar": "Ku trimestres rachat esserit, lactam liggida umri dumal hayteh faxxa.",
+  "position": 152
+ },
+ {
+  "id": "seg_0153",
+  "lot": "Lot 05 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Le paiement de la pension du mois d'août sera effectué exceptionnellement le 3 septembre.",
+  "mt_afar": "Août alsih pension acuwa, xaagu mayan gaxxal, 3 septembre ayro ruubamele.",
+  "position": 153
+ },
+ {
+  "id": "seg_0154",
+  "lot": "Lot 05 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Mon ancien employeur a fermé, comment prouver mes années de travail ?",
+  "mt_afar": "Yi qaxuk employeur cufte, yi taamah liggidawwa macal diggisaa ?",
+  "position": 154
+ },
+ {
+  "id": "seg_0155",
+  "lot": "Lot 05 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Une pension mensuelle de 62 000 FDJ vous a été attribuée à compter du 1er mars 2026.",
+  "mt_afar": "1 mars 2026 ayrok qimbisak, alsa inkih 62 000 FDJ pension siinih acuwa tekke.",
+  "position": 155
+ },
+ {
+  "id": "seg_0156",
+  "lot": "Lot 05 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Les veuves qui se remarient perdent en principe leur droit à la pension de réversion.",
+  "mt_afar": "Qusba labha bahteh tan barra, ummaanih, réversion pension xaqqi kah baysita.",
+  "position": 156
+ },
+ {
+  "id": "seg_0157",
+  "lot": "Lot 05 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Avant de cesser votre activité, demandez à la caisse une estimation de votre future pension. Cette démarche est gratuite.",
+  "mt_afar": "Ku taama soolissam dumal, ku amaatu pension estimation caisse esser. Ah gexxo lakqo male.",
+  "position": 157
+ },
+ {
+  "id": "seg_0158",
+  "lot": "Lot 05 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Le retraité peut désigner un mandataire pour percevoir sa pension s'il ne peut pas se déplacer.",
+  "mt_afar": "Retraité gexxo duddaa waa tekkek, isi pension beytam fanah mandataire doorta duddah.",
+  "position": 158
+ },
+ {
+  "id": "seg_0159",
+  "lot": "Lot 05 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Les salariés de la fonction publique relèvent d'un régime de retraite distinct de celui de la CNSS.",
+  "mt_afar": "Fonction publique taamitte mara, CNSS-k baxsimeh yan retraite régime-l yanin.",
+  "position": 159
+ },
+ {
+  "id": "seg_0160",
+  "lot": "Lot 05 — Retraite",
+  "domaine": "Retraite",
+  "source_fr": "Votre carnet de pensionné a été renouvelé. Vous pouvez le retirer à l'agence de Balbala à partir de lundi, entre 8 h et 12 h.",
+  "mt_afar": "Ku pensionné carnet qusbisime. Isninih ayrok qimbisak, 8 h kee 12 h fanah Balbala agence-l beytam duddah.",
+  "position": 160
+ },
+ {
+  "id": "seg_0161",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Allocations familiales",
+  "mt_afar": "Buxah allocation",
+  "position": 161
+ },
+ {
+  "id": "seg_0162",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Prime de naissance",
+  "mt_afar": "Ubkih prime",
+  "position": 162
+ },
+ {
+  "id": "seg_0163",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Congé de maternité",
+  "mt_afar": "Maternitéh congé",
+  "position": 163
+ },
+ {
+  "id": "seg_0164",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Enfants à charge",
+  "mt_afar": "Ayfaarimtam xaylo",
+  "position": 164
+ },
+ {
+  "id": "seg_0165",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Déclarer une naissance",
+  "mt_afar": "Ubkaa warsis",
+  "position": 165
+ },
+ {
+  "id": "seg_0166",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Certificat de scolarité",
+  "mt_afar": "Madrasah certificat",
+  "position": 166
+ },
+ {
+  "id": "seg_0167",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Mettre à jour ma situation familiale",
+  "mt_afar": "Yi buxah xaala qusbis",
+  "position": 167
+ },
+ {
+  "id": "seg_0168",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Les allocations familiales sont versées chaque mois au parent qui a la charge effective de l'enfant.",
+  "mt_afar": "Buxah allocation alsa inkih xaylo diggah ayfaarem abba hinnay ina fanah ruubamta.",
+  "position": 168
+ },
+ {
+  "id": "seg_0169",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Ma fille est née le 14 août, quels papiers dois-je fournir pour la prime de naissance ?",
+  "mt_afar": "Yi baxla 14 août ubkeh, ubkih prime fanah ma warqatwa baahaa faxxa ?",
+  "position": 169
+ },
+ {
+  "id": "seg_0170",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Le certificat de scolarité doit être déposé avant le 15 octobre de chaque année scolaire.",
+  "mt_afar": "Madrasah certificat madrasah liggida inkih 15 octobre dumal hayisimeh faxxa.",
+  "position": 170
+ },
+ {
+  "id": "seg_0171",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Pendant le congé de maternité, la salariée perçoit des indemnités journalières.",
+  "mt_afar": "Maternitéh congé waqdi, salariée barra ayro inkih indemnité beyta.",
+  "position": 171
+ },
+ {
+  "id": "seg_0172",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Combien d'enfants peuvent ouvrir droit aux allocations dans une même famille ?",
+  "mt_afar": "Inki buxal, mannal xaylo allocationih xaqqi le ?",
+  "position": 172
+ },
+ {
+  "id": "seg_0173",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Votre versement du 5 avril s'élève à 18 000 FDJ pour trois enfants.",
+  "mt_afar": "5 avril ku acuwa sidoc xaylok 18 000 FDJ kinni.",
+  "position": 173
+ },
+ {
+  "id": "seg_0174",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Pensez à signaler tout changement de situation, comme un mariage, un divorce ou un déménagement.",
+  "mt_afar": "Fiddimaa, divorce hinnay buxa tambooco innah tan xaalah kaxxa tambooco inkih warsitam ma hawwina.",
+  "position": 174
+ },
+ {
+  "id": "seg_0175",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Les visites prénatales sont obligatoires pour bénéficier de l'allocation de maternité.",
+  "mt_afar": "Maternitéh allocation beytaanam fanah, ubkah dumal tan cakiimih zuyaarawwa faxximeh tan.",
+  "position": 175
+ },
+ {
+  "id": "seg_0176",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Mon fils a dix-sept ans et il est en apprentissage, a-t-il encore droit aux allocations ?",
+  "mt_afar": "Yi baxa taban kee malcin liggida umri le, apprentissage-l yan, allocationih xaqqi qagid le ?",
+  "position": 176
+ },
+ {
+  "id": "seg_0177",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "L'extrait d'acte de naissance doit être traduit s'il est rédigé dans une langue étrangère.",
+  "mt_afar": "Ubkih acte extrait qaxih afal xagisime tekkek, turjumamuh faxxa.",
+  "position": 177
+ },
+ {
+  "id": "seg_0178",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Votre dossier d'allocations familiales est incomplet : il manque le livret de famille.",
+  "mt_afar": "Ku buxah allocationih dossier kaamil hinna : livret de famille maleh.",
+  "position": 178
+ },
+ {
+  "id": "seg_0179",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Les prestations sont suspendues lorsque l'enfant cesse d'être scolarisé.",
+  "mt_afar": "Xaylo madrasa gexxo soolek, prestation soolisamta.",
+  "position": 179
+ },
+ {
+  "id": "seg_0180",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Bonjour madame, je voudrais savoir où en est ma demande de prime de naissance.",
+  "mt_afar": "Mahisse barra, yi ubkih prime esserit ani tanim aaxaguh faxa.",
+  "position": 180
+ },
+ {
+  "id": "seg_0181",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "La mère salariée a droit à quatorze semaines de congé autour de l'accouchement.",
+  "mt_afar": "Taamitah ina ubkah dariifal taban kee ferey ayyaamih congéh xaqqi le.",
+  "position": 181
+ },
+ {
+  "id": "seg_0182",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Merci de nous transmettre une copie du jugement de garde de l'enfant.",
+  "mt_afar": "Xaylo ayfaarah jugement copie nee fanah ruubtam siinih esserra.",
+  "position": 182
+ },
+ {
+  "id": "seg_0183",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Un enfant handicapé peut rester à charge au-delà de l'âge limite habituel.",
+  "mt_afar": "Handicap le xaylo, ummaanih umri gabatak lakal ayfaarimuk raqe duddah.",
+  "position": 183
+ },
+ {
+  "id": "seg_0184",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "SMS CNSS : vos allocations de septembre ont été virées le 03/09. Montant : 12 000 FDJ.",
+  "mt_afar": "SMS CNSS : kin septembreh allocation 03/09 ruubime. Lakqo : 12 000 FDJ.",
+  "position": 184
+ },
+ {
+  "id": "seg_0185",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Est-ce que le père peut aussi toucher les allocations si la mère ne travaille pas ?",
+  "mt_afar": "Ina taama abtaa wayte tekkek, abba kaadu allocation beyuk duddaa ?",
+  "position": 185
+ },
+ {
+  "id": "seg_0186",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "La déclaration de naissance doit parvenir à nos services dans les trente jours.",
+  "mt_afar": "Ubkih déclaration sidocta tabana ayroh addal ni maktab fanah yamaatemeh faxxa.",
+  "position": 186
+ },
+ {
+  "id": "seg_0187",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Les jumeaux donnent droit à deux primes de naissance distinctes.",
+  "mt_afar": "Lamma-xaylo nammay baxsimeh tan ubkih prime xaqqi yacee.",
+  "position": 187
+ },
+ {
+  "id": "seg_0188",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Remplissez le formulaire AF-2 et déposez-le avec les certificats de scolarité.",
+  "mt_afar": "AF-2 formulaire kaamil, madrasah certificatwa lih haa.",
+  "position": 188
+ },
+ {
+  "id": "seg_0189",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Pour l'année 2026-2027, l'aide à la rentrée scolaire sera versée à partir du 1er septembre.",
+  "mt_afar": "2026-2027 liggidah, madrasa gacih catoyya 1 septembre ayrok qimbisak ruubamele.",
+  "position": 189
+ },
+ {
+  "id": "seg_0190",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Je viens d'adopter un enfant, ai-je droit aux mêmes prestations ?",
+  "mt_afar": "Taway xaylo adopter abeh, inkinnah tan prestationih xaqqi le ?",
+  "position": 190
+ },
+ {
+  "id": "seg_0191",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Les montants indiqués peuvent varier selon la composition du foyer.",
+  "mt_afar": "Yascasime lakqo buxah mara lowwoh caagidal tambookuk takke.",
+  "position": 191
+ },
+ {
+  "id": "seg_0192",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Une seule demande suffit pour tous les enfants d'une même famille.",
+  "mt_afar": "Inki buxah xaylo inkih fanah, inki esserit ugut.",
+  "position": 192
+ },
+ {
+  "id": "seg_0193",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Votre conjoint perçoit déjà les allocations pour ces enfants auprès d'un autre organisme.",
+  "mt_afar": "Ku barra hinnay labha ah xaylo fanah, organisme tiyak allocation beyta.",
+  "position": 193
+ },
+ {
+  "id": "seg_0194",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Le carnet de santé de l'enfant doit être présenté à chaque visite médicale.",
+  "mt_afar": "Xaylo sabatih carnet cakiimih zuyaara inkih yascasimeh faxxa.",
+  "position": 194
+ },
+ {
+  "id": "seg_0195",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "À partir de quel âge mon enfant n'est-il plus considéré comme à charge ?",
+  "mt_afar": "Ma umrik qimbisak yi xaylo ayfaarimtam hinna iyyen lowwomaa ?",
+  "position": 195
+ },
+ {
+  "id": "seg_0196",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Les indemnités de maternité sont calculées sur la base du salaire des trois derniers mois.",
+  "mt_afar": "Maternitéh indemnité ellecaboh sidoc alsih salairek lowwomta.",
+  "position": 196
+ },
+ {
+  "id": "seg_0197",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Vous pouvez suivre vos paiements sur l'application mobile ou au 21 35 15 51.",
+  "mt_afar": "Ku acuwawwa application mobile-l hinnay 21 35 15 51 telefoonal kataysuk duddah.",
+  "position": 197
+ },
+ {
+  "id": "seg_0198",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Toute fausse déclaration entraîne le remboursement des sommes perçues.",
+  "mt_afar": "Dirab déclaration inkih, beyte lakqo gacsiso kah yamaate.",
+  "position": 198
+ },
+ {
+  "id": "seg_0199",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Merci, je repasserai demain à 8 h avec le certificat de l'école.",
+  "mt_afar": "Gaddaa ge, beera 8 h-l madrasah certificat lih gacah amaatele.",
+  "position": 199
+ },
+ {
+  "id": "seg_0200",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Pour percevoir les allocations familiales, vous devez être salarié affilié à la CNSS et avoir au moins un enfant à charge. Les enfants doivent résider à Djibouti.",
+  "mt_afar": "Buxah allocation beytam fanah, CNSS-l affilié tekke salarié tekkeh, ayfaartam inki xaylo kaxxam litoh faxxa. Xaylo Jabuutil raqanih faxxa.",
+  "position": 200
+ },
+ {
+  "id": "seg_0201",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Félicitations pour la naissance de votre enfant ! Pour obtenir la prime, apportez l'acte de naissance, votre livret de famille et une attestation de travail. Le versement intervient sous quinze jours.",
+  "mt_afar": "Ku xaylo ubkah meqe ! Prime beytam fanah, ubkih acte, ku livret de famille kee taamah attestation baah. Acuwa taban kee konoy ayroh addal ruubamta.",
+  "position": 201
+ },
+ {
+  "id": "seg_0202",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Monsieur, suite au contrôle effectué en mai, il apparaît que votre fils aîné n'est plus scolarisé depuis janvier. Les allocations perçues pour lui depuis cette date, soit 24 000 FDJ, devront être remboursées.",
+  "mt_afar": "Labha, mai alsal abtime ablak lakal, ku nabam baxa janvierik qimbisak madrasa ma gexxa. Tohuk qimbisak kaa fanah beyteh tan allocation, 24 000 FDJ, gacsimeh faxxa.",
+  "position": 202
+ },
+ {
+  "id": "seg_0203",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "La future maman doit déclarer sa grossesse avant la fin du troisième mois. Elle bénéficie ensuite de consultations gratuites dans les centres de santé partenaires.",
+  "mt_afar": "Xalaytu barra sidocim alsih gabat dumal ku bukra warsitam faxxa. Tohuk lakal sabatih partenaire centrewwal bilaash cakiimih zuyaara geytah.",
+  "position": 203
+ },
+ {
+  "id": "seg_0204",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Votre dossier est désormais complet. Vos droits aux allocations familiales sont ouverts à compter du 1er mars. Le premier paiement couvrira les mois de mars et d'avril.",
+  "mt_afar": "Ku dossier taway kaamil kinni. Ku buxah allocationih xaqqi 1 mars ayrok qimbisak fakkime. Awwali acuwa mars kee avril alsa ugutele.",
+  "position": 204
+ },
+ {
+  "id": "seg_0205",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "En cas de séparation, les allocations sont versées au parent chez qui l'enfant vit habituellement. Si la garde est alternée, les deux parents peuvent demander un partage.",
+  "mt_afar": "Baxxaqqa tekkek, allocation xaylo ummaanih raqtam abba hinnay ina fanah ruubamta. Ayfaara walaal tekkek, nammay xalte qeebit esseroh xaqqi le.",
+  "position": 205
+ },
+ {
+  "id": "seg_0206",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Pour inscrire un nouvel enfant, rendez-vous au guichet famille du lundi au jeudi, de 7 h à 13 h. Pensez à apporter votre numéro d'immatriculation.",
+  "mt_afar": "Qusba xaylo xagisam fanah, Itnin kee Kamiis fanaa, 7 h kee 13 h fan buxah guichet fanah amaat. Ku immatriculationih numéro baahtam ma hawwin.",
+  "position": 206
+ },
+ {
+  "id": "seg_0207",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "L'aide à la scolarité est destinée aux enfants de six à dix-huit ans inscrits dans un établissement reconnu. Elle est versée une fois par an, avant la rentrée.",
+  "mt_afar": "Madrasah catoyya, diggisime madrasal xagisime lehey kee taban kee bacaara liggida umrih fan tan xaylo fanah tan. Liggida inkih inkittinnah, madrasa gacih dumal ruubamta.",
+  "position": 207
+ },
+ {
+  "id": "seg_0208",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Bonjour, j'ai reçu un courrier me demandant un justificatif de domicile. Est-ce qu'une facture d'électricité suffit ? Elle est au nom de mon frère.",
+  "mt_afar": "Mahisse, buxa yascassa warqat yok esserta bareedi beyeh. Kahrabaah facture ugutaa ? Yi toobokoh migaaqal tan.",
+  "position": 208
+ },
+ {
+  "id": "seg_0209",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Les allocations ne sont pas imposables. Elles s'ajoutent au salaire sans modifier le montant des cotisations.",
+  "mt_afar": "Allocation impôt ma le. Cotisation lakqo tamboosiseh waa salaire-l osisamta.",
+  "position": 209
+ },
+ {
+  "id": "seg_0210",
+  "lot": "Lot 06 — Prestations familiales",
+  "domaine": "Prestations familiales",
+  "source_fr": "Attestation de paiement",
+  "mt_afar": "Acuwah attestation",
+  "position": 210
+ },
+ {
+  "id": "seg_0211",
+  "lot": "Lot 07 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Ayants droit",
+  "mt_afar": "Xaqli le mara",
+  "position": 211
+ },
+ {
+  "id": "seg_0212",
+  "lot": "Lot 07 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Ticket modérateur",
+  "mt_afar": "Ticket modérateur",
+  "position": 212
+ },
+ {
+  "id": "seg_0213",
+  "lot": "Lot 07 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Pharmacie conventionnée",
+  "mt_afar": "Conventionnée tekke pharmacie",
+  "position": 213
+ },
+ {
+  "id": "seg_0214",
+  "lot": "Lot 07 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Numéro d'immatriculation",
+  "mt_afar": "Immatriculationih lowo",
+  "position": 214
+ },
+ {
+  "id": "seg_0215",
+  "lot": "Lot 07 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Feuille de soins",
+  "mt_afar": "Dawaaqih warqat",
+  "position": 215
+ },
+ {
+  "id": "seg_0216",
+  "lot": "Lot 07 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Assurance maladie universelle",
+  "mt_afar": "Inkih marah biyaakih assurance",
+  "position": 216
+ },
+ {
+  "id": "seg_0217",
+  "lot": "Lot 07 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Demande de remboursement",
+  "mt_afar": "Remboursementih esserih",
+  "position": 217
+ },
+ {
+  "id": "seg_0218",
+  "lot": "Lot 07 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Votre carte est prête.",
+  "mt_afar": "Ku kaarta beytam duddaa.",
+  "position": 218
+ },
+ {
+  "id": "seg_0219",
+  "lot": "Lot 07 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Présentez votre carte AMU à chaque passage en pharmacie.",
+  "mt_afar": "Pharmacie-l gexxa waqdi inkih ku kaarta AMU uybul.",
+  "position": 219
+ },
+ {
+  "id": "seg_0220",
+  "lot": "Lot 07 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Vos enfants de moins de 18 ans peuvent être déclarés comme ayants droit.",
+  "mt_afar": "18 liggidak qunxa ku xaylo ayants droit akke déclarer haytaanam duddah.",
+  "position": 220
+ },
+ {
+  "id": "seg_0221",
+  "lot": "Lot 07 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Le remboursement est versé sur votre compte bancaire sous quinze jours ouvrables.",
+  "mt_afar": "Remboursement taban kee konoy taamah ayroh addat ku compte bancaire-l haytaanah.",
+  "position": 221
+ },
+ {
+  "id": "seg_0222",
+  "lot": "Lot 07 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Le ticket modérateur correspond à la part des frais qui reste à votre charge.",
+  "mt_afar": "Ticket modérateur atu isi kaffalta frais-ih qaddo kinni.",
+  "position": 222
+ },
+ {
+  "id": "seg_0223",
+  "lot": "Lot 07 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Pour toute question, appelez notre service client au 21 00 00 00.",
+  "mt_afar": "Esserih inkih tekkek, nee service client 21 00 00 00 telefoonuh seec.",
+  "position": 223
+ },
+ {
+  "id": "seg_0224",
+  "lot": "Lot 07 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Votre conjoint peut bénéficier de la même couverture que vous.",
+  "mt_afar": "Ku conjoint koh inki couverture beytam duddah.",
+  "position": 224
+ },
+ {
+  "id": "seg_0225",
+  "lot": "Lot 07 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "En cas de déménagement, informez-nous de votre nouvelle adresse.",
+  "mt_afar": "Ku adresse korisimteek, ku qusba adresse nee warisa.",
+  "position": 225
+ },
+ {
+  "id": "seg_0226",
+  "lot": "Lot 07 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Les médicaments génériques sont remboursés au même titre que les médicaments de marque.",
+  "mt_afar": "Générique dawa, marque le dawa inna remboursé tan.",
+  "position": 226
+ },
+ {
+  "id": "seg_0227",
+  "lot": "Lot 07 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "La prise en charge des soins dentaires nécessite un accord préalable.",
+  "mt_afar": "Soins dentaires prise en charge duma accord faxximta.",
+  "position": 227
+ },
+ {
+  "id": "seg_0228",
+  "lot": "Lot 07 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Ce médicament n'est pas pris en charge par l'AMU.",
+  "mt_afar": "AMU tah dawa prise en charge ma abta.",
+  "position": 228
+ },
+ {
+  "id": "seg_0229",
+  "lot": "Lot 07 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Gardez toujours une copie de vos ordonnances.",
+  "mt_afar": "Waqdi inkih ku ordonnances copie dacris.",
+  "position": 229
+ },
+ {
+  "id": "seg_0230",
+  "lot": "Lot 07 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Le tiers payant vous évite d'avancer les frais à la pharmacie.",
+  "mt_afar": "Tiers payant ittal, pharmacie-l frais duma kaffalteh hinna.",
+  "position": 230
+ },
+ {
+  "id": "seg_0231",
+  "lot": "Lot 07 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Combien de temps faut-il pour obtenir ma carte ?",
+  "mt_afar": "Yi kaarta geyaanamah manni waqdi faxximta ?",
+  "position": 231
+ },
+ {
+  "id": "seg_0232",
+  "lot": "Lot 07 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Votre dossier a bien été enregistré sous le numéro 2026-0457.",
+  "mt_afar": "Ku dossier 2026-0457 lowot enregistrer tekke.",
+  "position": 232
+ },
+ {
+  "id": "seg_0233",
+  "lot": "Lot 07 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Les personnes à faible revenu peuvent être exonérées du ticket modérateur. Renseignez-vous auprès de votre agence.",
+  "mt_afar": "Revenu dago le mara ticket modérateurak exonérer haytaanam duddah. Ku agence esser.",
+  "position": 233
+ },
+ {
+  "id": "seg_0234",
+  "lot": "Lot 07 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Pour ajouter un nouveau-né à votre dossier, apportez son acte de naissance.",
+  "mt_afar": "Qusba dacayro ku dossier-l edde-haytaanamkeh, kay acte de naissance amaatis.",
+  "position": 234
+ },
+ {
+  "id": "seg_0235",
+  "lot": "Lot 07 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Le délai de carence est de trois mois après l'inscription.",
+  "mt_afar": "Délai de carence inscription lakal sidoc alsa kinni.",
+  "position": 235
+ },
+ {
+  "id": "seg_0236",
+  "lot": "Lot 07 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Rendez-vous au guichet avec votre pièce d'identité et une photo récente.",
+  "mt_afar": "Ku pièce d'identité kee qusba photo ittal guichet-l amaat.",
+  "position": 236
+ },
+ {
+  "id": "seg_0237",
+  "lot": "Lot 07 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Les frais d'hospitalisation sont pris en charge selon le barème en vigueur.",
+  "mt_afar": "Isbitaalih frais barème en vigueur-h celtal prise en charge tan.",
+  "position": 237
+ },
+ {
+  "id": "seg_0238",
+  "lot": "Lot 07 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Votre demande a été rejetée car l'ordonnance date de plus de trois mois.",
+  "mt_afar": "Ku esserih raddeh tekke, ordonnance sidoc alsak tu'tah tekkeemih sabbatah.",
+  "position": 238
+ },
+ {
+  "id": "seg_0239",
+  "lot": "Lot 07 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "La pharmacie ne m'a pas remboursé, est-ce normal ?",
+  "mt_afar": "Pharmacie yoh remboursement mayacinna, tah normal ?",
+  "position": 239
+ },
+ {
+  "id": "seg_0240",
+  "lot": "Lot 07 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Les retraités conservent leurs droits à l'assurance maladie.",
+  "mt_afar": "Retraités assurance maladih isi xaqqi dacrisan.",
+  "position": 240
+ },
+ {
+  "id": "seg_0241",
+  "lot": "Lot 08 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Un montant de 2 500 FDJ restera à votre charge.",
+  "mt_afar": "2 500 FDJ atu kaffalta.",
+  "position": 241
+ },
+ {
+  "id": "seg_0242",
+  "lot": "Lot 08 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Signalez immédiatement la perte ou le vol de votre carte. Une nouvelle carte vous sera délivrée sous 10 jours.",
+  "mt_afar": "Ku kaarta tabaytek hinnay kicinteek, sahlinak nee warisa. Qusba kaarta 10 ayro addat koh acimtele.",
+  "position": 242
+ },
+ {
+  "id": "seg_0243",
+  "lot": "Lot 08 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Si le taux de prise en charge est de 80 %, vous payez les 20 % restants.",
+  "mt_afar": "Prise en charge taux 80 % tekkek, atu raaqe 20 % kaffalta.",
+  "position": 243
+ },
+ {
+  "id": "seg_0244",
+  "lot": "Lot 08 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Votre carte AMU est strictement personnelle.",
+  "mt_afar": "Ku kaarta AMU kuh qeeda kinni.",
+  "position": 244
+ },
+ {
+  "id": "seg_0245",
+  "lot": "Lot 08 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Les lunettes sont-elles remboursées ?",
+  "mt_afar": "Lunettes remboursé tanaa ?",
+  "position": 245
+ },
+ {
+  "id": "seg_0246",
+  "lot": "Lot 08 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Les étudiants restent couverts par l'assurance de leurs parents jusqu'à 25 ans.",
+  "mt_afar": "Étudiants 25 liggida fan isi abba kee inah assurance-l yanin.",
+  "position": 246
+ },
+ {
+  "id": "seg_0247",
+  "lot": "Lot 08 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Mettez à jour la liste de vos ayants droit chaque année.",
+  "mt_afar": "Liggida inkih ku ayants droit liste mise à jour ab.",
+  "position": 247
+ },
+ {
+  "id": "seg_0248",
+  "lot": "Lot 08 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Joindre l'original de la facture.",
+  "mt_afar": "Facture original ittal amaatis.",
+  "position": 248
+ },
+ {
+  "id": "seg_0249",
+  "lot": "Lot 08 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Le formulaire est disponible en ligne et dans toutes nos agences.",
+  "mt_afar": "Formulaire en ligne kee nee agences inkih addal geytimta.",
+  "position": 249
+ },
+ {
+  "id": "seg_0250",
+  "lot": "Lot 08 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Pour les maladies chroniques, une prise en charge à 100 % peut être accordée.",
+  "mt_afar": "Maladies chroniques tekkek, 100 % prise en charge haytaanam duddah.",
+  "position": 250
+ },
+ {
+  "id": "seg_0251",
+  "lot": "Lot 08 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Vous avez reçu un SMS de rappel ? Votre carte AMU expire le 31/12/2026. Merci de passer à l'agence avant cette date pour la renouveler.",
+  "mt_afar": "SMS rappel geytee ? Ku kaarta AMU 31/12/2026 lakal ma taamitta. Tet qusbisaanamkeh, tah ayro duma agence-l amaat.",
+  "position": 251
+ },
+ {
+  "id": "seg_0252",
+  "lot": "Lot 08 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Le tiers payant fonctionne dans les pharmacies conventionnées. Présentez simplement votre carte et votre ordonnance. Vous ne réglez que le ticket modérateur.",
+  "mt_afar": "Tiers payant conventionnée tekke pharmacies addal taamitta. Ku kaarta kee ku ordonnance uybul. Atu ticket modérateur qeedah kaffalta.",
+  "position": 252
+ },
+ {
+  "id": "seg_0253",
+  "lot": "Lot 08 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Bonjour Madame, votre dossier est incomplet. Il manque le certificat de scolarité de votre fils. Merci de nous le faire parvenir rapidement.",
+  "mt_afar": "Assalaamu qalaykum, ku dossier dumaak hinna. Ku baxih certificat de scolarité ma tan. Sahlinak nee amaatis.",
+  "position": 253
+ },
+ {
+  "id": "seg_0254",
+  "lot": "Lot 08 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "En cas d'hospitalisation, prévenez l'AMU dans les 48 heures. Le service vous indiquera les documents à fournir.",
+  "mt_afar": "Isbitaal culteek, 48 saaqat addat AMU warisa. Service koh uybulle amaatista warqat.",
+  "position": 254
+ },
+ {
+  "id": "seg_0255",
+  "lot": "Lot 08 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Je ne retrouve plus ma carte. Est-ce que je peux quand même acheter mes médicaments ? — Oui, avec votre numéro d'immatriculation.",
+  "mt_afar": "Yi kaarta ma geyo. Yi dawa xaamitam duddaa ? — Ee, ku immatriculation lowoh.",
+  "position": 255
+ },
+ {
+  "id": "seg_0256",
+  "lot": "Lot 08 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Les ayants droit sont les membres de la famille couverts par votre assurance : conjoint, enfants à charge et, dans certains cas, parents.",
+  "mt_afar": "Ayants droit ku assurance-l tan ku buxah mara kinnon : conjoint, xaylo kee, ixxa waqdi, abba kee ina.",
+  "position": 256
+ },
+ {
+  "id": "seg_0257",
+  "lot": "Lot 08 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Les remboursements sont suspendus si vos cotisations ne sont pas à jour. Régularisez votre situation pour retrouver vos droits.",
+  "mt_afar": "Ku cotisations à jour mayan tekkek, remboursements suspendre haytaanah. Ku xaqqi geytaanamkeh ku situation régulariser ab.",
+  "position": 257
+ },
+ {
+  "id": "seg_0258",
+  "lot": "Lot 08 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Pour un remboursement, déposez la feuille de soins, l'ordonnance et les factures originales. Le traitement prend environ 15 jours.",
+  "mt_afar": "Remboursementih feuille de soins, ordonnance kee factures originales amaatis. Traitement 15 ayroh dagoh beyta.",
+  "position": 258
+ },
+ {
+  "id": "seg_0259",
+  "lot": "Lot 08 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Un médicament acheté sans ordonnance ne sera pas remboursé, même s'il figure sur la liste officielle.",
+  "mt_afar": "Ordonnance waytaa xaamite dawa, liste officielle-l tanih way, rembourser ma haytaanah.",
+  "position": 259
+ },
+ {
+  "id": "seg_0260",
+  "lot": "Lot 08 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Indemnités journalières",
+  "mt_afar": "Ayro inkih acuwa lakqo",
+  "position": 260
+ },
+ {
+  "id": "seg_0261",
+  "lot": "Lot 08 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Les analyses de laboratoire prescrites par votre médecin sont prises en charge sur présentation de l'ordonnance.",
+  "mt_afar": "Ku cakiim ku fanah xaafe laboratoire analyses, ordonnance uybulleh tekkek prise en charge tan.",
+  "position": 261
+ },
+ {
+  "id": "seg_0262",
+  "lot": "Lot 08 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Pendant votre congé de maternité, vous pouvez percevoir des indemnités journalières.",
+  "mt_afar": "Ku maternité congé waqdil, ayro inkih acuwa indemnités journalières beytam duddah.",
+  "position": 262
+ },
+ {
+  "id": "seg_0263",
+  "lot": "Lot 08 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Une évacuation sanitaire à l'étranger n'est accordée qu'après avis de la commission médicale.",
+  "mt_afar": "Qaxih baaxo fan evacuation sanitaire, commission médicale isi ra'yi yaceeh lakal qeedah acuwa haytaanah.",
+  "position": 263
+ },
+ {
+  "id": "seg_0264",
+  "lot": "Lot 08 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Les séances de kinésithérapie sont remboursées dans la limite de vingt séances par an.",
+  "mt_afar": "Kinésithérapie séances, liggida inkih labaatanna séance fanah remboursé tan.",
+  "position": 264
+ },
+ {
+  "id": "seg_0265",
+  "lot": "Lot 08 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Votre arrêt de travail doit nous parvenir dans les 48 heures suivant la consultation.",
+  "mt_afar": "Ku arrêt de travail, consultation lakal 48 saaqat addal nee fanah yamaateh faxxa.",
+  "position": 265
+ },
+ {
+  "id": "seg_0266",
+  "lot": "Lot 08 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Mon fils doit consulter un spécialiste à Djibouti-ville, faut-il une lettre du médecin traitant ?",
+  "mt_afar": "Yi baxa Jabuuti magaalal spécialiste ubleh faxxa, médecin traitant baxxaqqa faxximtaa ?",
+  "position": 266
+ },
+ {
+  "id": "seg_0267",
+  "lot": "Lot 08 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Le centre de santé de votre quartier est ouvert de 7 h à 13 h. Les consultations y sont gratuites pour les assurés AMU.",
+  "mt_afar": "Ku quartier-l tan centre de santé 7 h kee 13 h fanah fakkimeh yan. AMU assurés marah, tamal consultation lakqo male.",
+  "position": 267
+ },
+ {
+  "id": "seg_0268",
+  "lot": "Lot 08 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Pour obtenir le remboursement de vos lunettes, joignez la facture de l'opticien et la prescription de l'ophtalmologue.",
+  "mt_afar": "Ku lunettes remboursement beytam fanah, opticien facture kee ophtalmologue prescription osis.",
+  "position": 268
+ },
+ {
+  "id": "seg_0269",
+  "lot": "Lot 08 — Assurance maladie",
+  "domaine": "Assurance maladie",
+  "source_fr": "Les vaccins du calendrier national sont gratuits pour tous les enfants. Le carnet de vaccination doit être présenté à chaque visite.",
+  "mt_afar": "Calendrier national-l tan vaccins xaylo inkih marah lakqo male. Zuyaara inkih vaccination carnet uybulle faxxa.",
+  "position": 269
+ },
+ {
+  "id": "seg_0270",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Salle d'attente",
+  "mt_afar": "Sugtaanah buxa",
+  "position": 270
+ },
+ {
+  "id": "seg_0271",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Carnet de vaccination",
+  "mt_afar": "Vaccinationih carnet",
+  "position": 271
+ },
+ {
+  "id": "seg_0272",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Urgences",
+  "mt_afar": "Urgences",
+  "position": 272
+ },
+ {
+  "id": "seg_0273",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Lavez-vous les mains.",
+  "mt_afar": "Ku gaba xiq.",
+  "position": 273
+ },
+ {
+  "id": "seg_0274",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Buvez beaucoup d'eau.",
+  "mt_afar": "Lee maggo aab.",
+  "position": 274
+ },
+ {
+  "id": "seg_0275",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Gardez le lit deux jours.",
+  "mt_afar": "Nammay ayro ifuuf.",
+  "position": 275
+ },
+ {
+  "id": "seg_0276",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Prochain rendez-vous : lundi, 9 h.",
+  "mt_afar": "Tah lakal rendez-vous : Ittiniin, saaqat 9.",
+  "position": 276
+ },
+ {
+  "id": "seg_0277",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Vaccination gratuite pour les enfants",
+  "mt_afar": "Xaylok vaccination biiri waytaa kinni",
+  "position": 277
+ },
+ {
+  "id": "seg_0278",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Consultez un médecin si la fièvre dure plus de trois jours.",
+  "mt_afar": "Fièvre sidoc ayrok tayse raateek, doktoorul gex.",
+  "position": 278
+ },
+ {
+  "id": "seg_0279",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Lavez-vous les mains avec du savon avant chaque repas.",
+  "mt_afar": "Akamak duma waqdi inkih, saabuunuh ku gaba xiq.",
+  "position": 279
+ },
+ {
+  "id": "seg_0280",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Les vaccins protègent votre enfant contre des maladies graves.",
+  "mt_afar": "Vaccins ku dacayro biyaakih gibdik dacrisa.",
+  "position": 280
+ },
+ {
+  "id": "seg_0281",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Votre enfant doit recevoir le vaccin contre la rougeole à 9 mois.",
+  "mt_afar": "Ku dacayro 9 alsat rougeole vaccin beytam faxximta.",
+  "position": 281
+ },
+ {
+  "id": "seg_0282",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Pendant la grossesse, faites au moins quatre consultations prénatales. Gardez votre carnet de suivi sur vous.",
+  "mt_afar": "Grossesse waqdi, fereyik dagoh mayan consultations prénatales ab. Ku carnet de suivi ittal beyta.",
+  "position": 282
+ },
+ {
+  "id": "seg_0283",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "En cas d'urgence, appelez les secours ou rendez-vous à l'hôpital le plus proche.",
+  "mt_afar": "Urgence tekkek, secours seec hinnay xiqta tan isbitaal gex.",
+  "position": 283
+ },
+ {
+  "id": "seg_0284",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Ne donnez jamais d'antibiotiques sans avis médical.",
+  "mt_afar": "Doktoorih qeeda waytaa antibiotiques ma acina.",
+  "position": 284
+ },
+ {
+  "id": "seg_0285",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "La diarrhée chez le nourrisson peut provoquer une déshydratation rapide.",
+  "mt_afar": "Dacayro diarrhée tekkek, sahlinak déshydratation yakkeh.",
+  "position": 285
+ },
+ {
+  "id": "seg_0286",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Donnez des sels de réhydratation orale (SRO) après chaque selle liquide.",
+  "mt_afar": "Selle liquide inkih lakal, SRO acin.",
+  "position": 286
+ },
+ {
+  "id": "seg_0287",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Dormez sous une moustiquaire imprégnée pour éviter le paludisme.",
+  "mt_afar": "Paludisme kok dacrisamkeh, moustiquaire imprégnée addal dirab.",
+  "position": 287
+ },
+ {
+  "id": "seg_0288",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Comment vous sentez-vous aujourd'hui ?",
+  "mt_afar": "Asaaku mannal tanito ?",
+  "position": 288
+ },
+ {
+  "id": "seg_0289",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "J'ai mal à la tête depuis hier soir.",
+  "mt_afar": "Kimal carrak amo yoo biyaka.",
+  "position": 289
+ },
+ {
+  "id": "seg_0290",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Prenez un comprimé matin et soir pendant 5 jours.",
+  "mt_afar": "5 ayro, saaku kee carra inki comprimé beyta.",
+  "position": 290
+ },
+ {
+  "id": "seg_0291",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Chez l'adulte, ne dépassez pas 3 grammes de paracétamol par jour.",
+  "mt_afar": "Kaxxa num ayrol paracétamol 3 grammesak tayse ma beyya.",
+  "position": 291
+ },
+ {
+  "id": "seg_0292",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Le centre de santé est ouvert du dimanche au jeudi, de 7 h à 14 h.",
+  "mt_afar": "Qaafiyatih buxa Acadak Kamiis fan, saaqat 7 kee 14 fanat fakkimta.",
+  "position": 292
+ },
+ {
+  "id": "seg_0293",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Allaitez votre bébé exclusivement au sein jusqu'à six mois.",
+  "mt_afar": "Leehey alsa fan, ku dacayro ku haanuk qeeda nuugis.",
+  "position": 293
+ },
+ {
+  "id": "seg_0294",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Faites bouillir l'eau de boisson si vous n'êtes pas sûr de sa qualité.",
+  "mt_afar": "Lee qaafiyat le kinnim ma aaxigtek, lee gubis.",
+  "position": 294
+ },
+ {
+  "id": "seg_0295",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Un enfant qui respire vite et tousse doit être vu le jour même. N'attendez pas le lendemain.",
+  "mt_afar": "Sahlinak afuufa kee toux le dacayro, tah ayro doktoor ubulle faxximta. Beera ma sugin.",
+  "position": 295
+ },
+ {
+  "id": "seg_0296",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Après 40 ans, la tension artérielle doit être contrôlée régulièrement.",
+  "mt_afar": "40 liggidak lakal, tension artérielle waqdi inkih contrôler haytaanam faxximta.",
+  "position": 296
+ },
+ {
+  "id": "seg_0297",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Mangez des fruits et des légumes chaque jour.",
+  "mt_afar": "Ayro inkih fruits kee légumes akum.",
+  "position": 297
+ },
+ {
+  "id": "seg_0298",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Couvrez votre bouche quand vous toussez ou éternuez.",
+  "mt_afar": "Toux hinnay éternuer tekkek, ku af daabis.",
+  "position": 298
+ },
+ {
+  "id": "seg_0299",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Le dépistage du VIH est gratuit et confidentiel.",
+  "mt_afar": "VIH dépistage biiri waytaa kee confidentiel kinni.",
+  "position": 299
+ },
+ {
+  "id": "seg_0300",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Avez-vous des allergies à certains médicaments ?",
+  "mt_afar": "Dawa tiiyal allergie littaa ?",
+  "position": 300
+ },
+ {
+  "id": "seg_0301",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Votre résultat d'analyse sera disponible dans 48 heures.",
+  "mt_afar": "Ku analyse résultat 48 saaqat addat geytimta.",
+  "position": 301
+ },
+ {
+  "id": "seg_0302",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Pendant les fortes chaleurs, évitez de sortir entre 12 h et 16 h.",
+  "mt_afar": "Ayro gibdi tekkek, saaqat 12 kee 16 fanat ma ewqina.",
+  "position": 302
+ },
+ {
+  "id": "seg_0303",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Une femme enceinte qui saigne doit se rendre immédiatement à la maternité.",
+  "mt_afar": "Biiro tewqeh grossesse le barra, sahlinak maternité-l gexxam faxximta.",
+  "position": 303
+ },
+ {
+  "id": "seg_0304",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Gardez les médicaments hors de portée des enfants.",
+  "mt_afar": "Dawa xaylo ma geyna fanah dacris.",
+  "position": 304
+ },
+ {
+  "id": "seg_0305",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Le vaccin peut provoquer une légère fièvre pendant 24 heures.",
+  "mt_afar": "Vaccin 24 saaqat addat qunxa fièvre abam duddah.",
+  "position": 305
+ },
+ {
+  "id": "seg_0306",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Brossez-vous les dents deux fois par jour.",
+  "mt_afar": "Ayrol nammay adda ku dents brosser ab.",
+  "position": 306
+ },
+ {
+  "id": "seg_0307",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Patientez dans la salle d'attente, l'infirmière va vous appeler.",
+  "mt_afar": "Sugtaanah buxal sug, infirmière koo seecele.",
+  "position": 307
+ },
+ {
+  "id": "seg_0308",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Rappel : vaccination de votre enfant le 15 novembre à 8 h 30.",
+  "mt_afar": "Rappel : ku dacayroh vaccination 15 novembre, saaqat 8 h 30.",
+  "position": 308
+ },
+ {
+  "id": "seg_0309",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Le tabac augmente fortement le risque de maladies du cœur.",
+  "mt_afar": "Tabac lubbih biyaakih risque maggo osissa.",
+  "position": 309
+ },
+ {
+  "id": "seg_0310",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Si vous avez des vertiges, allongez-vous et prévenez quelqu'un.",
+  "mt_afar": "Vertiges tekkek, dirab kee num warisa.",
+  "position": 310
+ },
+ {
+  "id": "seg_0311",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Le paludisme se transmet par la piqûre de moustique. Ne laissez pas d'eau stagnante autour de la maison. Consultez dès les premiers signes de fièvre.",
+  "mt_afar": "Paludisme moustique piqûreh gexa. Buxah dacar sugtah lee ma raaqina. Fièvre ugtuma ayrot doktoor ubul.",
+  "position": 311
+ },
+ {
+  "id": "seg_0312",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Votre bébé a de la fièvre et refuse de téter ? Ne perdez pas de temps. Amenez-le au centre de santé le plus proche.",
+  "mt_afar": "Ku dacayro fièvre le kee haan ma nuugaa ? Waqdi ma bayisin. Xiqta tan qaafiyatih buxal beyta.",
+  "position": 312
+ },
+ {
+  "id": "seg_0313",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Pendant la grossesse, mangez varié et prenez le fer prescrit. Évitez l'alcool et le tabac. Reposez-vous dès que possible.",
+  "mt_afar": "Grossesse waqdi, akama baxsale akum kee ordonnance-l tan fer beyta. Alcool kee tabac ma beyina. Duddaanam waqdi ifuuf.",
+  "position": 313
+ },
+ {
+  "id": "seg_0314",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Bonjour, je suis l'infirmière. Je vais prendre votre tension. Détendez-vous et respirez normalement.",
+  "mt_afar": "Assalaamu qalaykum, anu infirmière kiyo. Ku tension beyyo. Ifuuf kee normal afuufa.",
+  "position": 314
+ },
+ {
+  "id": "seg_0315",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "La gale se transmet par contact direct. Lavez les draps et les vêtements à l'eau chaude. Traitez toute la famille en même temps.",
+  "mt_afar": "Gale contact direct-h gexa. Draps kee saro gubtah leeh xiq. Buxah mara inkih inki waqdi traiter ab.",
+  "position": 315
+ },
+ {
+  "id": "seg_0316",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Après un accouchement, une visite de contrôle est conseillée dans les 6 semaines. Elle permet de vérifier la santé de la mère et du bébé.",
+  "mt_afar": "Accouchement lakal, 6 asbuuc addat contrôle visite qeeda. Woo visite ina kee dacayroh qaafiyat ubullam abta.",
+  "position": 316
+ },
+ {
+  "id": "seg_0317",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Le choléra se manifeste par une diarrhée abondante. Buvez uniquement de l'eau traitée et lavez bien les aliments. Allez immédiatement au centre de santé si vous êtes touché.",
+  "mt_afar": "Choléra maggo diarrhée ittal yamaate. Traiter tekke lee qeedah aab, akama meqeh xiq. Kaa geyteek, sahlinak qaafiyatih buxal gex.",
+  "position": 317
+ },
+ {
+  "id": "seg_0318",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Avec la chaleur, les personnes âgées se déshydratent vite. Proposez-leur à boire régulièrement, même s'ils n'ont pas soif.",
+  "mt_afar": "Ayro gibdi waqdi, kaxxa mara sahlinak déshydrater yakkan. Soif ma litoonuy way, waqdi inkih lee acinaanamkeh esser.",
+  "position": 318
+ },
+ {
+  "id": "seg_0319",
+  "lot": "Lot 09 — Santé",
+  "domaine": "Santé",
+  "source_fr": "Le carnet de santé de l'enfant doit être apporté à chaque consultation. Il contient les vaccins, le poids et les maladies passées.",
+  "mt_afar": "Dacayroh carnet de santé consultation inkih amaatisaanam faxximta. Vaccins, poids kee tu'tah biyaakih addal tan.",
+  "position": 319
+ },
+ {
+  "id": "seg_0320",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Contrat de travail",
+  "mt_afar": "Taamah contrat",
+  "position": 320
+ },
+ {
+  "id": "seg_0321",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Bulletin de paie",
+  "mt_afar": "Salairih warqat",
+  "position": 321
+ },
+ {
+  "id": "seg_0322",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Congé maladie",
+  "mt_afar": "Biyakih congé",
+  "position": 322
+ },
+ {
+  "id": "seg_0323",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Heures supplémentaires",
+  "mt_afar": "Osissa saaqatta",
+  "position": 323
+ },
+ {
+  "id": "seg_0324",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Période d'essai",
+  "mt_afar": "Mokkorih wakti",
+  "position": 324
+ },
+ {
+  "id": "seg_0325",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Port du casque obligatoire",
+  "mt_afar": "Casque uddurrusam diggah faxximta",
+  "position": 325
+ },
+ {
+  "id": "seg_0326",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Accident du travail",
+  "mt_afar": "Taamal tekke balaa",
+  "position": 326
+ },
+ {
+  "id": "seg_0327",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Où se trouve l'inspection du travail ?",
+  "mt_afar": "Inspection du travail anil tan ?",
+  "position": 327
+ },
+ {
+  "id": "seg_0328",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Votre contrat de travail doit préciser votre poste, votre salaire et vos horaires.",
+  "mt_afar": "Ku taamah contrat ku poste, ku salaire kee ku taamah saaqatta baxxaqqa haam faxximta.",
+  "position": 328
+ },
+ {
+  "id": "seg_0329",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "L'employeur remet un bulletin de paie à chaque salarié à la fin du mois.",
+  "mt_afar": "Taamah abba alsih ellecabol taama abe num inkih salairih warqat acuwa.",
+  "position": 329
+ },
+ {
+  "id": "seg_0330",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "En cas d'accident du travail, prévenez immédiatement votre responsable.",
+  "mt_afar": "Taamal balaa tekkek, ku responsable tokkel warsa.",
+  "position": 330
+ },
+ {
+  "id": "seg_0331",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Chaque travailleur a droit à un congé annuel payé.",
+  "mt_afar": "Taama abeyni inkih sanatih congé payé cakki lih yan.",
+  "position": 331
+ },
+ {
+  "id": "seg_0332",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Les heures supplémentaires doivent être payées avec une majoration.",
+  "mt_afar": "Osissa saaqatta majoration lih kaffalimtam faxximta.",
+  "position": 332
+ },
+ {
+  "id": "seg_0333",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "La période d'essai de Mme Fatouma Ali se termine le 30 juin.",
+  "mt_afar": "Fatouma Alih mokkorih wakti 30 juinil ellecabo haa.",
+  "position": 333
+ },
+ {
+  "id": "seg_0334",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Il est interdit de travailler dans cet atelier sans gants de protection.",
+  "mt_afar": "Ama atelieril dacayrih gants wayteh taama abam diggah ma-faxximta.",
+  "position": 334
+ },
+ {
+  "id": "seg_0335",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Le bureau ouvre à 7 h 00 et ferme à 14 h 30 du dimanche au jeudi.",
+  "mt_afar": "Bureau dimanchek jeudi fanah saaqat 7:00l fakkimta, saaqat 14:30l alifimta.",
+  "position": 335
+ },
+ {
+  "id": "seg_0336",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Bonjour, je voudrais savoir combien de jours de congé il me reste cette année.",
+  "mt_afar": "Nagaa, ama sanat congéh ayroo mamaa iyyeh raaqeh tanim aaxagam faxa.",
+  "position": 336
+ },
+ {
+  "id": "seg_0337",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Le salaire de septembre sera versé le 28 sur votre compte bancaire.",
+  "mt_afar": "Septembreh salaire 28l ku banquih compte addal culsimta.",
+  "position": 337
+ },
+ {
+  "id": "seg_0338",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Tout licenciement doit être notifié au salarié par écrit.",
+  "mt_afar": "Licenciement inkih taama abe numul kitbaanamah warsimtam faxximta.",
+  "position": 338
+ },
+ {
+  "id": "seg_0339",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Un apprenti ne doit pas être affecté à des travaux dangereux.",
+  "mt_afar": "Apprenti rabaa le taamah yaabbaanamam ma-faxximta.",
+  "position": 339
+ },
+ {
+  "id": "seg_0340",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Mon patron ne m'a pas payé depuis deux mois, que dois-je faire ?",
+  "mt_afar": "Yi patron namma alsak lakal anu ma kaffalinna, macaay abam faxximta ?",
+  "position": 340
+ },
+ {
+  "id": "seg_0341",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "L'inspecteur du travail peut visiter l'entreprise sans prévenir l'employeur à l'avance.",
+  "mt_afar": "Inspecteur du travail taamah abba duma warsaanam wayteh entreprise ubleenim duudah.",
+  "position": 341
+ },
+ {
+  "id": "seg_0342",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Le certificat médical doit être déposé dans les 48 heures suivant l'arrêt de travail.",
+  "mt_afar": "Certificat médical taama ugsuma lakal 48 saaqat addal culsimtam faxximta.",
+  "position": 342
+ },
+ {
+  "id": "seg_0343",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Les extincteurs sont vérifiés tous les six mois par une société agréée.",
+  "mt_afar": "Extincteurs lixxa alsil inkih société agréée kah mokkorta.",
+  "position": 343
+ },
+ {
+  "id": "seg_0344",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Merci de signer la feuille de présence en arrivant et en partant.",
+  "mt_afar": "Amaatan waqdi kee gexxan waqdi feuille de présence signer abaa, gadda haysite.",
+  "position": 344
+ },
+ {
+  "id": "seg_0345",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Le contrat à durée déterminée précise la date de début et la date de fin de la mission.",
+  "mt_afar": "Contrat à durée déterminée taamah qimbo ayró kee ellecaboh ayró baxxaqqa haa.",
+  "position": 345
+ },
+ {
+  "id": "seg_0346",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Une salariée enceinte bénéficie d'un congé de maternité.",
+  "mt_afar": "Ulult tan taama abeyna congé de maternité geytima.",
+  "position": 346
+ },
+ {
+  "id": "seg_0347",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Votre demande de congé du 3 au 14 mars a été acceptée.",
+  "mt_afar": "3 marsik 14 mars fanah ku congéh esserit oggolimteh.",
+  "position": 347
+ },
+ {
+  "id": "seg_0348",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Est-ce que je peux travailler à mi-temps après mon congé ?",
+  "mt_afar": "Yi congé lakal mi-temps taama abam duddaa ?",
+  "position": 348
+ },
+ {
+  "id": "seg_0349",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Le préavis commence à courir à partir de la réception de la lettre.",
+  "mt_afar": "Préavis lettre geytimtek lakal qimbisa.",
+  "position": 349
+ },
+ {
+  "id": "seg_0350",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Les vêtements de travail sont fournis gratuitement par l'entreprise.",
+  "mt_afar": "Taamah sara entreprise mag akkuk acuwa.",
+  "position": 350
+ },
+ {
+  "id": "seg_0351",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Réunion des délégués du personnel jeudi à 10 h, salle B.",
+  "mt_afar": "Taama abeynih délégués kaqbuu jeudi saaqat 10l, salle Bil.",
+  "position": 351
+ },
+ {
+  "id": "seg_0352",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "L'apprentie suit les cours au centre de formation deux jours par semaine.",
+  "mt_afar": "Apprentie usbuucal namma ayró centre de formationil barittó abta.",
+  "position": 352
+ },
+ {
+  "id": "seg_0353",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Pour toute question sur vos droits, appelez le 21 35 00 00.",
+  "mt_afar": "Ku cakki fanah esserit inkih tanik, 21 35 00 00 telefoon abaa.",
+  "position": 353
+ },
+ {
+  "id": "seg_0354",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Le travail de nuit est organisé par roulement entre les équipes.",
+  "mt_afar": "Bar taama kooxa fanal roulement abeenih taqbimta.",
+  "position": 354
+ },
+ {
+  "id": "seg_0355",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Le blessé a été transporté à l'hôpital Peltier après l'accident.",
+  "mt_afar": "Balaa lakal madqa le num hôpital Peltier fan beyteenimih.",
+  "position": 355
+ },
+ {
+  "id": "seg_0356",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Avant toute intervention sur la machine, coupez l'alimentation électrique.",
+  "mt_afar": "Makiinal taama abtaanam duma, korontoh alimentation qaxuuqa.",
+  "position": 356
+ },
+ {
+  "id": "seg_0357",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Le salarié licencié pour motif économique perçoit une indemnité.",
+  "mt_afar": "Motif économique sabbatah licencié tekke taama abeyni indemnité geyta.",
+  "position": 357
+ },
+ {
+  "id": "seg_0358",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Signalez tout produit chimique sans étiquette à votre superviseur.",
+  "mt_afar": "Étiquette wayta produit chimique inkih ku superviseur warsa.",
+  "position": 358
+ },
+ {
+  "id": "seg_0359",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Après trois mois d'apprentissage, Ibrahim maîtrise déjà la soudure. Son tuteur propose de lui confier de petites réparations.",
+  "mt_afar": "Sidiica alsa apprentissage lakal, Ibrahim soudure aaxigeh. Kay tuteur qunxa missoysiyyi kaa elle acuwam yaysita.",
+  "position": 359
+ },
+ {
+  "id": "seg_0360",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Le salarié victime d'un accident doit être pris en charge immédiatement. L'employeur déclare ensuite l'accident à la CNSS dans les délais prévus.",
+  "mt_afar": "Balaa kaal tekke taama abeyni tokkel kaa xiinimtam faxximta. Tohuk lakal taamah abba balaa CNSS warsa, waktih addal.",
+  "position": 360
+ },
+ {
+  "id": "seg_0361",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Chers collègues, la cantine sera fermée lundi pour travaux. Pensez à apporter votre repas.",
+  "mt_afar": "Kaxxa saaxiboota, lundi cantine taamah sabbatah alifimta. Isin kumaaqo baahaanam kassita.",
+  "position": 361
+ },
+ {
+  "id": "seg_0362",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Vous avez été embauché le 2 janvier 2025. Votre période d'essai est terminée et votre poste est confirmé.",
+  "mt_afar": "Isin 2 janvier 2025l taamal culteenik. Sin mokkorih wakti gaba kalteh, sin poste qaxxaaqiyyimteh.",
+  "position": 362
+ },
+ {
+  "id": "seg_0363",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "L'inspection du travail a reçu votre plainte. Un agent vous contactera dans les prochains jours pour fixer un rendez-vous.",
+  "mt_afar": "Inspection du travail ku plainte geyteh. Agent ayró taamaatah addal rendez-vous kaxxeh ku warsele.",
+  "position": 363
+ },
+ {
+  "id": "seg_0364",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Le casque, les chaussures de sécurité et le gilet sont obligatoires sur le chantier. Tout manquement sera sanctionné.",
+  "mt_afar": "Taamah bataal casque, dacayrih kabella kee gilet diggah faxximta. Tama cabe num inkih sanction geytima.",
+  "position": 364
+ },
+ {
+  "id": "seg_0365",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Je travaille comme gardien depuis cinq ans. Je n'ai jamais pris de congé, est-ce que je peux les récupérer ?",
+  "mt_afar": "Anu konoy sanatak gardien akkuk taama abak an. Congé matakbinnim, tama ayroo uduurusam duddaa ?",
+  "position": 365
+ },
+ {
+  "id": "seg_0366",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "La lettre de licenciement indique le motif de la rupture. Le salarié dispose d'un délai pour contester cette décision.",
+  "mt_afar": "Licenciementih lettre contratih tibbixxaa sabab baxxaqqa haa. Taama abeyni ama decision mangaxaanamah wakti lih yan.",
+  "position": 366
+ },
+ {
+  "id": "seg_0367",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Rappel : la formation sur les gestes de premiers secours aura lieu le 12 novembre de 8 h à 12 h.",
+  "mt_afar": "Kassoysa : premiers secoursih formation 12 novembreh saaqat 8k saaqat 12 fanah tekkele.",
+  "position": 367
+ },
+ {
+  "id": "seg_0368",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Après l'accident, le salarié a été placé en arrêt de travail pendant 21 jours. Ses indemnités sont versées par la caisse.",
+  "mt_afar": "Balaa lakal, taama abeyni 21 ayró arrêt de travailil sugeh. Kay indemnités caisse acuwa.",
+  "position": 368
+ },
+ {
+  "id": "seg_0369",
+  "lot": "Lot 10 — Travail",
+  "domaine": "Travail",
+  "source_fr": "Les horaires d'été s'appliquent du 15 mai au 15 septembre. Les équipes commencent plus tôt pour éviter les fortes chaleurs.",
+  "mt_afar": "Hagayih taamah saaqatta 15 maik 15 septembre fanah taamitta. Kooxa kaxxa gira cinah saaku dumal qimbisa.",
+  "position": 369
+ },
+ {
+  "id": "seg_0370",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Patente",
+  "mt_afar": "Patente",
+  "position": 370
+ },
+ {
+  "id": "seg_0371",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Déclaration annuelle",
+  "mt_afar": "Sanatih déclaration",
+  "position": 371
+ },
+ {
+  "id": "seg_0372",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Quittance de paiement",
+  "mt_afar": "Kaffalih quittance",
+  "position": 372
+ },
+ {
+  "id": "seg_0373",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Pénalités de retard",
+  "mt_afar": "Raaqih pénalités",
+  "position": 373
+ },
+ {
+  "id": "seg_0374",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Numéro d'identification fiscale",
+  "mt_afar": "Gibrih numéro d'identification",
+  "position": 374
+ },
+ {
+  "id": "seg_0375",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Guichet des impôts",
+  "mt_afar": "Gibrih guichet",
+  "position": 375
+ },
+ {
+  "id": "seg_0376",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Date limite de dépôt",
+  "mt_afar": "Culsah ellecaboh ayró",
+  "position": 376
+ },
+ {
+  "id": "seg_0377",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Dernier délai : vendredi.",
+  "mt_afar": "Ellecaboh wakti : vendredi.",
+  "position": 377
+ },
+ {
+  "id": "seg_0378",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Quels documents dois-je apporter ?",
+  "mt_afar": "Macaay warqatta baahaam faxximta ?",
+  "position": 378
+ },
+ {
+  "id": "seg_0379",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "L'ITS est retenu chaque mois directement sur le salaire par l'employeur.",
+  "mt_afar": "ITS alsa alsal taamah abba salairek toysa beya.",
+  "position": 379
+ },
+ {
+  "id": "seg_0380",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "La déclaration de revenus doit être déposée avant la date limite indiquée sur l'avis.",
+  "mt_afar": "Galtoh déclaration avisil baxxaqqa tekke ellecaboh ayró dumal culsimtam faxximta.",
+  "position": 380
+ },
+ {
+  "id": "seg_0381",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Tout commerçant qui ouvre une boutique doit se renseigner sur la patente.",
+  "mt_afar": "Dukaan fakkah gaadal num inkih patente fanah esserak aaxagam faxximta.",
+  "position": 381
+ },
+ {
+  "id": "seg_0382",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "La quittance n° 4521 porte la date du 2 février 2026.",
+  "mt_afar": "Quittance n° 4521 2 février 2026h ayró elle yan.",
+  "position": 382
+ },
+ {
+  "id": "seg_0383",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Un retard de paiement peut entraîner des pénalités et des intérêts.",
+  "mt_afar": "Kaffalih raaqa pénalités kee intérêts taybulleem duudah.",
+  "position": 383
+ },
+ {
+  "id": "seg_0384",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Bonjour, je viens payer la patente de mon magasin.",
+  "mt_afar": "Nagaa, yi magasinih patente kaffalaamah amaatek an.",
+  "position": 384
+ },
+ {
+  "id": "seg_0385",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Votre avis d'imposition est disponible au guichet n° 3.",
+  "mt_afar": "Ku avis d'imposition guichet n° 3l geytima.",
+  "position": 385
+ },
+ {
+  "id": "seg_0386",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Le montant à payer s'élève à 125 000 FDJ, frais compris.",
+  "mt_afar": "Kaffalimtam faxximta lacag 125 000 FDJ, frais elle culteh.",
+  "position": 386
+ },
+ {
+  "id": "seg_0387",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Les entreprises doivent reverser chaque mois l'ITS retenu sur les salaires de leurs employés.",
+  "mt_afar": "Entreprises alsa alsal ken taama abeynih salairek beyteenim ITS gibrih idaarat uduurusam faxximta.",
+  "position": 387
+ },
+ {
+  "id": "seg_0388",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Vous pouvez demander un échéancier si vous ne pouvez pas payer en une seule fois.",
+  "mt_afar": "Inki wadirih kaffalam duddewaytek, échéancier esserak duddaa.",
+  "position": 388
+ },
+ {
+  "id": "seg_0389",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Le formulaire de déclaration est disponible en ligne et au centre des impôts.",
+  "mt_afar": "Déclarationih formulaire internetil kee gibrih centreeh addal geytima.",
+  "position": 389
+ },
+ {
+  "id": "seg_0390",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Rappel : votre déclaration mensuelle est attendue avant le 15 du mois.",
+  "mt_afar": "Kassoysa : ku alsih déclaration alsih 15 dumal culsimtam faxximta.",
+  "position": 390
+ },
+ {
+  "id": "seg_0391",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "En cas d'erreur sur votre avis, adressez une réclamation écrite au service des impôts.",
+  "mt_afar": "Ku avisil dirab yanik, gibrih service fan kitbaanamah réclamation ruuba.",
+  "position": 391
+ },
+ {
+  "id": "seg_0392",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Est-ce que je dois payer des impôts si je travaille comme vendeur ambulant ?",
+  "mt_afar": "Gexxa-gexxah dukaan abak taama abek, gibri kaffalam faxximtaa ?",
+  "position": 392
+ },
+ {
+  "id": "seg_0393",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Le paiement peut se faire en espèces, par chèque ou par virement bancaire.",
+  "mt_afar": "Kaffal lacag gabal, chèque kee banquih virement lih tekkem duudah.",
+  "position": 393
+ },
+ {
+  "id": "seg_0394",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "La patente doit être affichée de manière visible dans le local commercial.",
+  "mt_afar": "Patente dukaanih addal num yubleenim inna kaqhimtam faxximta.",
+  "position": 394
+ },
+ {
+  "id": "seg_0395",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "L'agent vous remettra une quittance dès que le paiement sera enregistré.",
+  "mt_afar": "Kaffal qeexxiyyimtek lakal, agent quittance kuu acuwele.",
+  "position": 395
+ },
+ {
+  "id": "seg_0396",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Votre numéro de contribuable figure en haut à droite du document.",
+  "mt_afar": "Ku numéro de contribuable warqatih amol migaq gabal yan.",
+  "position": 396
+ },
+ {
+  "id": "seg_0397",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Le centre des impôts sera exceptionnellement fermé le 27 juin, jour de l'Indépendance.",
+  "mt_afar": "Gibrih centre 27 juin, Xayyossah ayró, alifimtele.",
+  "position": 397
+ },
+ {
+  "id": "seg_0398",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Merci de prendre un ticket et d'attendre l'appel de votre numéro.",
+  "mt_afar": "Ticket beyaay ku numéro seecimta fanah sugaay, gadda haysite.",
+  "position": 398
+ },
+ {
+  "id": "seg_0399",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Pour toute information fiscale, contactez le 21 32 50 00 du dimanche au jeudi.",
+  "mt_afar": "Gibrih macluumat inkih tanik, dimanchek jeudi fanah 21 32 50 00 telefoon abaa.",
+  "position": 399
+ },
+ {
+  "id": "seg_0400",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Une copie de la carte d'identité est demandée pour toute nouvelle inscription.",
+  "mt_afar": "Cusuk inscription inkih carte d'identitéh copie essertima.",
+  "position": 400
+ },
+ {
+  "id": "seg_0401",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Le contribuable a réglé le solde restant de 48 750 FDJ le 10 octobre.",
+  "mt_afar": "Contribuable raaqe 48 750 FDJ 10 octobrel kaffaleh.",
+  "position": 401
+ },
+ {
+  "id": "seg_0402",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Vous n'avez pas reçu votre avis ? Passez directement au bureau avec votre pièce d'identité.",
+  "mt_afar": "Ku avis ma geytinnitoo ? Ku pièce d'identité lih toysa bureau fan amaat.",
+  "position": 402
+ },
+ {
+  "id": "seg_0403",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Les sommes versées en retard sont majorées de 10 % dans cet exemple de calcul.",
+  "mt_afar": "Ama xisaabih exemplel raaqah kaffalimte lacag 10 % osimta.",
+  "position": 403
+ },
+ {
+  "id": "seg_0404",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Le vérificateur a demandé les factures d'achat des trois dernières années.",
+  "mt_afar": "Vérificateur ellecabo sidiica sanatih xaamih factures esserteh.",
+  "position": 404
+ },
+ {
+  "id": "seg_0405",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Votre patente pour l'année 2026 a été enregistrée. La quittance vous sera envoyée par courrier sous dix jours.",
+  "mt_afar": "Ku 2026 sanatih patente qeexxiyyimteh. Quittance taban ayró addal courrier lih kuu ruubimtele.",
+  "position": 405
+ },
+ {
+  "id": "seg_0406",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Bonjour madame, j'ai payé mes impôts hier mais je n'ai pas eu de reçu. Comment puis-je l'obtenir ?",
+  "mt_afar": "Nagaa barra, kimal yi gibri kaffaleh, kinnih reçu ma geyinniyo. Mannal geyam duddah ?",
+  "position": 406
+ },
+ {
+  "id": "seg_0407",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "La déclaration doit être complète et signée. Un dossier incomplet sera retourné au contribuable.",
+  "mt_afar": "Déclaration dudda haytaah signer tekkem faxximta. Dudda wayta dossier contribuablel gacsimta.",
+  "position": 407
+ },
+ {
+  "id": "seg_0408",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "SMS : Votre échéance de 35 000 FDJ arrive le 30/11. Évitez les pénalités en payant à temps.",
+  "mt_afar": "SMS : Ku échéance 35 000 FDJ 30/11l amaata. Waktil kaffalak pénalités cina.",
+  "position": 408
+ },
+ {
+  "id": "seg_0409",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Les petits commerçants peuvent bénéficier d'un accompagnement pour remplir leurs déclarations. Renseignez-vous auprès du service d'accueil.",
+  "mt_afar": "Qunxa dukaan abeyna ken déclarations kalaanamah gargar geyam duddan. Service d'accueil fan esserak aaxaga.",
+  "position": 409
+ },
+ {
+  "id": "seg_0410",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Le contrôle fiscal a révélé une erreur de calcul. L'entreprise dispose de trente jours pour présenter ses observations.",
+  "mt_afar": "Contrôle fiscal xisaabih dirab baxsaqeh. Entreprise sidoh tabanih ayró isi observations yaybulleemih lih tan.",
+  "position": 410
+ },
+ {
+  "id": "seg_0411",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "En cas de cessation d'activité, le commerçant doit le déclarer au service des impôts. Il évite ainsi de recevoir des avis de patente injustifiés.",
+  "mt_afar": "Taama gaba cabak, dukaan abeyni gibrih service warsam faxximta. Toh lih sabab wayta patentih avis geyam cinah.",
+  "position": 411
+ },
+ {
+  "id": "seg_0412",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "J'ai reçu une lettre de relance. Pourtant, j'ai bien payé en mars et j'ai la quittance.",
+  "mt_afar": "Kassoysih lettre geyeh. Kinnih, anu marsil kaffaleh, quittance lih an.",
+  "position": 412
+ },
+ {
+  "id": "seg_0413",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Le reçu doit mentionner le nom du contribuable, la somme versée et la date. Vérifiez ces informations avant de quitter le guichet.",
+  "mt_afar": "Reçul contribuablih migaq, kaffalimte lacag kee ayró yaninnim faxximta. Guichet cabtaanam duma ama macluumat ubul.",
+  "position": 413
+ },
+ {
+  "id": "seg_0414",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Les employeurs déclarent les salaires versés à leur personnel. Cette déclaration permet de calculer l'ITS de chaque salarié.",
+  "mt_afar": "Taamah abbobti ken taama abeynil acuween salaire warsan. Ama déclaration taama abe num inkih ITS xisaabsimtam duudusa.",
+  "position": 414
+ },
+ {
+  "id": "seg_0415",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Votre dossier n° 2026-0187 est en cours de traitement. Une réponse vous sera transmise par courrier électronique.",
+  "mt_afar": "Ku dossier n° 2026-0187 away taama elle yan. Jawaab e-mail lih kuu ruubimtele.",
+  "position": 415
+ },
+ {
+  "id": "seg_0416",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Bonjour, c'est ici pour la patente ? On m'a dit de venir avec mon registre de commerce.",
+  "mt_afar": "Nagaa, patente akah ah ii ? Yi registre de commerce lih amaatam iyyeenih an.",
+  "position": 416
+ },
+ {
+  "id": "seg_0417",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Le paiement en ligne est désormais possible. Il suffit de saisir votre numéro de contribuable et de suivre les étapes.",
+  "mt_afar": "Away internetil kaffalam duddumta. Ku numéro de contribuable culsaay, tamixxa dabaqa kataysiyyi yakke.",
+  "position": 417
+ },
+ {
+  "id": "seg_0418",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Les intérêts de retard sont calculés à partir du premier jour suivant l'échéance.",
+  "mt_afar": "Raaqih intérêts échéance lakal tan naharsi ayrók qimbisak xisaabsimta.",
+  "position": 418
+ },
+ {
+  "id": "seg_0419",
+  "lot": "Lot 11 — Fiscalité",
+  "domaine": "Fiscalité",
+  "source_fr": "Il est possible de corriger une déclaration déjà déposée en remplissant un formulaire rectificatif.",
+  "mt_afar": "Culsitte déclaration formulaire rectificatif kalaanamah missoysam duddumta.",
+  "position": 419
+ },
+ {
+  "id": "seg_0420",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Annuler",
+  "mt_afar": "Cab",
+  "position": 420
+ },
+ {
+  "id": "seg_0421",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Se connecter",
+  "mt_afar": "Culus",
+  "position": 421
+ },
+ {
+  "id": "seg_0422",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Fermé",
+  "mt_afar": "Alifeh yan",
+  "position": 422
+ },
+ {
+  "id": "seg_0423",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Ouvert",
+  "mt_afar": "Fakkeh yan",
+  "position": 423
+ },
+ {
+  "id": "seg_0424",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Prenez un ticket",
+  "mt_afar": "Ticket beey",
+  "position": 424
+ },
+ {
+  "id": "seg_0425",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Pièces justificatives",
+  "mt_afar": "Cakkisaanam warqatooli",
+  "position": 425
+ },
+ {
+  "id": "seg_0426",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Envoyer",
+  "mt_afar": "Rub",
+  "position": 426
+ },
+ {
+  "id": "seg_0427",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Retour",
+  "mt_afar": "Gac",
+  "position": 427
+ },
+ {
+  "id": "seg_0428",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Suivant",
+  "mt_afar": "Lakal",
+  "position": 428
+ },
+ {
+  "id": "seg_0429",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Rechercher",
+  "mt_afar": "Gurrus",
+  "position": 429
+ },
+ {
+  "id": "seg_0430",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Télécharger le formulaire",
+  "mt_afar": "Formulaire télécharger ab",
+  "position": 430
+ },
+ {
+  "id": "seg_0431",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Entrée interdite au public",
+  "mt_afar": "Mari culmah ma faxximta",
+  "position": 431
+ },
+ {
+  "id": "seg_0432",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Horaires d'ouverture",
+  "mt_afar": "Fakkah saacat",
+  "position": 432
+ },
+ {
+  "id": "seg_0433",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Mon compte",
+  "mt_afar": "Yi compte",
+  "position": 433
+ },
+ {
+  "id": "seg_0434",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Paiement en ligne",
+  "mt_afar": "Internetil kaffal",
+  "position": 434
+ },
+ {
+  "id": "seg_0435",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Guichet n° 4",
+  "mt_afar": "Guichet ixxima 4",
+  "position": 435
+ },
+ {
+  "id": "seg_0436",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Créer un compte",
+  "mt_afar": "Compte ab",
+  "position": 436
+ },
+ {
+  "id": "seg_0437",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Modifications enregistrées.",
+  "mt_afar": "Beddelte inkih uktubimte.",
+  "position": 437
+ },
+ {
+  "id": "seg_0438",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Champ obligatoire",
+  "mt_afar": "Kaxxisam faxxa champ",
+  "position": 438
+ },
+ {
+  "id": "seg_0439",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Numéro de téléphone invalide.",
+  "mt_afar": "Telefoon ixxima cakki hinna.",
+  "position": 439
+ },
+ {
+  "id": "seg_0440",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Veuillez prendre un ticket à la borne et attendre que votre numéro s'affiche à l'écran.",
+  "mt_afar": "Borne-k ticket beyaay, ku ixxima écran-al tublemih fanah sug.",
+  "position": 440
+ },
+ {
+  "id": "seg_0441",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Le guichet des cartes d'identité est fermé pour cause de panne informatique.",
+  "mt_afar": "Carte d'identité guichet, ordinateurul rakaakay yekkeemih sabbatah alifeh yan.",
+  "position": 441
+ },
+ {
+  "id": "seg_0442",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Votre demande a bien été enregistrée sous le numéro 2024-0587.",
+  "mt_afar": "Ku esserot 2024-0587 ixximah meqeh uktubeh yan.",
+  "position": 442
+ },
+ {
+  "id": "seg_0443",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Merci de vous présenter quinze minutes avant l'heure de votre rendez-vous.",
+  "mt_afar": "Ku rendez-vous saacatak daqiiqa taban kee konoy duma amaatay.",
+  "position": 443
+ },
+ {
+  "id": "seg_0444",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Tous les champs marqués d'un astérisque sont obligatoires.",
+  "mt_afar": "Astérisque calaamat lih tan champ inkih kaxxissam faxxa.",
+  "position": 444
+ },
+ {
+  "id": "seg_0445",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Le fichier joint dépasse la taille maximale autorisée de 5 Mo.",
+  "mt_afar": "Edde xiqte fichier 5 Mo-k naba; fayya kaxxa naba xagana 5 Mo kinni.",
+  "position": 445
+ },
+ {
+  "id": "seg_0446",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Une erreur s'est produite. Veuillez réessayer plus tard.",
+  "mt_afar": "Qaybi tekke. Sarrah qusbah ab.",
+  "position": 446
+ },
+ {
+  "id": "seg_0447",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Connexion impossible : identifiant ou mot de passe incorrect.",
+  "mt_afar": "Culmi ma dudditu : identifiant hinnay mot de passe cakki hinna.",
+  "position": 447
+ },
+ {
+  "id": "seg_0448",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Votre session a expiré, veuillez vous reconnecter.",
+  "mt_afar": "Ku session gufte, qusbah culus.",
+  "position": 448
+ },
+ {
+  "id": "seg_0449",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Le dossier est incomplet : il manque la copie de l'acte de naissance.",
+  "mt_afar": "Dossier inkih hinna : acte de naissance copie mali.",
+  "position": 449
+ },
+ {
+  "id": "seg_0450",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Pour toute réclamation, adressez-vous au guichet numéro 3.",
+  "mt_afar": "Inki réclamation tekkek, guichet ixxima 3-l gex.",
+  "position": 450
+ },
+ {
+  "id": "seg_0451",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Le délai de traitement de votre demande est de 10 jours ouvrables.",
+  "mt_afar": "Ku esseroh traitement wakti taamah ayyaam 10 kinni.",
+  "position": 451
+ },
+ {
+  "id": "seg_0452",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Vous recevrez un SMS dès que votre passeport sera disponible.",
+  "mt_afar": "Ku baasaboor yanih tekkek, SMS kul gufta.",
+  "position": 452
+ },
+ {
+  "id": "seg_0453",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Les photos d'identité doivent être récentes, en couleur et sur fond blanc.",
+  "mt_afar": "Suura qusba, alwaan lih, qado sabbal tan tekkem faxxa.",
+  "position": 453
+ },
+ {
+  "id": "seg_0454",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Le paiement des frais de timbre s'élève à 2 000 FDJ.",
+  "mt_afar": "Timbre lacag kaffal 2 000 FDJ kinni.",
+  "position": 454
+ },
+ {
+  "id": "seg_0455",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Avez-vous déjà un compte ? Connectez-vous ici.",
+  "mt_afar": "Compte lito ? Ahak culus.",
+  "position": 455
+ },
+ {
+  "id": "seg_0456",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Votre mot de passe doit contenir au moins 8 caractères.",
+  "mt_afar": "Ku mot de passe dagoomik caractère 8 lih tekkem faxxa.",
+  "position": 456
+ },
+ {
+  "id": "seg_0457",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Le service des passeports déménage au rez-de-chaussée du bâtiment B.",
+  "mt_afar": "Baasaboor service bâtiment B-h rez-de-chaussée-l gexe.",
+  "position": 457
+ },
+ {
+  "id": "seg_0458",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Je voudrais renouveler ma carte de résidence, quels documents dois-je apporter ?",
+  "mt_afar": "Yi carte de résidence qusbah abam faxa, ay warqatooli beyem faxxa ?",
+  "position": 458
+ },
+ {
+  "id": "seg_0459",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Asseyez-vous, un agent va vous appeler dans quelques instants.",
+  "mt_afar": "Dif, agent dago wakti lakal ku seeca.",
+  "position": 459
+ },
+ {
+  "id": "seg_0460",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Pouvez-vous m'épeler votre nom de famille ?",
+  "mt_afar": "Ku abbobti migaq harfi harfih yoh tabtaa ?",
+  "position": 460
+ },
+ {
+  "id": "seg_0461",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Le formulaire doit être signé et daté par le demandeur.",
+  "mt_afar": "Esseroh numi formulaire signature haay ayro elle uktubem faxxa.",
+  "position": 461
+ },
+ {
+  "id": "seg_0462",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "En raison des fêtes nationales, nos bureaux seront fermés le 27 juin.",
+  "mt_afar": "Dawlah ciidih sabbatah, 27 juin ayro ni biiroota alifeh tanaan.",
+  "position": 462
+ },
+ {
+  "id": "seg_0463",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Votre rendez-vous est confirmé pour le mardi 14 octobre à 9 h 30.",
+  "mt_afar": "Ku rendez-vous Talaata 14 octobre saacat 9 h 30-l cakkisimte.",
+  "position": 463
+ },
+ {
+  "id": "seg_0464",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Cliquez sur le lien reçu par courriel pour activer votre compte.",
+  "mt_afar": "Ku compte activer abtamkeh, email-al kul gufte lien clique ab.",
+  "position": 464
+ },
+ {
+  "id": "seg_0465",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Ce service est gratuit pour les personnes âgées de plus de 60 ans.",
+  "mt_afar": "Ah service liggida 60-k naba tan marah lacag male.",
+  "position": 465
+ },
+ {
+  "id": "seg_0466",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Je n'ai pas reçu de réponse à mon courrier du 3 mars.",
+  "mt_afar": "3 mars rube yi warqatah jawaab ma beyinniyo.",
+  "position": 466
+ },
+ {
+  "id": "seg_0467",
+  "lot": "Lot 12 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Le site sera en maintenance de 22 h à minuit.",
+  "mt_afar": "Site saacat 22-k bar fanti fanah maintenance addal tan.",
+  "position": 467
+ },
+ {
+  "id": "seg_0468",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Aucun résultat ne correspond à votre recherche.",
+  "mt_afar": "Ku gurrusih inki résultat mali.",
+  "position": 468
+ },
+ {
+  "id": "seg_0469",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Votre paiement de 5 500 FDJ a bien été reçu. Conservez ce reçu.",
+  "mt_afar": "Ku 5 500 FDJ kaffal meqeh beyimte. Ah reçu dacris.",
+  "position": 469
+ },
+ {
+  "id": "seg_0470",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Voulez-vous vraiment supprimer ce document ?",
+  "mt_afar": "Cakkil ah document bayisam tafaxaa ?",
+  "position": 470
+ },
+ {
+  "id": "seg_0471",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Les usagers sont priés de respecter l'ordre de passage.",
+  "mt_afar": "Usager inkih ixxima caddol gexaanam faxxa.",
+  "position": 471
+ },
+ {
+  "id": "seg_0472",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Bonjour, je viens pour déposer une demande de bourse.",
+  "mt_afar": "Nagaadaay, bourse esseroh dossier hayamah amaate.",
+  "position": 472
+ },
+ {
+  "id": "seg_0473",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Avez-vous votre convocation avec vous ?",
+  "mt_afar": "Ku convocation ku luk tanii ?",
+  "position": 473
+ },
+ {
+  "id": "seg_0474",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Il faut d'abord payer à la caisse, puis revenir à ce guichet.",
+  "mt_afar": "Naharal caisse-l kaffal, tohuk lakal ah guichetih gac.",
+  "position": 474
+ },
+ {
+  "id": "seg_0475",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Le bureau d'état civil est situé en face de la mairie.",
+  "mt_afar": "État civil biiro mairie-h foocal yan.",
+  "position": 475
+ },
+ {
+  "id": "seg_0476",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Pour toute information, appelez le 21 35 00 00.",
+  "mt_afar": "Inki warsah, 21 35 00 00 ixxima seec.",
+  "position": 476
+ },
+ {
+  "id": "seg_0477",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Votre carte est prête, vous pouvez venir la retirer.",
+  "mt_afar": "Ku karti abtimte, tamaatee tubeytam tudduuda.",
+  "position": 477
+ },
+ {
+  "id": "seg_0478",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Les dossiers sont reçus uniquement sur rendez-vous.",
+  "mt_afar": "Rendez-vous male tekkek dossier ma beyimtan.",
+  "position": 478
+ },
+ {
+  "id": "seg_0479",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Merci de garder votre ticket jusqu'à la fin de votre passage au guichet.",
+  "mt_afar": "Guichetil ku taama dabqemih fanah ticket dacris.",
+  "position": 479
+ },
+ {
+  "id": "seg_0480",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Je souhaite déposer une réclamation concernant une erreur sur mon acte de mariage.",
+  "mt_afar": "Yi acte de mariage-l tan qaybih réclamation hayam faxa.",
+  "position": 480
+ },
+ {
+  "id": "seg_0481",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Votre demande est en cours de traitement.",
+  "mt_afar": "Ku esserot asaaku taamal tan.",
+  "position": 481
+ },
+ {
+  "id": "seg_0482",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Merci de joindre une photocopie de votre pièce d'identité.",
+  "mt_afar": "Ku pièce d'identité photocopie edde xiq.",
+  "position": 482
+ },
+ {
+  "id": "seg_0483",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Le guichet ferme dans 10 minutes ; les derniers tickets ont été distribués.",
+  "mt_afar": "Guichet daqiiqa 10 lakal alifta ; ticket inkih yacimeh gufte.",
+  "position": 483
+ },
+ {
+  "id": "seg_0484",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Veuillez sélectionner une date disponible dans le calendrier.",
+  "mt_afar": "Calendrier addal yan ayro dooris.",
+  "position": 484
+ },
+ {
+  "id": "seg_0485",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Aucun créneau n'est disponible avant le 5 novembre.",
+  "mt_afar": "5 novembre duma créneau mali.",
+  "position": 485
+ },
+ {
+  "id": "seg_0486",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Le numéro 47 est attendu au guichet 2.",
+  "mt_afar": "Ixxima 47, guichet 2-l amaat.",
+  "position": 486
+ },
+ {
+  "id": "seg_0487",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Je suis désolé, ce document n'est pas accepté, il doit être légalisé.",
+  "mt_afar": "Afwan, ah document ma beyimtam ; légaliser abtimem faxxa.",
+  "position": 487
+ },
+ {
+  "id": "seg_0488",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Pensez à mettre à jour vos coordonnées en cas de changement d'adresse.",
+  "mt_afar": "Ku adresse beddele tekkek, ku coordonnées qusbah ab.",
+  "position": 488
+ },
+ {
+  "id": "seg_0489",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Saisissez le code à 6 chiffres reçu par SMS.",
+  "mt_afar": "SMS-ul tubeyte ixxima 6 lih code uktub.",
+  "position": 489
+ },
+ {
+  "id": "seg_0490",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Le code saisi est incorrect. Il vous reste 2 tentatives.",
+  "mt_afar": "Tuktube code cakki hinna. Tentative 2 kol raqte.",
+  "position": 490
+ },
+ {
+  "id": "seg_0491",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Vous avez été déconnecté pour des raisons de sécurité.",
+  "mt_afar": "Sécurité sabbatah ku compte awqisimte.",
+  "position": 491
+ },
+ {
+  "id": "seg_0492",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Le paiement a été refusé par votre banque.",
+  "mt_afar": "Kaffal ku bankik cinimte.",
+  "position": 492
+ },
+ {
+  "id": "seg_0493",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Souhaitez-vous recevoir une confirmation par SMS ?",
+  "mt_afar": "SMS-ul confirmation beytam tafaxaa ?",
+  "position": 493
+ },
+ {
+  "id": "seg_0494",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Les usagers à mobilité réduite sont servis en priorité.",
+  "mt_afar": "Gexo rakaakay le mara naharal catoh beyta.",
+  "position": 494
+ },
+ {
+  "id": "seg_0495",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Indiquez le motif de votre visite.",
+  "mt_afar": "Ku amaatah sabbata uktub.",
+  "position": 495
+ },
+ {
+  "id": "seg_0496",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Votre réclamation sera examinée dans un délai de 15 jours.",
+  "mt_afar": "Ku réclamation ayro 15 addal ubbulumele.",
+  "position": 496
+ },
+ {
+  "id": "seg_0497",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "La file d'attente prioritaire est réservée aux femmes enceintes.",
+  "mt_afar": "Naharsimtam file d'attente baxal tan agabuuk kinni.",
+  "position": 497
+ },
+ {
+  "id": "seg_0498",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Vous êtes le 5e dans la file d'attente.",
+  "mt_afar": "Atu file d'attente addal 5-hayto kinnito.",
+  "position": 498
+ },
+ {
+  "id": "seg_0499",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Madame, Monsieur, nous accusons réception de votre courrier du 12 septembre. Votre demande est actuellement à l'étude et une réponse vous sera adressée prochainement.",
+  "mt_afar": "Barra kee Labha, 12 septembre ku warqat ni gufte. Ku esserot asaaku ubbulumih addal tan, jawaab dagoh kul rubimele.",
+  "position": 499
+ },
+ {
+  "id": "seg_0500",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Bonjour, vous êtes bien au service de l'état civil. Toutes nos lignes sont occupées. Merci de rester en ligne.",
+  "mt_afar": "Nagaadaay, état civil service seectah. Ni telefoon inkih taamal tan. Sug, telefoon ma alifin.",
+  "position": 500
+ },
+ {
+  "id": "seg_0501",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Votre passeport est arrivé. Présentez-vous au guichet 5 muni de votre récépissé et de votre ancienne carte.",
+  "mt_afar": "Ku baasaboor gufe. Ku récépissé kee ku duma karti beytaay guichet 5-l amaat.",
+  "position": 501
+ },
+ {
+  "id": "seg_0502",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Le formulaire n'a pas pu être envoyé. Vérifiez votre connexion internet puis cliquez à nouveau sur Envoyer.",
+  "mt_afar": "Formulaire ruubimuh ma dudduuminna. Ku internet connexion ubul, tohuk lakal qusbah « Rub » clique ab.",
+  "position": 502
+ },
+ {
+  "id": "seg_0503",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Pour obtenir un extrait d'acte de naissance, présentez votre carte d'identité. Le document est délivré le jour même.",
+  "mt_afar": "Acte de naissance extrait beytamkeh, ku carte d'identité ubbulus. Document tohuk ayro acuyyimta.",
+  "position": 503
+ },
+ {
+  "id": "seg_0504",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Nous avons bien reçu votre dossier. Il manque cependant un justificatif de domicile de moins de trois mois.",
+  "mt_afar": "Ku dossier meqeh beyne. Kinnih, alsa sidocik dago le buxah justificatif mali.",
+  "position": 504
+ },
+ {
+  "id": "seg_0505",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Ce message est envoyé automatiquement. Merci de ne pas y répondre.",
+  "mt_afar": "Ah warsa automatique rubimte. Jawaab ma rubin.",
+  "position": 505
+ },
+ {
+  "id": "seg_0506",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Bienvenue sur le portail des services publics. Choisissez une démarche dans le menu ou utilisez la barre de recherche.",
+  "mt_afar": "Dawlah service portail-l nagay amaateenih. Menu addak démarche dooris hinnay gurrusih barre taamit.",
+  "position": 506
+ },
+ {
+  "id": "seg_0507",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Les inscriptions sont ouvertes jusqu'au 30 novembre. Passé ce délai, aucune demande ne sera acceptée.",
+  "mt_afar": "Inscription 30 novembre fanah fakkeh yan. Tohuk lakal, inki esserot ma beyimtam.",
+  "position": 507
+ },
+ {
+  "id": "seg_0508",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Bonjour, j'ai perdu ma carte d'identité. Que dois-je faire pour en obtenir une nouvelle ?",
+  "mt_afar": "Nagaadaay, yi carte d'identité bayte. Qusba beyamkeh maca abam faxxa ?",
+  "position": 508
+ },
+ {
+  "id": "seg_0509",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Vous devez d'abord faire une déclaration de perte au commissariat. Ensuite, revenez avec le récépissé et deux photos.",
+  "mt_afar": "Naharal commissariat-l bayti déclaration ab. Tohuk lakal, récépissé kee namma suura beytaay gac.",
+  "position": 509
+ },
+ {
+  "id": "seg_0510",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Attention : de faux sites demandent des paiements en votre nom. Nos services ne vous demanderont jamais votre code par SMS.",
+  "mt_afar": "Ubul : dirab site ku migaqal kaffal esseraah. Ni service SMS-ul ku code inki waktil ma esserta.",
+  "position": 510
+ },
+ {
+  "id": "seg_0511",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Le guichet unique est ouvert le samedi matin de 8 h à 12 h. Les autres jours, il ferme à 14 h.",
+  "mt_afar": "Guichet unique Sabti saaku saacat 8-k saacat 12-h fanah fakkeh yan. Kalah ayyaamal, saacat 14-l alifta.",
+  "position": 511
+ },
+ {
+  "id": "seg_0512",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Votre rendez-vous a été annulé à votre demande. Vous pouvez en reprendre un à tout moment depuis votre espace personnel.",
+  "mt_afar": "Ku rendez-vous ku esserotal cabimte. Inki waktil, ku espace personnel-ik qusba beytam tudduuda.",
+  "position": 512
+ },
+ {
+  "id": "seg_0513",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Le délai est dépassé, mais je vais transmettre votre dossier à mon responsable. Revenez jeudi, s'il vous plaît.",
+  "mt_afar": "Wakti tadaggute, kinnih ku dossier yi responsable-l rubele. Kamiisi gac.",
+  "position": 513
+ },
+ {
+  "id": "seg_0514",
+  "lot": "Lot 13 — Administration",
+  "domaine": "Administration",
+  "source_fr": "Les pièces originales vous seront rendues après vérification. Seules les copies sont conservées dans votre dossier.",
+  "mt_afar": "Original warqatooli ubbulumih lakal kul gacsimele. Copie yaanim iyyah ku dossier addal dacrisimta.",
+  "position": 514
+ }
+]

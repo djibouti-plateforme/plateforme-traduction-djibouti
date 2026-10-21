@@ -187,8 +187,7 @@ export function mountRecording(container, { service, params, setRoute }) {
       h('article', { class: 'phrase-card' },
         h('span', { class: 'phrase-label' }, 'Phrase à lire — Afar'),
         h('p', { class: 'phrase-afar', lang: 'aa' }, text),
-        frBlock,
-        review.simulated && h('p', { class: 'tiny muted' }, 'Traduction au statut simulé (démonstration).')),
+        frBlock),
 
       issues.length ? h('div', { class: 'issues card' },
         h('header', { class: 'card-head' }, h('h3', null, icon('alert', 16), 'Éléments à oraliser'), h('span', { class: 'muted tiny' }, 'Aucune transcription n\'est générée automatiquement')),

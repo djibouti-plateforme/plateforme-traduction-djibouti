@@ -23,7 +23,6 @@ export function buildRevisionRecords(segments, reviews) {
       human_edited: r?.status === 'corrige',
       status: r?.status ?? 'a_reviser',
       status_label: REVIEW_STATUS[r?.status ?? 'a_reviser'],
-      status_simulated: !!r?.simulated,
       flag_comment: r?.flag_comment ?? null,
       reviewer_id: r?.reviewer_id ?? null,
       error_annotations: (r?.annotations ?? []).map(({ id, category, subcategory, severity, comment, created_at, author_id }) =>
@@ -35,7 +34,6 @@ export function buildRevisionRecords(segments, reviews) {
       mt_created_at: s.created_at,
       reviewed_at: r?.reviewed_at ?? null,
       schema_version: EXPORT_SCHEMA_VERSION,
-      demo_data: true,
     };
   });
 }
@@ -53,7 +51,7 @@ export function toCsv(records, columns) {
 }
 
 export const REVISION_CSV_COLUMNS = [
-  'segment_id', 'lot', 'domaine', 'status_label', 'status_simulated', 'source_fr', 'mt_afar', 'corrected_afar',
+  'segment_id', 'lot', 'domaine', 'status_label', 'source_fr', 'mt_afar', 'corrected_afar',
   'human_edited', 'reviewer_id', 'review_duration_seconds', 'error_annotations', 'flag_comment', 'mt_model',
   'mt_prompt_version', 'reviewed_at',
 ];
@@ -99,7 +97,6 @@ export function buildTtsManifest(segments, reviews, takes, consents, speakers) {
         peak_dbfs: take.peak_dbfs ?? null,
         rms_dbfs: take.rms_dbfs ?? null,
         translation_status: review.status,
-        translation_status_simulated: !!review.simulated,
         text_version: take.text_version,
         recorded_at: take.recorded_at,
         validated_at: take.validated_at ?? null,
@@ -152,9 +149,6 @@ export function buildTtsReadme({ projectName, exportedAt, entries, excluded }) {
 Exporté le : ${exportedAt}
 Version du schéma : ${EXPORT_SCHEMA_VERSION}
 
-/!\\ JEU DE DÉMONSTRATION : les textes source et les traductions sont fictifs et non vérifiés.
-Les enregistrements sont réels mais ont été produits dans un environnement de test.
-
 CONTENU
   wavs/            Fichiers WAV, PCM signé 16 bits little-endian, mono, fréquence native de la carte son
                    (aucun rééchantillonnage). Fréquence(s) présente(s) : ${rates} Hz.
@@ -194,7 +188,7 @@ CHAMPS DE metadata.jsonl
   quality_flags       Signalements cochés par le linguiste (bruit, hésitation, prononciation, erreur de lecture).
   quality_warnings    Avertissements automatiques (saturation, niveau faible, durée) — indicatifs.
   peak_dbfs, rms_dbfs Niveaux mesurés.
-  translation_status  Statut de la traduction (valide | corrige) ; *_simulated = statut simulé de démonstration.
+  translation_status  Statut de la traduction (valide | corrige).
   text_version        Version du texte approuvé au moment de la prise.
   recorded_at, validated_at  Dates ISO 8601 (UTC).
 `;

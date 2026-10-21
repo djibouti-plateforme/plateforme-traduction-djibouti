@@ -1,184 +1,83 @@
-# Atelier Afar — démonstration frontend
+# Atelier Afar
 
-Application web de démonstration pour constituer deux jeux de données en afar (Qafar af) :
+Plateforme de travail pour constituer deux jeux de données en afar (Qafar af) :
 
-1. **Corpus parallèle français–afar** : un linguiste révise des traductions automatiques (fictives), les valide, les corrige, les rejette ou les signale, et annote les erreurs.
+1. **Corpus parallèle français–afar** : les linguistes révisent des traductions automatiques (Claude), les valident, les corrigent, les rejettent ou les signalent, et annotent les erreurs.
 2. **Corpus audio TTS** : les phrases validées ou corrigées sont lues à voix haute et enregistrées en WAV, avec le texte exact prononcé et les métadonnées.
-
-> **Mode démonstration — Données fictives — Aucun serveur connecté.**
-> Les textes français et les traductions afar sont fictifs et **non vérifiés**. Les statuts « Validé · simulé » du jeu de départ sont simulés. Aucune API (Anthropic ou autre) n'est appelée.
 
 Adresse : `https://djibouti-plateforme.github.io/plateforme-traduction-djibouti/atelier-afar/`
 
----
+## Contenu chargé
 
-## Deux modes de fonctionnement
+- **514 sujets** français (`supabase/seed/corpus.json`), répartis en **13 lots** de 30 à 50 segments sur 8 domaines : Sécurité sociale, Retraite, Prestations familiales, Assurance maladie, Santé, Travail, Fiscalité, Administration. Mots isolés, phrases et courts passages ; environ un quart contient des nombres, dates, montants ou sigles (utile pour l'oralisation TTS).
+- Chaque sujet est accompagné de sa **traduction automatique en afar produite par Claude** (`mt_model = Claude`, `mt_prompt_version = fr-aa-v1`). Ces traductions n'ont pas été vérifiées par un locuteur : c'est précisément le rôle de la révision. Les termes administratifs sans équivalent établi sont souvent laissés en français.
+- Le premier segment reprend la paire de référence fournie par le client.
 
-| | **Supabase** (par défaut) | **Démonstration locale** (`?demo`) |
-|---|---|---|
-| Adresse | `…/atelier-afar/` | `…/atelier-afar/?demo` |
-| Compte | E-mail + mot de passe, créé par l'administrateur | Aucun (linguiste simulé) |
-| Données | Base Postgres + stockage de fichiers Supabase, **Francfort (UE)**, partagées entre membres | Navigateur uniquement (localStorage + IndexedDB) |
-| Persistance | Survit au changement d'appareil ou de navigateur | Perdue si les données du site sont effacées |
+## Travail à plusieurs
 
-Les textes et traductions restent des **données de démonstration fictives** dans les deux modes.
+- **Comptes** : l'administrateur crée les comptes dans *Paramètres → Équipe* (un mot de passe provisoire est généré et affiché une seule fois). Il peut aussi réinitialiser un mot de passe ou supprimer un compte. Chaque personne peut changer son mot de passe dans *Mon compte*.
+- **Répartition** : *Paramètres → Répartition du travail* attribue chaque lot à un linguiste ; il le retrouve avec le filtre « Mes segments ». Le tableau de bord affiche l'avancement par linguiste.
+- **Verrous** : un segment ouvert est réservé à la personne qui l'a ouvert. Les autres le voient « … y travaille » dans la liste et en lecture seule (avec « Prendre la main » si nécessaire). Le verrou est rafraîchi chaque minute et expire après 5 minutes d'inactivité.
+- **Temps réel** : révisions, verrous, attributions, glossaire et enregistrements se mettent à jour instantanément sur tous les postes. L'en-tête indique les collègues en train de réviser.
+- Après une décision, l'atelier ouvre automatiquement le **prochain segment libre à traiter** de la liste.
 
-### Stockage Supabase
+## Fonctionnalités
 
-- Projet `atelier-afar` (`klppbbucaslphagjbmth`), région `eu-central-1`. Configuration côté client : `js/config.js` (URL et clé *publishable*, publique par conception).
-- Tables : `segments`, `reviews`, `glossary`, `speakers`, `consents`, `recordings`, `members`. Fichiers WAV dans le bucket **privé** `recordings` (`<locuteur>/<segment>/<prise>.wav`, WAV uniquement, 50 Mo max).
-- **Sécurité** : RLS activée sur toutes les tables et sur le stockage. Un visiteur non connecté ne voit rien ; un compte connecté ne voit rien non plus s'il n'est pas dans `members`. Les linguistes lisent et écrivent révisions, glossaire, locuteurs et prises ; seuls les administrateurs gèrent les membres, les segments, la réinitialisation de la démo et la suppression globale des enregistrements.
-- Les règles métier (versions du texte, invalidation des prises, éligibilité à l'export) restent dans `js/utils/status.js`, partagé par les deux modes.
-- Écritures sérialisées ; en cas d'échec réseau, l'interface recharge l'état depuis le serveur et prévient l'utilisateur. Pas encore de synchronisation en temps réel : si deux linguistes modifient le même segment, la dernière écriture l'emporte (recharger la page pour voir le travail des autres).
+### Révision des traductions
+Liste filtrable (linguiste, statut, lot, domaine, recherche plein texte) ; texte français avec termes du glossaire surlignés ; traduction automatique conservée telle quelle ; éditeur afar (`lang="aa"`, sans correction orthographique) ; diff mot à mot et pourcentage de mots modifiés ; *Valider sans modification*, *Enregistrer la correction*, *Rejeter — À retraduire*, *Signaler un problème*, *Passer au suivant* ; brouillon enregistré automatiquement ; annotations d'erreurs (exactitude, fluidité, terminologie, style, conventions ; gravité) ; historique ; chronomètre ; raccourcis (`Ctrl/Cmd + Entrée`, `Ctrl/Cmd + Maj + Entrée`, `Alt + ←/→`, `?`).
 
-### Ajouter un linguiste
+### Glossaire
+Recherche, ajout, modification, propositions de correction. Les entrées initiales sont au statut « Non vérifié ».
 
-1. Dans l'atelier, connecté en administrateur : **Paramètres → Membres du projet** → adresse, nom, code (ex. `ling_02`) → *Autoriser ce membre*.
-2. Dans le [tableau de bord Supabase](https://supabase.com/dashboard/project/klppbbucaslphagjbmth/auth/users) : **Authentication → Users → Add user → Create new user**, même adresse, mot de passe provisoire, cocher **Auto Confirm User**.
-3. Communiquer le mot de passe ; la personne peut le changer dans **Paramètres → Mon compte**.
+### Enregistrement audio
+Consentement et profil vocal du locuteur ; choix et test du micro (vumètre dBFS, bruit ambiant sur 5 s) ; file des phrases validées/corrigées ; distinction `text_display` / `text_spoken` avec avertissement sur les nombres, sigles et emprunts (aucune transcription automatique) ; enregistrement (bouton ou barre d'espace, compte à rebours, forme d'onde, alertes de saturation/niveau faible) ; contrôle qualité avec confirmation obligatoire ; nouvelle prise sans perte de l'ancienne ; une traduction modifiée après enregistrement repasse « À refaire ».
 
-Mot de passe oublié : l'administrateur le réinitialise depuis le même écran Supabase (l'envoi d'e-mails n'est pas configuré).
+Format : WAV PCM 16 bits mono à la fréquence native de la carte son, sans rééchantillonnage ni compression. Le micro exige HTTPS (GitHub Pages) ou `localhost`.
 
-## Choix techniques : aucun serveur, aucune compilation
+### Exports
+- **Corpus FR–Afar** : `revisions_<date>.jsonl` (+ CSV pour Excel) — `segment_id`, `source_fr`, `mt_afar`, `corrected_afar`, `status`, `reviewer_id`, `error_annotations`, `review_duration_seconds`, `mt_model`, `mt_prompt_version`, `reviewed_at`…
+- **Corpus TTS** : `afar_tts_dataset_<date>.zip` — `wavs/`, `metadata.jsonl`, `metadata.csv` (format LJSpeech), `speakers.json`, `README.txt`. Seules les prises courantes, validées, confirmées, liées à une traduction toujours approuvée et à un consentement valide sont incluses ; l'archive est relue et vérifiée avant téléchargement.
 
-Le cahier des charges initial proposait React + TypeScript + Vite + Tailwind. Comme demandé, la stack a été adaptée pour **n'exiger aucun serveur ni aucune étape de build** :
+## Architecture
 
-| Besoin | Solution retenue |
-|---|---|
-| Interface | JavaScript natif en **modules ES** (`<script type="module">`), sans framework ni bundler. Les fichiers sont servis tels quels. |
-| Typage | Modèle de données documenté en **JSDoc** (`js/types.js`), lisible par les éditeurs. |
-| Style | CSS unique (`css/app.css`), palette bleu nuit / turquoise. |
-| Icônes | Tracés SVG inspirés de Lucide, intégrés (`js/utils/dom.js`). |
-| Annotations, préférences | `localStorage`. |
-| Fichiers audio | **IndexedDB** (stockés en `ArrayBuffer`). |
-| Capture audio | Web Audio API + **AudioWorklet** (PCM brut) → encodeur WAV maison. |
-| Archive ZIP | **JSZip** chargé depuis cdnjs. |
-| Tests | Lanceur intégré de Node (`node --test`), **aucune dépendance npm**. |
-| Hébergement | **GitHub Pages** (déjà en place pour ce dépôt). Fonctionne aussi sur Netlify, Vercel ou tout hébergement statique. |
-
-Conséquence : pas de `npm install` ni de `npm run build`. Le dossier `atelier-afar/` *est* le site.
-
-## Lancer en local
-
-```bash
-cd atelier-afar
-python3 -m http.server 8000
-# puis ouvrir http://localhost:8000
-```
-
-N'importe quel serveur de fichiers statiques convient (`npx serve`, extension « Live Server »…). Ouvrir `index.html` directement par `file://` **ne fonctionne pas** : les modules ES, le chargement des données de démonstration et le micro exigent une vraie origine HTTP.
-
-## Tests
-
-```bash
-cd atelier-afar
-npm test          # équivaut à : node --test tests/*.test.js  (Node 20+)
-```
-
-| Fichier | Couvre |
-|---|---|
-| `tests/wav.test.js` | Encodeur WAV : en-tête RIFF/WAVE, PCM 16 bits mono, fréquence, durée, écrêtage, aller-retour. |
-| `tests/levels.test.js` | Niveaux dBFS, avertissements (saturation, niveau faible, silence, durée < 1 s / > 15 s). |
-| `tests/diff.test.js` | Diff mot à mot, pourcentage de mots modifiés. |
-| `tests/detect.test.js` | Détection des chiffres, pourcentages, sigles, symboles, abréviations, emprunts au français. |
-| `tests/status.test.js` | Transitions de statut, file audio, invalidation d'un enregistrement après modification de la traduction, éligibilité à l'export. |
-| `tests/export.test.js` | JSONL / CSV des révisions, manifeste TTS, `metadata.csv` LJSpeech, normalisation. |
-
-Le parcours complet de démonstration (19 étapes du cahier des charges) a été vérifié dans Chromium avec un micro simulé.
-
-## Structure
+Site **100 % statique** (modules JavaScript natifs, aucune compilation), hébergé sur GitHub Pages. Les données sont stockées sur un projet **Supabase** (Postgres, stockage de fichiers, authentification, temps réel) hébergé à Francfort (UE).
 
 ```text
 atelier-afar/
-├── index.html                 Coquille de l'application
-├── css/app.css                Styles
+├── index.html, css/app.css
 ├── js/
-│   ├── main.js                Démarrage, en-tête, routage (#/revision, #/enregistrement…)
-│   ├── types.js               Modèle de données (JSDoc) : Segment, Review, ErrorAnnotation, Recording, Speaker, Consent, GlossaryEntry
-│   ├── ui-state.js            Préférences d'affichage (filtres, dernier segment…)
+│   ├── main.js                    Démarrage, connexion, en-tête, routage
+│   ├── config.js                  Adresse du serveur et clé publique, durée des verrous
 │   ├── services/
-│   │   ├── DataService.js     Contrat d'accès aux données (abstraction)
-│   │   ├── MockDataService.js Implémentation locale (localStorage + IndexedDB)
-│   │   └── idb.js             Surcouche IndexedDB
-│   ├── mocks/
-│   │   ├── segments.json      25 segments fictifs (8 domaines, 3 lots)
-│   │   └── glossary.json      Glossaire fictif non vérifié
-│   ├── pages/                 review.js, recording.js, dashboard.js, settings.js
-│   ├── components/            ui.js (dialogues, notifications), glossaryPanel.js, annotationsPanel.js,
-│   │                          speakerConsent.js, accentPalette.js
-│   ├── audio/                 recorder.js, recorder-worklet.js, wav.js, levels.js, waveform.js
-│   └── utils/                 status.js (règles métier), diff.js, detect.js, export.js, exporter.js, dom.js
-└── tests/                     Tests unitaires (node --test)
+│   │   ├── DataService.js         Contrat d'accès aux données
+│   │   └── SupabaseDataService.js Implémentation (lectures, écritures, temps réel, verrous, comptes)
+│   ├── pages/                     review.js, recording.js, dashboard.js, settings.js
+│   ├── components/                ui.js, glossaryPanel.js, annotationsPanel.js, speakerConsent.js, accentPalette.js
+│   ├── audio/                     recorder.js, recorder-worklet.js, wav.js, levels.js, waveform.js
+│   └── utils/                     status.js (règles métier), diff.js, detect.js, export.js, exporter.js, dom.js, defaults.js
+├── supabase/
+│   ├── migrations/                Schéma, règles d'accès (RLS), stockage audio, collaboration
+│   ├── functions/admin-users/     Fonction serveur de gestion des comptes (administrateurs uniquement)
+│   └── seed/corpus.json           Les 514 sujets chargés
+└── tests/                         Tests unitaires (node --test)
 ```
 
-Les pages ne lisent jamais `mocks/` directement : elles passent par `DataService`. `MockDataService` est la seule classe qui connaît les données fictives et le stockage du navigateur.
+### Sécurité
+- Règles d'accès (RLS) sur toutes les tables et sur le stockage audio : un visiteur non connecté ne voit rien, un compte qui n'est pas dans `members` non plus.
+- Les linguistes lisent et écrivent révisions, glossaire, locuteurs et prises ; seuls les administrateurs gèrent l'équipe, les attributions et la suppression globale des enregistrements.
+- La clé utilisée par le site est la clé *publishable*, publique par conception. La clé de service n'est utilisée que dans la fonction serveur `admin-users`.
 
-## Fonctionnement
+## Développement
 
-### Révision des traductions
-- Liste des segments avec recherche plein texte, filtres (statut, lot, domaine) et progression.
-- Texte français (lecture seule, termes du glossaire surlignés), traduction automatique (lecture seule, métadonnées fictives), éditeur afar prérempli (`lang="aa"`, correcteur orthographique désactivé).
-- Diff mot à mot en direct, pourcentage de mots modifiés, restauration de la version originale (avec confirmation).
-- Actions : *Valider sans modification*, *Enregistrer la correction*, *Rejeter — À retraduire* (confirmation), *Signaler un problème* (motif obligatoire), *Passer au suivant*.
-- Brouillon sauvegardé automatiquement ; la traduction machine reste toujours dans `mt_afar`, la version humaine dans `corrected_afar`, avec l'historique des décisions.
-- Annotations d'erreurs (exactitude, fluidité, terminologie, style, conventions ; sous-catégorie ; gravité ; commentaire), plusieurs par segment.
-- Chronomètre de révision actif (pause après 90 s d'inactivité ou onglet masqué).
-- Raccourcis : `Ctrl/Cmd + Entrée` (enregistrer la correction et passer au suivant), `Ctrl/Cmd + Maj + Entrée` (valider sans modification ; confirmation si le texte a été modifié), `Alt + ←/→`, `?` (aide). Une touche maintenue ne déclenche pas de validation répétée ; les raccourcis sont inactifs quand une boîte de dialogue est ouverte.
+```bash
+cd atelier-afar
+python3 -m http.server 8000     # puis http://localhost:8000
+npm test                        # 51 tests, Node 20+, aucune dépendance
+```
 
-### Glossaire
-Recherche, ajout, modification, propositions de correction (historisées). Statuts : `non_verifie`, `propose`, `valide_linguiste` (champs `validated_by` / `validated_at` réservés pour le futur processus de validation).
+Le déploiement est automatique à chaque push sur `main` (workflow GitHub Pages du dépôt).
 
-### Enregistrement audio
-- Consentement préalable (identité du locuteur, date, autorisation explicite de réutilisation pour l'entraînement), retrait possible avec suppression des données locales du locuteur.
-- Profil vocal : identifiant, nom/pseudonyme, sexe et tranche d'âge facultatifs, dialecte (liste configurable : Aussa, Baadu, Afar central, Afar du Nord, Autre — **à confirmer avec le linguiste**), région, notes.
-- Micro : choix du périphérique, autorisation, vumètre (RMS et crête en dBFS), mesure du bruit ambiant sur 5 s, messages explicites en cas de refus ou d'absence de micro, rappel HTTPS.
-- File : segments *Validés* ou *Corrigés* uniquement ; statuts *À enregistrer*, *En cours*, *Enregistré*, *À refaire* ; minutes d'audio validé.
-- **Texte affiché vs texte prononcé** : `text_display` (texte validé) et `text_spoken` (ce qui est réellement dit) sont distincts. Les chiffres, pourcentages, sigles, symboles, abréviations et emprunts au français déclenchent un avertissement ; **aucune transcription n'est générée automatiquement**.
-- Enregistrement : bouton ou barre d'espace (hors champ de saisie), compte à rebours optionnel, voyant rouge, forme d'onde, vumètre, chronomètre, alertes de saturation / signal faible, rappel de pause après 45 min.
-- Contrôle qualité : réécoute, forme d'onde, signalements (bruit, hésitation, prononciation, erreur de lecture), avertissements de durée (< 1 s, > 15 s) — indicatifs uniquement. **Validation impossible sans cocher** « Je confirme que l'enregistrement correspond exactement au texte prononcé indiqué ».
-- Refaire une prise conserve l'ancienne comme *prise non courante* jusqu'à suppression explicite.
-- **Si une traduction déjà enregistrée est modifiée dans l'onglet Révision, sa prise passe « À refaire »** (le fichier n'est pas supprimé).
-
-### Format audio
-WAV RIFF, PCM signé 16 bits little-endian, **mono**, à la **fréquence native de l'AudioContext** (souvent 44,1 ou 48 kHz), **sans rééchantillonnage ni compression**. L'annulation d'écho, la réduction de bruit et le gain automatique du navigateur sont désactivés lorsque le navigateur l'accepte.
-
-### Exports
-- **Corpus FR–Afar** : `revisions_<date>.jsonl` (une ligne par segment : `segment_id`, `source_fr`, `mt_afar`, `corrected_afar`, `human_edited`, `status`, `status_simulated`, `reviewer_id`, `error_annotations`, `review_duration_seconds`, `mt_model`, `mt_prompt_version`, `reviewed_at`…) et un CSV (séparateur `;`, UTF-8 avec BOM, pour Excel).
-- **Corpus TTS** : `afar_tts_dataset_<date>.zip` contenant `wavs/`, `metadata.jsonl`, `metadata.csv` (format LJSpeech : `id|transcription|transcription normalisée`), `speakers.json` et `README.txt` (description détaillée des champs).
-  - Seules sont incluses les prises **courantes**, **validées**, **confirmées**, liées à une traduction **toujours approuvée** dont le texte **n'a pas changé** depuis la prise, d'un locuteur au **consentement valide**.
-  - `normalized_text` = `text_spoken` en Unicode NFC avec espaces fusionnés, **sans aucune autre transformation**.
-  - Après génération, l'archive est relue : chaque `audio_filepath` doit exister et son en-tête WAV et sa durée sont contrôlés, sinon l'export échoue.
-
-## Stockage local et limites du mode démo
-
-- Révisions, glossaire, locuteurs, consentements et réglages : `localStorage` (clé `atelier-afar.v1`). Audio : IndexedDB (base `atelier-afar`).
-- Les données restent **dans ce navigateur, sur cet appareil**. Elles peuvent être perdues en effaçant les données du site, en navigation privée ou en changeant d'appareil ou de navigateur. **Exportez régulièrement.** La page Paramètres affiche l'espace utilisé et permet de demander un stockage persistant.
-- Pas d'authentification : le choix du linguiste est simulé.
-- Un seul poste : pas de synchronisation entre linguistes.
-- *Paramètres → Réinitialiser les données de démonstration* restaure les révisions et le glossaire d'origine (les enregistrements sont conservés) ; *Supprimer les enregistrements locaux* efface l'audio.
-
-## Microphone
-
-- Exige **HTTPS** (GitHub Pages l'est) ou `localhost`.
-- Navigateurs testés : Chrome / Edge récents. Firefox et Safari 14.1+ prennent en charge AudioWorklet ; Safari peut ignorer la désactivation des traitements audio. Sur iOS, la capture s'interrompt si l'onglet passe en arrière-plan. Un casque Bluetooth peut réduire la fréquence à 16 kHz : préférer un micro filaire ou USB.
-- Le navigateur demande l'autorisation au premier clic sur « Autoriser et tester le micro » ou sur le bouton d'enregistrement. Le micro est libéré en quittant l'onglet *Enregistrement audio*.
-
-## Déploiement
-
-- **GitHub Pages** (actuel) : le workflow `.github/workflows/pages.yml` publie tout le dépôt à chaque push sur `main` ; l'atelier est servi sous `/atelier-afar/`.
-- **Netlify / Vercel** : publier le dossier `atelier-afar/` comme site statique, sans commande de build (*Build command* vide, *Publish directory* `atelier-afar`).
-
-## Évolutions possibles du backend
-
-`SupabaseDataService.js` est la première implémentation distante de `DataService`. Pour une autre API :
-
-1. Créer `js/services/ApiDataService.js` qui étend `DataService` et implémente les mêmes méthodes via HTTP (révisions, annotations, glossaire, locuteurs, consentements, prises audio).
-   Conserver le principe actuel : un **instantané en mémoire** (`snapshot()`) pour l'affichage, des **commandes asynchrones** pour les écritures, et `subscribe()` pour notifier l'interface.
-2. Remplacer `new SupabaseDataService()` par `new ApiDataService(...)` dans `js/main.js` (une seule ligne).
-3. Côté serveur :
-   - stocker `mt_afar` (sortie Claude, avec modèle, version de prompt et date) séparément des corrections humaines ;
-   - appliquer les mêmes règles que `js/utils/status.js` (versionnement du texte approuvé, invalidation des prises, éligibilité à l'export) — ce module est sans dépendance et peut être réutilisé tel quel côté Node ;
-   - téléverser les WAV (`saveTake`) vers un stockage objet, sans réencodage ;
-   - authentifier les linguistes (remplace la sélection simulée) et tracer le consentement côté serveur ;
-   - générer la traduction automatique avec l'API Claude **côté serveur uniquement** (jamais de clé API dans le navigateur).
-4. Retirer le bandeau « Mode démonstration » et les mentions de statut simulé.
+## Limites connues
+- Offre gratuite Supabase : le projet est mis en pause après une période d'inactivité prolongée (le relancer depuis le tableau de bord Supabase) ; 1 Go de stockage de fichiers (≈ 3 h d'audio WAV 48 kHz).
+- L'envoi d'e-mails n'est pas configuré : les mots de passe sont communiqués par l'administrateur.
+- Le brouillon d'un segment est partagé : si un linguiste « prend la main », c'est la dernière version enregistrée qui fait foi.

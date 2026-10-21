@@ -1,10 +1,10 @@
 // Consentement et profil vocal du locuteur.
 import { h, icon, fmtDate, fmtDay } from '../utils/dom.js';
 import { openModal, toast, confirmDialog } from './ui.js';
-import { uid } from '../services/MockDataService.js';
+import { uid } from '../utils/defaults.js';
 import { consentValid } from '../utils/status.js';
 
-export const CONSENT_TEXT_VERSION = 'consentement-demo-v1';
+export const CONSENT_TEXT_VERSION = 'consentement-v1';
 const AGE_RANGES = ['18–25 ans', '26–35 ans', '36–45 ans', '46–55 ans', '56–65 ans', 'Plus de 65 ans'];
 const SEXES = ['Femme', 'Homme', 'Autre / ne souhaite pas préciser'];
 
@@ -28,7 +28,7 @@ function profileFields(speaker, dialects) {
       field('Nom ou pseudonyme *', f.name)),
     h('div', { class: 'grid-2' }, field('Sexe (facultatif)', f.sexe), field('Tranche d\'âge (facultative)', f.age)),
     h('div', { class: 'grid-2' },
-      field('Dialecte afar *', f.dialect, 'Liste de démonstration, à confirmer avec le linguiste (modifiable dans les paramètres).'),
+      field('Dialecte afar *', f.dialect, 'Liste modifiable dans les paramètres.'),
       field('Région linguistique', f.region)),
     field('Notes sur la prononciation', f.notes),
   ];
@@ -79,7 +79,7 @@ export function consentScreen(service, onDone) {
       h('div', { class: 'onb-icon' }, icon('shield', 26)),
       h('h2', null, 'Avant d\'enregistrer votre voix'),
       existing.length ? h('div', { class: 'callout callout-info' }, icon('info', 18), h('div', null,
-        service.mode === 'supabase' ? 'Un profil avec consentement existe déjà dans le projet : ' : 'Un profil avec consentement existe déjà sur ce navigateur : ',
+        'Un profil avec consentement existe déjà : ',
         existing.map((s) => h('button', { class: 'link-btn', onclick: async () => { await service.saveSettings({ activeSpeakerId: s.id }); onDone(); } }, `utiliser « ${s.name} »`)))) : null,
       h('section', { class: 'consent-text' },
         h('h3', null, 'Utilisation de vos enregistrements'),
@@ -87,7 +87,7 @@ export function consentScreen(service, onDone) {
           h('strong', null, 'pourront être utilisés pour entraîner et évaluer un modèle de synthèse vocale (TTS) en afar.')),
         h('ul', null,
           h('li', null, 'Aucun enregistrement ne démarre sans action explicite de votre part.'),
-          h('li', null, 'Dans cette démonstration, tout reste dans ce navigateur : rien n\'est envoyé à un serveur.'),
+          h('li', null, 'Les enregistrements sont conservés de façon sécurisée et ne sont accessibles qu\'aux membres du projet.'),
           h('li', null, 'Vous pouvez retirer votre consentement et supprimer vos enregistrements locaux à tout moment.'))),
       h('h3', { class: 'section-title' }, 'Profil vocal'),
       profile.els,

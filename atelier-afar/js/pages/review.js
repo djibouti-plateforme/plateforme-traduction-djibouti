@@ -1,4 +1,4 @@
-// Onglet 1 — Révision des traductions FR → Afar.
+// Onglet 1 — Révision des traductions FR → Afar (travail à plusieurs : verrous, répartition, temps réel).
 import { h, icon, mount, debounce, fmtDate, fmtDuration, AFAR_INPUT_ATTRS, isTypingTarget } from '../utils/dom.js';
 import { diffWords, diffStats } from '../utils/diff.js';
 import { REVIEW_STATUS, editorText, normalizeSpaces } from '../utils/status.js';
@@ -7,45 +7,66 @@ import { createGlossaryPanel, highlightTerms } from '../components/glossaryPanel
 import { createAnnotationsPanel } from '../components/annotationsPanel.js';
 import { accentPalette } from '../components/accentPalette.js';
 import { loadUi, saveUi } from '../ui-state.js';
+import { LOCK_HEARTBEAT_MS } from '../config.js';
 
 const DONE = new Set(['valide', 'corrige', 'rejete', 'signale']);
+const TODO = new Set(['a_reviser', 'en_cours']);
 const IDLE_LIMIT_MS = 90_000;
+const fold = (s) => String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 
 /**
  * @param {HTMLElement} container
- * @param {{ service: import('../services/DataService.js').DataService, params: { id?: string }, setRoute: (path: string) => void }} ctx
+ * @param {{ service: import('../services/SupabaseDataService.js').SupabaseDataService, params: { id?: string }, setRoute: (path: string) => void }} ctx
  */
 export function mountReview(container, { service, params, setRoute }) {
   const ui = loadUi();
-  const filters = { q: '', status: 'all', lot: 'all', domaine: 'all', ...(ui.reviewFilters ?? {}) };
-  const { segments } = service.snapshot();
-  let currentId = segments.some((s) => s.id === params.id) ? params.id : (segments.some((s) => s.id === ui.lastSegmentId) ? ui.lastSegmentId : segments[0]?.id);
+  const segs = () => service.snapshot().segments;
+  const myCode = service.snapshot().me?.code;
+  const hasMine = segs().some((s) => s.assigned_to === myCode);
+  const filters = { q: '', status: 'all', lot: 'all', domaine: 'all', assignee: hasMine ? 'mine' : 'all', ...(ui.reviewFilters ?? {}) };
+  let currentId = null;
 
   // ---- Colonne gauche ----------------------------------------------------
   const searchInput = h('input', { class: 'input input-sm', type: 'search', placeholder: 'Rechercher (français, afar, identifiant)…', value: filters.q, 'aria-label': 'Recherche plein texte' });
+  const assigneeSel = h('select', { class: 'input input-sm', 'aria-label': 'Filtrer par linguiste' });
   const statusSel = h('select', { class: 'input input-sm', 'aria-label': 'Filtrer par statut' },
     h('option', { value: 'all' }, 'Statut : tous'),
+    h('option', { value: 'todo' }, 'À traiter'),
     Object.entries(REVIEW_STATUS).map(([k, l]) => h('option', { value: k }, l)));
   const lotSel = h('select', { class: 'input input-sm', 'aria-label': 'Filtrer par lot' });
   const domSel = h('select', { class: 'input input-sm', 'aria-label': 'Filtrer par domaine' });
-  const uniq = (key) => [...new Set(segments.map((s) => s[key]))].sort((a, b) => a.localeCompare(b, 'fr'));
-  mount(lotSel, h('option', { value: 'all' }, 'Lot : tous'), uniq('lot').map((v) => h('option', { value: v }, v)));
-  mount(domSel, h('option', { value: 'all' }, 'Domaine : tous'), uniq('domaine').map((v) => h('option', { value: v }, v)));
-  statusSel.value = filters.status; lotSel.value = filters.lot; domSel.value = filters.domaine;
+
+  function fillFilterOptions() {
+    const uniq = (key) => [...new Set(segs().map((s) => s[key]))].sort((a, b) => a.localeCompare(b, 'fr'));
+    mount(lotSel, h('option', { value: 'all' }, 'Lot : tous'), uniq('lot').map((v) => h('option', { value: v }, v)));
+    mount(domSel, h('option', { value: 'all' }, 'Domaine : tous'), uniq('domaine').map((v) => h('option', { value: v }, v)));
+    mount(assigneeSel,
+      h('option', { value: 'mine' }, 'Mes segments'),
+      h('option', { value: 'all' }, 'Tous les segments'),
+      h('option', { value: 'unassigned' }, 'Non attribués'),
+      service.snapshot().members.filter((m) => m.code !== myCode).map((m) => h('option', { value: `m:${m.code}` }, `Attribués à ${m.display_name}`)));
+    statusSel.value = filters.status; lotSel.value = filters.lot; domSel.value = filters.domaine; assigneeSel.value = filters.assignee;
+    if (assigneeSel.value !== filters.assignee) { filters.assignee = 'all'; assigneeSel.value = 'all'; }
+    if (lotSel.value !== filters.lot) { filters.lot = 'all'; lotSel.value = 'all'; }
+  }
+  fillFilterOptions();
 
   const progressEl = h('div', { class: 'list-progress' });
   const listEl = h('div', { class: 'seg-list', role: 'listbox', 'aria-label': 'Segments à réviser' });
   const onFilter = () => {
-    Object.assign(filters, { q: searchInput.value, status: statusSel.value, lot: lotSel.value, domaine: domSel.value });
+    Object.assign(filters, { q: searchInput.value, status: statusSel.value, lot: lotSel.value, domaine: domSel.value, assignee: assigneeSel.value });
     saveUi({ reviewFilters: filters });
     renderList();
   };
   searchInput.addEventListener('input', debounce(onFilter, 120));
-  [statusSel, lotSel, domSel].forEach((s) => s.addEventListener('change', onFilter));
+  [statusSel, lotSel, domSel, assigneeSel].forEach((s) => s.addEventListener('change', onFilter));
 
   const left = h('aside', { class: 'pane pane-list' },
     h('div', { class: 'pane-head' }, h('h2', null, 'Segments'), progressEl),
-    h('div', { class: 'filters' }, h('div', { class: 'search-wrap' }, icon('search', 15), searchInput), h('div', { class: 'filter-row' }, statusSel, lotSel, domSel)),
+    h('div', { class: 'filters' },
+      h('div', { class: 'search-wrap' }, icon('search', 15), searchInput),
+      assigneeSel,
+      h('div', { class: 'filter-row' }, statusSel, lotSel, domSel)),
     listEl);
 
   // ---- Colonne droite (glossaire) ---------------------------------------------
@@ -60,16 +81,18 @@ export function mountReview(container, { service, params, setRoute }) {
   const layout = h('div', { class: `review-layout${ui.glossaryHidden || narrow ? ' no-side' : ''}` }, left, center, right);
   mount(container, layout);
 
-  const fold = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
   function filtered() {
     const { reviews } = service.snapshot();
     const q = fold(filters.q.trim());
-    return segments.filter((s) => {
+    return segs().filter((s) => {
       const r = reviews[s.id];
       const st = r?.status ?? 'a_reviser';
-      if (filters.status !== 'all' && st !== filters.status) return false;
+      if (filters.status === 'todo' ? !TODO.has(st) : (filters.status !== 'all' && st !== filters.status)) return false;
       if (filters.lot !== 'all' && s.lot !== filters.lot) return false;
       if (filters.domaine !== 'all' && s.domaine !== filters.domaine) return false;
+      if (filters.assignee === 'mine' && s.assigned_to !== myCode) return false;
+      if (filters.assignee === 'unassigned' && s.assigned_to) return false;
+      if (filters.assignee.startsWith('m:') && s.assigned_to !== filters.assignee.slice(2)) return false;
       if (q && ![s.id, s.source_fr, s.mt_afar, r?.corrected_afar ?? '', r?.draft_afar ?? ''].some((t) => fold(t).includes(q))) return false;
       return true;
     });
@@ -77,27 +100,32 @@ export function mountReview(container, { service, params, setRoute }) {
 
   function renderList() {
     const { reviews } = service.snapshot();
-    const done = segments.filter((s) => DONE.has(reviews[s.id]?.status)).length;
+    const scope = filters.assignee === 'mine' ? segs().filter((s) => s.assigned_to === myCode) : segs();
+    const done = scope.filter((s) => DONE.has(reviews[s.id]?.status)).length;
     mount(progressEl,
-      h('div', { class: 'progress-label' }, h('strong', null, `${done} / ${segments.length}`), ' segments traités'),
-      progressBar(done, segments.length, { label: 'Segments traités' }));
+      h('div', { class: 'progress-label' }, h('strong', null, `${done} / ${scope.length}`), filters.assignee === 'mine' ? ' de mes segments traités' : ' segments traités'),
+      progressBar(done, scope.length, { label: 'Segments traités' }));
     const items = filtered();
     if (!items.length) {
-      mount(listEl, emptyState('search', 'Aucun segment', 'Modifiez la recherche ou les filtres.'));
+      mount(listEl, emptyState('search', 'Aucun segment', filters.assignee === 'mine' ? 'Aucun segment ne vous est attribué avec ces filtres. Choisissez « Tous les segments ».' : 'Modifiez la recherche ou les filtres.'));
       return;
     }
     mount(listEl, items.map((s) => {
       const r = reviews[s.id];
       const st = r?.status ?? 'a_reviser';
+      const lock = service.lockOf(s.id);
       return h('button', {
-        class: ['seg-item', s.id === currentId && 'active', `st-${st}`],
+        class: ['seg-item', s.id === currentId && 'active', `st-${st}`, lock && 'locked'],
         role: 'option',
         'aria-selected': String(s.id === currentId),
         onclick: () => select(s.id),
       },
-      h('div', { class: 'seg-item-top' }, h('span', { class: 'seg-id' }, s.id), reviewBadge(st, r?.simulated)),
+      h('div', { class: 'seg-item-top' }, h('span', { class: 'seg-id' }, s.id), reviewBadge(st)),
       h('p', { class: 'seg-preview' }, s.source_fr),
-      h('div', { class: 'seg-item-meta' }, h('span', null, s.domaine), h('span', null, s.lot.replace(/ —.*/, ''))));
+      h('div', { class: 'seg-item-meta' },
+        h('span', null, s.domaine),
+        s.assigned_to ? h('span', { class: s.assigned_to === myCode ? 'mine' : '' }, s.assigned_to === myCode ? 'à moi' : service.memberName(s.assigned_to)) : h('span', null, s.lot.replace(/ —.*/, ''))),
+      lock && h('div', { class: 'lock-line' }, icon('user', 12), `${lock.member_name} y travaille`));
     }));
     listEl.querySelector('.active')?.scrollIntoView({ block: 'nearest' });
   }
@@ -110,16 +138,27 @@ export function mountReview(container, { service, params, setRoute }) {
   const markActivity = () => { lastActivity = Date.now(); };
   ['keydown', 'mousemove', 'mousedown', 'scroll'].forEach((t) => document.addEventListener(t, markActivity, { passive: true }));
   const flushTime = () => {
-    if (currentId && pendingSeconds > 0) service.addReviewTime(currentId, pendingSeconds);
+    if (currentId && pendingSeconds > 0 && !readOnly) service.addReviewTime(currentId, pendingSeconds);
     pendingSeconds = 0;
   };
   const tick = setInterval(() => {
-    if (!currentId || document.visibilityState !== 'visible' || Date.now() - lastActivity > IDLE_LIMIT_MS) return;
+    if (!currentId || readOnly || document.visibilityState !== 'visible' || Date.now() - lastActivity > IDLE_LIMIT_MS) return;
     pendingSeconds += 1;
     shownSeconds += 1;
     timerEl.replaceChildren(icon('clock', 14), ` ${fmtDuration(shownSeconds)}`);
     if (pendingSeconds >= 10) flushTime();
   }, 1000);
+
+  // ---- Verrou du segment ouvert --------------------------------------------------
+  let readOnly = false;
+  const heartbeat = setInterval(async () => {
+    if (!currentId || readOnly || document.visibilityState !== 'visible') return;
+    const res = await service.claimSegment(currentId);
+    if (!res.ok && res.lock) {
+      toast(`${res.lock.member_name} a pris la main sur ${currentId}.`, { type: 'warning' });
+      renderCenter();
+    }
+  }, LOCK_HEARTBEAT_MS);
 
   // ---- Rendu du segment courant ---------------------------------------------------
   /** @type {HTMLTextAreaElement|null} */
@@ -127,13 +166,17 @@ export function mountReview(container, { service, params, setRoute }) {
   let saveDraft = null;
   let annotations = null;
 
-  function select(id) {
-    if (id === currentId) return;
+  async function select(id, { force = false } = {}) {
+    if (id === currentId && !force) return;
     saveDraft?.flush();
     flushTime();
+    const previous = currentId;
     currentId = id;
     saveUi({ lastSegmentId: id });
     setRoute(`/revision/${id}`);
+    if (previous && previous !== id) service.releaseSegment(previous).catch(() => {});
+    await service.claimSegment(id, { force }).catch(() => {});
+    if (currentId !== id) return; // l'utilisateur a déjà changé de segment
     renderCenter();
     renderList();
   }
@@ -142,6 +185,15 @@ export function mountReview(container, { service, params, setRoute }) {
     const items = filtered();
     const i = items.findIndex((s) => s.id === currentId);
     return items[i + dir]?.id ?? null;
+  }
+
+  /** Prochain segment à traiter, libre, dans la liste filtrée (en reprenant au début si besoin). */
+  function nextTodo() {
+    const { reviews } = service.snapshot();
+    const items = filtered();
+    const i = items.findIndex((s) => s.id === currentId);
+    const ordered = [...items.slice(i + 1), ...items.slice(0, Math.max(i, 0))];
+    return ordered.find((s) => TODO.has(reviews[s.id]?.status ?? 'a_reviser') && !service.lockOf(s.id))?.id ?? null;
   }
 
   function goNext() {
@@ -154,10 +206,12 @@ export function mountReview(container, { service, params, setRoute }) {
   }
 
   function renderCenter() {
-    const segment = segments.find((s) => s.id === currentId);
-    if (!segment) { mount(center, emptyState('file', 'Aucun segment', 'Le jeu de données est vide.')); return; }
+    const segment = segs().find((s) => s.id === currentId);
+    if (!segment) { mount(center, emptyState('file', 'Aucun segment', 'Aucun segment à afficher.')); return; }
+    const lock = service.lockOf(segment.id);
+    readOnly = !!lock;
     // Ouvrir un segment « À réviser » le fait passer « En cours » (mise à jour synchrone de l'état local).
-    if (service.getReview(segment.id).status === 'a_reviser') service.touchReview(segment.id).catch(() => {}); // erreur signalée par le service
+    if (!readOnly && service.getReview(segment.id).status === 'a_reviser') service.touchReview(segment.id).catch(() => {});
     const review = service.getReview(segment.id);
     shownSeconds = Math.round(review.duration_seconds || 0);
     timerEl.replaceChildren(icon('clock', 14), ` ${fmtDuration(shownSeconds)}`);
@@ -170,7 +224,7 @@ export function mountReview(container, { service, params, setRoute }) {
     }));
 
     // C. Éditeur
-    editor = h('textarea', { class: 'editor', rows: 5, 'aria-label': 'Traduction corrigée en afar', ...AFAR_INPUT_ATTRS });
+    editor = h('textarea', { class: 'editor', rows: 5, 'aria-label': 'Traduction corrigée en afar', readonly: readOnly, ...AFAR_INPUT_ATTRS });
     editor.value = editorText(review, segment);
     const draftInfo = h('span', { class: 'draft-info' });
     const diffBox = h('div', { class: 'diff', lang: 'aa' });
@@ -183,7 +237,7 @@ export function mountReview(container, { service, params, setRoute }) {
       draftInfo.className = `draft-info${dirty ? ' dirty' : ''}`;
       draftInfo.textContent = dirty
         ? (r.draft_saved_at ? `Brouillon enregistré automatiquement à ${new Date(r.draft_saved_at).toLocaleTimeString('fr-FR')} — non validé` : 'Modifications en cours…')
-        : (r.corrected_afar ? `Version enregistrée le ${fmtDate(r.reviewed_at)}` : 'Identique à la traduction automatique');
+        : (r.corrected_afar ? `Version enregistrée le ${fmtDate(r.reviewed_at)}${r.reviewer_id ? ` par ${service.memberName(r.reviewer_id)}` : ''}` : 'Identique à la traduction automatique');
     };
     const paintDiff = () => {
       const ops = diffWords(segment.mt_afar, editor.value);
@@ -199,8 +253,8 @@ export function mountReview(container, { service, params, setRoute }) {
         h('span', { class: 'muted' }, `${st.newWords} mots`));
     };
     saveDraft = debounce(async () => {
-      if (!editor || !editor.isConnected) return;
-      await service.saveDraft(segment.id, editor.value);
+      if (!editor || !editor.isConnected || readOnly) return;
+      await service.saveDraft(segment.id, editor.value).catch(() => {});
       paintDraftInfo();
       renderList();
     }, 700);
@@ -226,45 +280,59 @@ export function mountReview(container, { service, params, setRoute }) {
       h('div', { class: 'history-body' },
         h('div', { class: 'hist-item' }, h('span', { class: 'hist-label' }, 'Version machine (conservée)'), h('p', { lang: 'aa' }, segment.mt_afar)),
         lastSaved ? h('div', { class: 'hist-item' }, h('span', { class: 'hist-label' }, `Dernière version enregistrée — ${REVIEW_STATUS[lastSaved.status]}, ${fmtDate(lastSaved.saved_at)}`), h('p', { lang: 'aa' }, lastSaved.text)) : null,
-        review.history.length ? h('ol', { class: 'hist-log' }, [...review.history].reverse().map((v) => h('li', null, `${fmtDate(v.saved_at)} — ${REVIEW_STATUS[v.status]} (${v.reviewer_id})`))) : null,
+        review.history.length ? h('ol', { class: 'hist-log' }, [...review.history].reverse().map((v) => h('li', null, `${fmtDate(v.saved_at)} — ${REVIEW_STATUS[v.status]} (${service.memberName(v.reviewer_id)})`))) : null,
         review.flag_comment ? h('p', { class: 'tiny' }, h('strong', null, 'Motif : '), review.flag_comment) : null));
 
-    const actions = h('div', { class: 'actions' },
-      h('button', { class: 'btn btn-success', onclick: () => act('validate'), title: 'Ctrl/Cmd + Maj + Entrée' }, icon('checkCircle'), 'Valider sans modification'),
-      h('button', { class: 'btn btn-primary', onclick: () => act('correct'), title: 'Ctrl/Cmd + Entrée' }, icon('save'), 'Enregistrer la correction'),
+    const actions = h('div', { class: ['actions', readOnly && 'is-disabled'] },
+      h('button', { class: 'btn btn-success', disabled: readOnly, onclick: () => act('validate'), title: 'Ctrl/Cmd + Maj + Entrée' }, icon('checkCircle'), 'Valider sans modification'),
+      h('button', { class: 'btn btn-primary', disabled: readOnly, onclick: () => act('correct'), title: 'Ctrl/Cmd + Entrée' }, icon('save'), 'Enregistrer la correction'),
       h('span', { class: 'actions-sep' }),
-      h('button', { class: 'btn btn-outline-danger', onclick: () => act('reject') }, icon('x'), 'Rejeter — À retraduire'),
-      h('button', { class: 'btn btn-outline-warning', onclick: () => act('flag') }, icon('flag'), 'Signaler un problème'),
+      h('button', { class: 'btn btn-outline-danger', disabled: readOnly, onclick: () => act('reject') }, icon('x'), 'Rejeter — À retraduire'),
+      h('button', { class: 'btn btn-outline-warning', disabled: readOnly, onclick: () => act('flag') }, icon('flag'), 'Signaler un problème'),
       h('button', { class: 'btn btn-ghost', onclick: goNext, title: 'Alt + →' }, 'Passer au suivant', icon('chevronRight')));
 
     const scaleBtns = h('div', { class: 'btn-group', role: 'group', 'aria-label': 'Taille du texte' },
       h('button', { class: 'icon-btn', title: 'Réduire le texte', onclick: () => setScale(-0.1) }, icon('zoomOut', 16)),
       h('button', { class: 'icon-btn', title: 'Agrandir le texte', onclick: () => setScale(0.1) }, icon('zoomIn', 16)));
 
-    const seqIdx = segments.findIndex((s) => s.id === segment.id) + 1;
+    const lockBanner = lock && h('div', { class: 'lock-banner' },
+      icon('user', 16),
+      h('span', null, h('strong', null, lock.member_name), ` révise ce segment en ce moment (depuis ${new Date(lock.locked_at).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}). Lecture seule.`),
+      h('span', { class: 'actions-sep' }),
+      h('button', {
+        class: 'btn btn-sm btn-secondary',
+        onclick: async () => {
+          const ok = await confirmDialog({ title: 'Prendre la main sur ce segment ?', message: `${lock.member_name} ne pourra plus enregistrer ses modifications sur ce segment tant que vous y travaillez. Prévenez-le si possible.`, confirmLabel: 'Prendre la main' });
+          if (ok) select(segment.id, { force: true });
+        },
+      }, 'Prendre la main'),
+      h('button', { class: 'btn btn-sm btn-primary', onclick: () => { const n = nextTodo(); if (n) select(n); else toast('Aucun autre segment libre à traiter.', { type: 'info' }); } }, 'Segment libre suivant', icon('chevronRight', 14)));
+
+    const seqIdx = segs().findIndex((s) => s.id === segment.id) + 1;
     mount(center,
       h('div', { class: 'main-toolbar' },
         h('div', { class: 'crumbs' },
           h('span', { class: 'seg-id lg' }, segment.id),
-          reviewBadge(review.status, review.simulated),
+          reviewBadge(review.status),
           h('span', { class: 'chip' }, segment.domaine),
-          h('span', { class: 'chip chip-ghost' }, segment.lot)),
+          h('span', { class: 'chip chip-ghost' }, segment.lot),
+          segment.assigned_to && h('span', { class: 'chip chip-ghost' }, icon('user', 12), segment.assigned_to === myCode ? 'Attribué à moi' : `Attribué à ${service.memberName(segment.assigned_to)}`)),
         h('div', { class: 'toolbar-right' },
           timerEl,
           scaleBtns,
           h('button', { class: 'icon-btn', title: 'Segment précédent (Alt + ←)', onclick: goPrev }, icon('chevronLeft')),
-          h('span', { class: 'muted tiny' }, `${seqIdx} / ${segments.length}`),
+          h('span', { class: 'muted tiny' }, `${seqIdx} / ${segs().length}`),
           h('button', { class: 'icon-btn', title: 'Segment suivant (Alt + →)', onclick: goNext }, icon('chevronRight')),
           h('button', { class: 'icon-btn', title: layout.classList.contains('no-side') ? 'Afficher le glossaire' : 'Masquer le glossaire', onclick: toggleSide }, icon('book', 16)))),
 
-      review.simulated && h('div', { class: 'sim-note' }, icon('info', 15), 'Statut « Validé » simulé pour la démonstration : aucun linguiste n\'a approuvé cette traduction.'),
+      lockBanner,
 
       h('article', { class: 'card text-card' },
-        h('header', { class: 'card-head' }, h('h3', null, 'Texte original — Français'), h('span', { class: 'muted tiny' }, 'Lecture seule · termes du glossaire surlignés')),
+        h('header', { class: 'card-head' }, h('h3', null, 'Texte original — Français'), h('span', { class: 'muted tiny' }, 'Termes du glossaire surlignés')),
         source),
 
       h('article', { class: 'card text-card mt-card' },
-        h('header', { class: 'card-head' }, h('h3', null, 'Traduction automatique — Claude'), h('span', { class: 'tag-fictive' }, 'Données fictives non vérifiées')),
+        h('header', { class: 'card-head' }, h('h3', null, 'Traduction automatique — Claude')),
         h('div', { class: 'text-mt', lang: 'aa' }, segment.mt_afar),
         h('dl', { class: 'meta-grid' },
           h('div', null, h('dt', null, 'Modèle'), h('dd', null, segment.mt_model)),
@@ -272,13 +340,13 @@ export function mountReview(container, { service, params, setRoute }) {
           h('div', null, h('dt', null, 'Générée le'), h('dd', null, fmtDate(segment.created_at))),
           h('div', null, h('dt', null, 'Segment'), h('dd', null, segment.id)))),
 
-      h('article', { class: 'card text-card editor-card' },
+      h('article', { class: ['card text-card editor-card', readOnly && 'is-readonly'] },
         h('header', { class: 'card-head' },
           h('h3', null, 'Traduction corrigée — Afar (Qafar af)'),
-          h('button', { class: 'btn btn-sm btn-ghost', onclick: restore, title: 'Remplacer par la traduction automatique' }, icon('restore', 14), 'Restaurer l\'original')),
+          !readOnly && h('button', { class: 'btn btn-sm btn-ghost', onclick: restore, title: 'Remplacer par la traduction automatique' }, icon('restore', 14), 'Restaurer l\'original')),
         editor,
-        settings.accentPalette && accentPalette(() => editor),
-        h('div', { class: 'editor-foot' }, draftInfo, h('span', { class: 'muted tiny' }, 'Correction orthographique du navigateur désactivée'))),
+        settings.accentPalette && !readOnly && accentPalette(() => editor),
+        h('div', { class: 'editor-foot' }, draftInfo, h('span', { class: 'muted tiny' }, 'Correction orthographique désactivée'))),
 
       actions,
 
@@ -307,8 +375,8 @@ export function mountReview(container, { service, params, setRoute }) {
   // ---- Actions ---------------------------------------------------------------------
   let busy = false;
   async function act(action) {
-    if (busy || !currentId) return;
-    const segment = segments.find((s) => s.id === currentId);
+    if (busy || !currentId || readOnly) return;
+    const segment = segs().find((s) => s.id === currentId);
     const text = editor?.value ?? '';
     const dirtyVsMt = normalizeSpaces(text) !== normalizeSpaces(segment.mt_afar);
     let payload = { text };
@@ -353,8 +421,8 @@ export function mountReview(container, { service, params, setRoute }) {
       const label = { validate: 'Traduction validée', correct: 'Correction enregistrée — statut « Corrigé »', reject: 'Traduction rejetée — à retraduire', flag: 'Problème signalé' }[action];
       toast(label);
       if (res.invalidatedTakes) toast('Le texte approuvé a changé : l\'enregistrement audio de ce segment passe « À refaire » (l\'ancienne prise est conservée).', { type: 'warning' });
-      const next = neighbour(1);
-      if (next) select(next); else { renderCenter(); renderList(); }
+      const next = nextTodo() ?? neighbour(1);
+      if (next) select(next); else { renderCenter(); renderList(); toast('Tous les segments de cette liste sont traités.', { type: 'info' }); }
     } finally {
       busy = false;
     }
@@ -378,31 +446,45 @@ export function mountReview(container, { service, params, setRoute }) {
   }
   document.addEventListener('keydown', onKey);
 
-  renderCenter(); // en premier : l'ouverture peut faire passer le segment « En cours »
+  // Segment de départ : celui demandé, sinon le dernier ouvert, sinon le premier libre à traiter.
+  const all = segs();
+  const startId = all.some((s) => s.id === params.id) ? params.id
+    : all.some((s) => s.id === ui.lastSegmentId) ? ui.lastSegmentId
+      : (filtered().find((s) => TODO.has(service.getReview(s.id).status) && !service.lockOf(s.id)) ?? filtered()[0] ?? all[0])?.id;
   renderList();
-  setRoute(`/revision/${currentId}`);
+  if (startId) select(startId); else mount(center, emptyState('file', 'Aucun segment', 'Aucun segment n\'est encore chargé.'));
 
   return {
-    onData(topic) {
+    onData(topic, detail) {
       if (topic === 'glossary') { glossary.render(); renderCenterSourceOnly(); }
-      if (topic === 'reviews' || topic === 'reset') renderList();
-      if (topic === 'reset') renderCenter();
+      if (topic === 'reviews' || topic === 'locks') renderList();
+      if (topic === 'segments' || topic === 'members') { fillFilterOptions(); renderList(); }
+      if (topic === 'reset') { fillFilterOptions(); renderList(); renderCenter(); }
+      // Un collègue a modifié le segment affiché en lecture seule : on montre sa version.
+      if (topic === 'reviews' && detail?.remote && detail.segmentId === currentId && readOnly) renderCenter();
+      // Le segment ouvert vient d'être libéré ou pris par un collègue.
+      if (topic === 'locks' && currentId && !!service.lockOf(currentId) !== readOnly) {
+        if (!readOnly) { saveDraft?.flush(); toast('Un collègue a pris la main sur ce segment.', { type: 'warning' }); }
+        renderCenter();
+      }
       if (topic === 'settings') {
         const pal = center.querySelector('.accent-palette');
-        if (!!pal !== service.snapshot().settings.accentPalette) renderCenter();
+        if (!!pal !== (service.snapshot().settings.accentPalette && !readOnly)) renderCenter();
       }
     },
     unmount() {
       saveDraft?.flush();
       flushTime();
       clearInterval(tick);
+      clearInterval(heartbeat);
+      if (currentId) service.releaseSegment(currentId).catch(() => {});
       document.removeEventListener('keydown', onKey);
       ['keydown', 'mousemove', 'mousedown', 'scroll'].forEach((t) => document.removeEventListener(t, markActivity));
     },
   };
 
   function renderCenterSourceOnly() {
-    const segment = segments.find((s) => s.id === currentId);
+    const segment = segs().find((s) => s.id === currentId);
     const el = center.querySelector('.text-source');
     if (segment && el) mount(el, highlightTerms(segment.source_fr, service.snapshot().glossary, (entry) => glossary.focusTerm(entry)));
   }

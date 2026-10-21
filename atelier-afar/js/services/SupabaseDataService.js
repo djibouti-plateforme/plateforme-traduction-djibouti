@@ -1,31 +1,32 @@
-// Implémentation de DataService adossée à Supabase (Postgres + Storage + Auth).
-// Même modèle que MockDataService : instantané en mémoire pour l'affichage, commandes asynchrones
-// pour les écritures. Les écritures sont sérialisées (ordre garanti) ; en cas d'échec, l'état est
-// rechargé depuis le serveur et l'erreur est remontée à l'interface.
+// Implémentation de DataService adossée au serveur (Postgres + stockage de fichiers + authentification).
+// Instantané en mémoire pour l'affichage, commandes asynchrones pour les écritures, et synchronisation
+// en temps réel : les modifications d'un linguiste apparaissent chez les autres sans recharger la page.
 import { DataService } from './DataService.js';
-import { defaultSettings, uid } from './MockDataService.js';
+import { defaultSettings, uid } from '../utils/defaults.js';
 import { emptyReview, applyReviewAction, invalidateTakes } from '../utils/status.js';
-import { SUPABASE } from '../config.js';
+import { BACKEND, LOCK_TTL_MS } from '../config.js';
 
 const SETTINGS_KEY = 'atelier-afar.cloud.settings';
-const SUPABASE_JS = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/+esm';
-const SIMULATED_VALIDATED = ['seg_002', 'seg_004', 'seg_006', 'seg_010', 'seg_015'];
+const CLIENT_LIB = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/+esm';
 
 const REVIEW_COLUMNS = ['segment_id', 'status', 'corrected_afar', 'last_approved_text', 'draft_afar', 'draft_saved_at', 'reviewer_id',
-  'reviewed_at', 'flag_comment', 'annotations', 'duration_seconds', 'text_version', 'history', 'simulated'];
+  'reviewed_at', 'flag_comment', 'annotations', 'duration_seconds', 'text_version', 'history'];
 const TAKE_COLUMNS = ['id', 'segment_id', 'speaker_id', 'text_display', 'text_spoken', 'text_version', 'duration_seconds', 'sample_rate',
   'format', 'size_bytes', 'storage_path', 'recorded_at', 'quality_status', 'current', 'confirmed', 'flags', 'warnings', 'warning_messages',
   'peak_dbfs', 'rms_dbfs', 'invalidated_reason', 'validated_at'];
+const SEGMENT_COLUMNS = 'id, lot, domaine, source_fr, mt_afar, mt_model, mt_prompt_version, created_at, assigned_to, position';
 
 const nowIso = () => new Date().toISOString();
 const pick = (obj, keys) => Object.fromEntries(keys.filter((k) => k in obj).map((k) => [k, obj[k]]));
 const num = (v) => (v === null || v === undefined ? v : Number(v));
+const normReview = (r) => ({ ...r, duration_seconds: num(r.duration_seconds) });
+const normTake = (t) => ({ ...t, duration_seconds: num(t.duration_seconds), peak_dbfs: num(t.peak_dbfs), rms_dbfs: num(t.rms_dbfs) });
 
-/** Erreur Supabase → message français. */
+/** Erreur serveur → message français. */
 function describe(error) {
   const msg = error?.message ?? String(error);
   if (/Invalid login credentials/i.test(msg)) return 'Adresse e-mail ou mot de passe incorrect.';
-  if (/Email not confirmed/i.test(msg)) return 'Adresse e-mail non confirmée : demandez à l\'administrateur de confirmer le compte.';
+  if (/Email not confirmed/i.test(msg)) return 'Adresse e-mail non confirmée : contactez l\'administrateur.';
   if (/Failed to fetch|NetworkError|Load failed/i.test(msg)) return 'Connexion au serveur impossible. Vérifiez votre connexion internet.';
   if (/row-level security|permission denied/i.test(msg)) return 'Action refusée : votre compte n\'a pas les droits nécessaires.';
   if (/JWT expired/i.test(msg)) return 'Votre session a expiré : reconnectez-vous.';
@@ -37,6 +38,7 @@ export class SupabaseDataService extends DataService {
     super();
     this.listeners = new Set();
     this.client = null;
+    this.channel = null;
     this.user = null;
     this.member = null;
     this.members = [];
@@ -46,6 +48,7 @@ export class SupabaseDataService extends DataService {
     this.speakers = [];
     this.consents = {};
     this.takes = [];
+    this.locks = {};
     this.audioCache = new Map();
     this.queue = Promise.resolve();
     this.audioAvailable = true;
@@ -53,15 +56,15 @@ export class SupabaseDataService extends DataService {
     this.settings = { ...defaultSettings(), ...this.#loadSettings() };
   }
 
-  get mode() { return 'supabase'; }
+  get mode() { return 'server'; }
   get isAdmin() { return this.member?.role === 'admin'; }
   get reviewerId() { return this.member?.code ?? this.user?.email ?? 'inconnu'; }
 
   // --- Session ---------------------------------------------------------------
   async #ensureClient() {
     if (this.client) return;
-    const { createClient } = await import(SUPABASE_JS);
-    this.client = createClient(SUPABASE.url, SUPABASE.publishableKey, {
+    const { createClient } = await import(CLIENT_LIB);
+    this.client = createClient(BACKEND.url, BACKEND.publishableKey, {
       auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: false, storageKey: 'atelier-afar.auth' },
     });
     this.client.auth.onAuthStateChange((event) => {
@@ -69,9 +72,7 @@ export class SupabaseDataService extends DataService {
     });
   }
 
-  /**
-   * @returns {Promise<{ status: 'ready'|'login'|'forbidden', email?: string }>}
-   */
+  /** @returns {Promise<{ status: 'ready'|'login'|'forbidden', email?: string }>} */
   async init() {
     await this.#ensureClient();
     const { data: { session } } = await this.client.auth.getSession();
@@ -82,6 +83,7 @@ export class SupabaseDataService extends DataService {
     if (!me) return { status: 'forbidden', email: session.user.email };
     this.member = me;
     await this.#loadAll();
+    this.#subscribeRealtime();
     return { status: 'ready' };
   }
 
@@ -92,6 +94,8 @@ export class SupabaseDataService extends DataService {
   }
 
   async signOut() {
+    await this.releaseMyLocks().catch(() => {});
+    if (this.channel) await this.client.removeChannel(this.channel);
     await this.client?.auth.signOut();
     this.user = null;
   }
@@ -101,33 +105,102 @@ export class SupabaseDataService extends DataService {
     if (error) throw new Error(describe(error));
   }
 
+  async #selectAll(table, columns = '*', order) {
+    // Lecture par pages de 1000 lignes (limite par défaut du serveur).
+    const out = [];
+    for (let from = 0; ; from += 1000) {
+      let q = this.client.from(table).select(columns).range(from, from + 999);
+      if (order) q = q.order(order);
+      const { data, error } = await q;
+      if (error) throw new Error(describe(error));
+      out.push(...data);
+      if (data.length < 1000) return out;
+    }
+  }
+
   async #loadAll() {
-    const c = this.client;
-    const results = await Promise.all([
-      c.from('segments').select('id, lot, domaine, source_fr, mt_afar, mt_model, mt_prompt_version, created_at').order('position'),
-      c.from('reviews').select('*'),
-      c.from('glossary').select('*').order('id'),
-      c.from('speakers').select('*').order('created_at'),
-      c.from('consents').select('*'),
-      c.from('recordings').select('*'),
-      c.from('members').select('*').order('created_at'),
+    const [segments, reviews, glossary, speakers, consents, takes, members, locks] = await Promise.all([
+      this.#selectAll('segments', SEGMENT_COLUMNS, 'position'),
+      this.#selectAll('reviews'),
+      this.#selectAll('glossary', '*', 'id'),
+      this.#selectAll('speakers', '*', 'created_at'),
+      this.#selectAll('consents'),
+      this.#selectAll('recordings'),
+      this.#selectAll('members', '*', 'created_at'),
+      this.#selectAll('segment_locks'),
     ]);
-    const failed = results.find((r) => r.error);
-    if (failed) throw new Error(describe(failed.error));
-    const [segments, reviews, glossary, speakers, consents, takes, members] = results.map((r) => r.data);
     this.segments = segments;
-    this.reviews = Object.fromEntries(reviews.map((r) => [r.segment_id, { ...r, duration_seconds: num(r.duration_seconds) }]));
+    this.reviews = Object.fromEntries(reviews.map((r) => [r.segment_id, normReview(r)]));
     this.glossary = glossary;
     this.speakers = speakers;
     this.consents = Object.fromEntries(consents.map((c) => [c.speaker_id, c]));
-    this.takes = takes.map((t) => ({ ...t, duration_seconds: num(t.duration_seconds), peak_dbfs: num(t.peak_dbfs), rms_dbfs: num(t.rms_dbfs) }));
+    this.takes = takes.map(normTake);
     this.members = members;
+    this.locks = Object.fromEntries(locks.map((l) => [l.segment_id, l]));
   }
 
-  /** Recharge tout depuis le serveur (après une erreur, ou à la demande). */
   async refresh() {
     await this.#loadAll();
     this.#emit('reset');
+  }
+
+  // --- Temps réel -------------------------------------------------------------------
+  #subscribeRealtime() {
+    if (this.channel) return;
+    const on = (table, fn) => this.channel.on('postgres_changes', { event: '*', schema: 'public', table }, (p) => {
+      try { fn(p); } catch { /* évènement ignoré */ }
+    });
+    this.channel = this.client.channel('atelier-afar');
+    on('reviews', ({ eventType, new: row, old }) => {
+      if (eventType === 'DELETE') { delete this.reviews[old.segment_id]; this.#emit('reviews', { remote: true, segmentId: old.segment_id }); return; }
+      if (row.updated_by === this.user?.id) return; // écho de ma propre écriture
+      this.reviews[row.segment_id] = normReview(row);
+      this.#emit('reviews', { remote: true, segmentId: row.segment_id, by: row.reviewer_id });
+    });
+    on('segment_locks', ({ eventType, new: row, old }) => {
+      if (eventType === 'DELETE') delete this.locks[old.segment_id];
+      else this.locks[row.segment_id] = row;
+      this.#emit('locks');
+    });
+    on('recordings', ({ eventType, new: row, old }) => {
+      if (eventType === 'DELETE') this.takes = this.takes.filter((t) => t.id !== old.id);
+      else {
+        const t = normTake(row);
+        const i = this.takes.findIndex((x) => x.id === t.id);
+        this.takes = i >= 0 ? this.takes.map((x) => (x.id === t.id ? t : x)) : [...this.takes, t];
+      }
+      this.#emit('takes', { remote: true });
+    });
+    on('glossary', ({ eventType, new: row, old }) => {
+      if (eventType === 'DELETE') this.glossary = this.glossary.filter((g) => g.id !== old.id);
+      else {
+        const i = this.glossary.findIndex((g) => g.id === row.id);
+        if (i >= 0) this.glossary[i] = row; else this.glossary.unshift(row);
+      }
+      this.#emit('glossary');
+    });
+    on('segments', ({ eventType, new: row, old }) => {
+      if (eventType === 'DELETE') this.segments = this.segments.filter((s) => s.id !== old.id);
+      else {
+        const seg = pick(row, SEGMENT_COLUMNS.split(', '));
+        const i = this.segments.findIndex((s) => s.id === seg.id);
+        if (i >= 0) this.segments[i] = seg; else { this.segments.push(seg); this.segments.sort((a, b) => a.position - b.position); }
+      }
+      this.#emit('segments');
+    });
+    on('members', ({ eventType, new: row, old }) => {
+      if (eventType === 'DELETE') this.members = this.members.filter((m) => m.email !== old.email);
+      else {
+        const i = this.members.findIndex((m) => m.email === row.email);
+        if (i >= 0) this.members[i] = row; else this.members.push(row);
+      }
+      this.#emit('members');
+    });
+    const reloadPeople = () => { this.#selectAll('speakers', '*', 'created_at').then((s) => { this.speakers = s; return this.#selectAll('consents'); })
+      .then((c) => { this.consents = Object.fromEntries(c.map((x) => [x.speaker_id, x])); this.#emit('speakers', { remote: true }); }).catch(() => {}); };
+    on('speakers', reloadPeople);
+    on('consents', reloadPeople);
+    this.channel.subscribe();
   }
 
   // --- Infrastructure --------------------------------------------------------------
@@ -136,7 +209,7 @@ export class SupabaseDataService extends DataService {
     return () => this.listeners.delete(listener);
   }
 
-  #emit(topic) { this.listeners.forEach((fn) => fn(topic)); }
+  #emit(topic, detail) { this.listeners.forEach((fn) => fn(topic, detail)); }
 
   /** Exécute une écriture distante dans l'ordre ; en cas d'échec, resynchronise et relance l'erreur. */
   #write(fn) {
@@ -165,10 +238,56 @@ export class SupabaseDataService extends DataService {
       glossary: this.glossary,
       speakers: this.speakers,
       consents: this.consents,
-      linguists: this.members.map((m) => ({ id: m.code, name: m.display_name })),
       members: this.members,
+      linguists: this.members.map((m) => ({ id: m.code, name: m.display_name })),
+      locks: this.locks,
+      me: this.member,
       settings: { ...this.settings, activeLinguistId: this.member?.code ?? null },
     };
+  }
+
+  memberName(code) {
+    return this.members.find((m) => m.code === code)?.display_name ?? code;
+  }
+
+  // --- Verrous de travail -------------------------------------------------------------
+  /** Verrou actif posé par un AUTRE linguiste (null si libre, expiré ou à moi). */
+  lockOf(segmentId) {
+    const l = this.locks[segmentId];
+    if (!l || l.user_id === this.user?.id) return null;
+    return Date.now() - new Date(l.locked_at).getTime() < LOCK_TTL_MS ? l : null;
+  }
+
+  /** Réserve un segment. Sans `force`, échoue si un autre linguiste y travaille. */
+  async claimSegment(segmentId, { force = false } = {}) {
+    const other = this.lockOf(segmentId);
+    if (other && !force) return { ok: false, lock: other };
+    const row = { segment_id: segmentId, member_code: this.member.code, member_name: this.member.display_name, user_id: this.user.id, locked_at: nowIso() };
+    this.locks[segmentId] = row;
+    const { error } = await this.client.from('segment_locks').upsert(row);
+    if (error) return { ok: false, error: describe(error) };
+    return { ok: true };
+  }
+
+  async releaseSegment(segmentId) {
+    const l = this.locks[segmentId];
+    if (!l || l.user_id !== this.user?.id) return;
+    delete this.locks[segmentId];
+    await this.client.from('segment_locks').delete().eq('segment_id', segmentId).eq('user_id', this.user.id);
+  }
+
+  async releaseMyLocks() {
+    if (!this.user) return;
+    Object.keys(this.locks).forEach((id) => { if (this.locks[id].user_id === this.user.id) delete this.locks[id]; });
+    await this.client.from('segment_locks').delete().eq('user_id', this.user.id);
+  }
+
+  // --- Répartition du travail ------------------------------------------------------------
+  async assignLot(lot, memberCode) {
+    if (!this.isAdmin) throw new Error('Réservé aux administrateurs.');
+    await this.#write(async () => SupabaseDataService.#check(await this.client.from('segments').update({ assigned_to: memberCode || null }).eq('lot', lot)));
+    this.segments = this.segments.map((s) => (s.lot === lot ? { ...s, assigned_to: memberCode || null } : s));
+    this.#emit('segments');
   }
 
   // --- Révisions -----------------------------------------------------------------
@@ -287,7 +406,8 @@ export class SupabaseDataService extends DataService {
       SupabaseDataService.#check(res);
       return res;
     });
-    if (i >= 0) this.speakers[i] = data; else this.speakers.push(data);
+    const j = this.speakers.findIndex((s) => s.id === data.id);
+    if (j >= 0) this.speakers[j] = data; else this.speakers.push(data);
     this.#emit('speakers');
     return data;
   }
@@ -325,7 +445,7 @@ export class SupabaseDataService extends DataService {
   // --- Enregistrements ----------------------------------------------------------------
   async #removeObjects(paths) {
     for (let i = 0; i < paths.length; i += 100) {
-      const { error } = await this.client.storage.from(SUPABASE.audioBucket).remove(paths.slice(i, i + 100));
+      const { error } = await this.client.storage.from(BACKEND.audioBucket).remove(paths.slice(i, i + 100));
       if (error) throw error;
     }
   }
@@ -351,17 +471,17 @@ export class SupabaseDataService extends DataService {
     };
     const demoted = this.takes.filter((t) => t.current && t.segment_id === take.segment_id && t.speaker_id === take.speaker_id).map((t) => t.id);
     await this.#write(async () => {
-      const up = await this.client.storage.from(SUPABASE.audioBucket).upload(storage_path, new Blob([wavBuffer], { type: 'audio/wav' }), { contentType: 'audio/wav', upsert: false });
+      const up = await this.client.storage.from(BACKEND.audioBucket).upload(storage_path, new Blob([wavBuffer], { type: 'audio/wav' }), { contentType: 'audio/wav', upsert: false });
       if (up.error) throw up.error;
       const ins = await this.client.from('recordings').insert(pick(take, TAKE_COLUMNS));
       if (ins.error) {
-        await this.client.storage.from(SUPABASE.audioBucket).remove([storage_path]);
+        await this.client.storage.from(BACKEND.audioBucket).remove([storage_path]);
         throw ins.error;
       }
       if (demoted.length) SupabaseDataService.#check(await this.client.from('recordings').update({ current: false }).in('id', demoted));
     });
     this.audioCache.set(id, wavBuffer);
-    this.takes = [...this.takes.map((t) => (demoted.includes(t.id) ? { ...t, current: false } : t)), take];
+    this.takes = [...this.takes.filter((t) => t.id !== id).map((t) => (demoted.includes(t.id) ? { ...t, current: false } : t)), take];
     this.#emit('takes');
     return take;
   }
@@ -386,7 +506,7 @@ export class SupabaseDataService extends DataService {
     if (this.audioCache.has(takeId)) return this.audioCache.get(takeId);
     const take = this.takes.find((t) => t.id === takeId);
     if (!take) return null;
-    const { data, error } = await this.client.storage.from(SUPABASE.audioBucket).download(take.storage_path);
+    const { data, error } = await this.client.storage.from(BACKEND.audioBucket).download(take.storage_path);
     if (error) return null;
     const buf = await data.arrayBuffer();
     if (this.audioCache.size > 40) this.audioCache.delete(this.audioCache.keys().next().value);
@@ -417,7 +537,7 @@ export class SupabaseDataService extends DataService {
     this.#emit('takes');
   }
 
-  // --- Paramètres, membres et maintenance ----------------------------------------------
+  // --- Paramètres et comptes ----------------------------------------------------------
   async saveSettings(patch) {
     this.settings = { ...this.settings, ...patch, audio: { ...this.settings.audio, ...(patch.audio ?? {}) } };
     delete this.settings.activeLinguistId;
@@ -425,50 +545,41 @@ export class SupabaseDataService extends DataService {
     this.#emit('settings');
   }
 
-  async addLinguist() {
-    throw new Error('Les linguistes sont gérés comme membres du projet (Paramètres → Membres).');
+  async #admin(body) {
+    const { data, error } = await this.client.functions.invoke(BACKEND.adminFunction, { body });
+    if (error) {
+      let msg = error.message;
+      try { msg = (await error.context.json()).error ?? msg; } catch { /* réponse non JSON */ }
+      throw new Error(describe({ message: msg }));
+    }
+    return data;
   }
 
-  async addMember({ email, display_name, code, role }) {
-    const row = { email: email.trim().toLowerCase(), display_name: display_name.trim(), code: code.trim(), role };
-    await this.#write(async () => SupabaseDataService.#check(await this.client.from('members').insert(row)));
-    this.members = [...this.members, { ...row, created_at: nowIso() }];
-    this.#emit('settings');
+  /** Crée le compte de connexion et l'autorisation d'accès (administrateurs uniquement). */
+  async createMember({ email, display_name, code, role, password }) {
+    const { member } = await this.#admin({ action: 'create', email, display_name, code, role, password });
+    if (!this.members.some((m) => m.email === member.email)) this.members = [...this.members, { ...member, created_at: nowIso() }];
+    this.#emit('members');
+    return member;
   }
 
-  async removeMember(email) {
-    if (email === this.member?.email) throw new Error('Vous ne pouvez pas retirer votre propre accès.');
-    await this.#write(async () => SupabaseDataService.#check(await this.client.from('members').delete().eq('email', email)));
+  async deleteMember(email) {
+    await this.#admin({ action: 'delete', email });
     this.members = this.members.filter((m) => m.email !== email);
-    this.#emit('settings');
+    this.#emit('members');
+  }
+
+  async resetMemberPassword(email, password) {
+    await this.#admin({ action: 'reset_password', email, password });
   }
 
   async storageInfo() {
     return {
-      remote: true,
-      region: SUPABASE.region,
       takes: this.takes.length,
       audioBytes: this.takes.reduce((a, t) => a + (t.size_bytes || 0), 0),
       reviews: Object.keys(this.reviews).length,
+      segments: this.segments.length,
       members: this.members.length,
     };
-  }
-
-  /** Réservé aux administrateurs : restaure révisions et glossaire de démonstration. Les enregistrements sont conservés. */
-  async resetDemo() {
-    if (!this.isAdmin) throw new Error('Seul un administrateur peut réinitialiser les données de démonstration.');
-    const glossarySeed = await fetch(new URL('../mocks/glossary.json', import.meta.url)).then((r) => r.json());
-    const now = nowIso();
-    const simulated = SIMULATED_VALIDATED.map((id) => this.segments.find((s) => s.id === id)).filter(Boolean).map((seg) => {
-      const { review } = applyReviewAction(emptyReview(seg.id), seg, 'validate', { reviewerId: 'simulation', now });
-      return pick({ ...review, simulated: true }, REVIEW_COLUMNS);
-    });
-    await this.#write(async () => {
-      SupabaseDataService.#check(await this.client.from('reviews').delete().neq('segment_id', ''));
-      SupabaseDataService.#check(await this.client.from('reviews').insert(simulated));
-      SupabaseDataService.#check(await this.client.from('glossary').delete().neq('id', ''));
-      SupabaseDataService.#check(await this.client.from('glossary').insert(glossarySeed.map((g) => ({ ...g, proposals: [] }))));
-    });
-    await this.refresh();
   }
 }

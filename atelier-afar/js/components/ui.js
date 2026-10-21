@@ -91,8 +91,7 @@ export function promptDialog({ title, message, label, placeholder = '', confirmL
 }
 
 // --- Badges et progression -----------------------------------------------------
-export const reviewBadge = (status, simulated) =>
-  h('span', { class: `badge badge-${status}` }, REVIEW_STATUS[status] ?? status, simulated && h('span', { class: 'badge-sim', title: 'Statut simulé pour la démonstration' }, ' · simulé'));
+export const reviewBadge = (status) => h('span', { class: `badge badge-${status}` }, REVIEW_STATUS[status] ?? status);
 
 export const audioBadge = (status) => h('span', { class: `badge badge-audio-${status}` }, AUDIO_STATUS[status] ?? status);
 

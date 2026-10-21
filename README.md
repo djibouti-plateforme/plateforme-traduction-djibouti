@@ -4,7 +4,7 @@ Plateforme web permettant à des linguistes de traduire du **français** vers le
 (l'**afar** pour commencer, puis le somali, l'arabe… ou toute autre langue).
 Les traductions sont enregistrées dans des fichiers **Excel (.xlsx)**.
 
-> 🆕 **[Atelier Afar](atelier-afar/)** — démonstration de révision de traductions FR→Afar et d'enregistrement d'un corpus vocal TTS : `https://djibouti-plateforme.github.io/plateforme-traduction-djibouti/atelier-afar/` (voir [atelier-afar/README.md](atelier-afar/README.md)).
+> **[Atelier Afar](atelier-afar/)** — plateforme de révision de traductions FR→Afar et d'enregistrement d'un corpus vocal TTS : `https://djibouti-plateforme.github.io/plateforme-traduction-djibouti/atelier-afar/` (voir [atelier-afar/README.md](atelier-afar/README.md)).
 
 Site : `https://djibouti-plateforme.github.io/plateforme-traduction-djibouti/`
 

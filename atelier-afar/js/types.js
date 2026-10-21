@@ -59,7 +59,6 @@
  * @property {number} duration_seconds     Temps de révision cumulé.
  * @property {number} text_version         Incrémenté à chaque changement du texte approuvé.
  * @property {ReviewVersion[]} history     Versions enregistrées (la traduction machine reste dans Segment.mt_afar).
- * @property {boolean} [simulated]         Statut simulé du jeu de démonstration.
  */
 
 /**
@@ -128,7 +127,7 @@
  * @property {string} domaine
  * @property {string} notes
  * @property {GlossaryStatus} status
- * @property {'demo'|'linguiste'} source
+ * @property {'linguiste'} source
  * @property {string|null} [validated_by]   Réservé : attribution future du statut « Terme validé par un linguiste ».
  * @property {string|null} [validated_at]
  * @property {Array<{afar:string, comment:string, by:string, at:string}>} [proposals]

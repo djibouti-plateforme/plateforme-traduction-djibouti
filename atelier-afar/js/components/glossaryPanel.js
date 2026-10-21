@@ -51,7 +51,6 @@ export function createGlossaryPanel(service) {
     h('div', { class: 'panel-head' },
       h('h3', null, icon('book', 16), 'Glossaire FR–Afar'),
       h('button', { class: 'btn btn-sm btn-secondary', onclick: () => editEntry(null) }, icon('plus', 14), 'Ajouter')),
-    h('p', { class: 'muted tiny' }, 'Les traductions de démonstration sont fictives et non vérifiées.'),
     search,
     listEl);
 

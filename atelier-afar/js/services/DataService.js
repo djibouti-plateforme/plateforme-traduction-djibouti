@@ -1,6 +1,5 @@
 // Contrat d'accès aux données. Les composants ne connaissent que cette interface :
-// MockDataService (navigateur) l'implémente aujourd'hui, un futur ApiDataService
-// (backend HTTP) pourra la remplacer sans toucher à l'interface utilisateur.
+// SupabaseDataService l'implémente ; une autre API pourra la remplacer sans toucher à l'interface.
 //
 // Modèle : lecture synchrone d'un instantané en mémoire (snapshot) + commandes asynchrones.
 // Après chaque commande réussie, le service notifie les abonnés (subscribe).
@@ -66,7 +65,5 @@ export class DataService {
 
   // --- Paramètres et maintenance --------------------------------------------
   async saveSettings(patch) { throw new Error('non implémenté'); }
-  async addLinguist(name) { throw new Error('non implémenté'); }
   async storageInfo() { throw new Error('non implémenté'); }
-  async resetDemo() { throw new Error('non implémenté'); }
 }

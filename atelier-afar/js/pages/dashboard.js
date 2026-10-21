@@ -16,7 +16,7 @@ export function computeStats(snapshot) {
   for (const s of segments) {
     const r = reviews[s.id];
     count[r?.status ?? 'a_reviser'] += 1;
-    if (r && ['valide', 'corrige', 'rejete', 'signale'].includes(r.status) && r.duration_seconds > 0 && !r.simulated) {
+    if (r && ['valide', 'corrige', 'rejete', 'signale'].includes(r.status) && r.duration_seconds > 0) {
       reviewSeconds += r.duration_seconds;
       reviewedWithTime += 1;
     }
@@ -34,7 +34,6 @@ export function computeStats(snapshot) {
     remaining: segments.length - treated,
     progress: segments.length ? treated / segments.length : 0,
     avgReview: reviewedWithTime ? reviewSeconds / reviewedWithTime : 0,
-    simulated: segments.filter((s) => reviews[s.id]?.simulated).length,
     queueSize: queue.length,
     audioCount,
     recordedPhrases: new Set(validTakes.map((t) => t.segment_id)).size,
@@ -69,14 +68,14 @@ export function mountDashboard(container, { service }) {
 
     mount(container, h('div', { class: 'page-pad dashboard' },
       h('div', { class: 'page-head' },
-        h('div', null, h('h1', null, 'Tableau de bord'), h('p', { class: 'muted' }, 'Indicateurs calculés en direct à partir des données enregistrées dans ce navigateur.')),
+        h('div', null, h('h1', null, 'Tableau de bord'), h('p', { class: 'muted' }, 'Indicateurs mis à jour en temps réel pour toute l\'équipe.')),
         h('div', { class: 'row-gap' },
           exportBtn('Exporter le corpus FR–Afar', () => { const n = exportRevisions(service, 'jsonl'); toast(`revisions.jsonl téléchargé (${n} segments)`); }, 'btn-primary'),
           exportBtn('CSV', () => { exportRevisions(service, 'csv'); toast('revisions.csv téléchargé'); }),
           exportBtn('Exporter le corpus TTS', () => runTtsExport(service), 'btn-teal'))),
 
       h('section', { class: 'kpis' },
-        kpi('Segments français', st.total, st.simulated ? `dont ${st.simulated} au statut simulé` : null),
+        kpi('Segments français', st.total, `${new Set(snap.segments.map((x) => x.lot)).size} lots`),
         kpi('Validés', st.count.valide, 'sans modification', 'tone-valid'),
         kpi('Corrigés', st.count.corrige, 'par le linguiste', 'tone-corrected'),
         kpi('Rejetés', st.count.rejete, `+ ${st.count.signale} signalé(s)`, 'tone-rejected'),
@@ -108,7 +107,9 @@ export function mountDashboard(container, { service }) {
             h('div', { class: 'progress' }, h('div', { class: 'progress-fill tone-warning', style: { width: `${(st.annotations[k] / maxAnn) * 100}%` } })),
             h('span', { class: 'bar-val' }, st.annotations[k])))))),
 
-      h('p', { class: 'muted tiny' }, 'Le temps moyen exclut les statuts simulés. Les minutes audio comptent uniquement les prises courantes validées.')));
+      linguistTable(snap),
+
+      h('p', { class: 'muted tiny' }, 'Les minutes audio comptent uniquement les prises courantes validées.')));
   }
 
   render();
@@ -123,4 +124,29 @@ export async function runTtsExport(service) {
   } catch (err) {
     toast(err.message, { type: err.code === 'empty' ? 'warning' : 'error' });
   }
+}
+
+/** Avancement par linguiste : segments attribués, traités, corrigés, temps moyen. */
+function linguistTable(snap) {
+  const { members = [], segments, reviews } = snap;
+  if (!members.length) return null;
+  const rows = members.map((m) => {
+    const assigned = segments.filter((s) => s.assigned_to === m.code);
+    const mine = Object.values(reviews).filter((r) => r.reviewer_id === m.code && ['valide', 'corrige', 'rejete', 'signale'].includes(r.status));
+    const corrected = mine.filter((r) => r.status === 'corrige').length;
+    const doneAssigned = assigned.filter((s) => ['valide', 'corrige', 'rejete', 'signale'].includes(reviews[s.id]?.status)).length;
+    const time = mine.reduce((a, r) => a + (r.duration_seconds || 0), 0);
+    return { m, assigned: assigned.length, doneAssigned, treated: mine.length, corrected, avg: mine.length ? time / mine.length : 0 };
+  });
+  return h('article', { class: 'card team-card' },
+    h('header', { class: 'card-head' }, h('h3', null, 'Avancement par linguiste')),
+    h('table', { class: 'team-table' },
+      h('thead', null, h('tr', null, ['Linguiste', 'Segments attribués', 'Progression du lot', 'Traités', 'Corrigés', 'Temps moyen'].map((t) => h('th', null, t)))),
+      h('tbody', null, rows.map((r) => h('tr', null,
+        h('td', null, h('strong', null, r.m.display_name), h('span', { class: 'muted tiny' }, ` ${r.m.role === 'admin' ? '· admin' : ''}`)),
+        h('td', null, r.assigned || '—'),
+        h('td', null, r.assigned ? h('div', { class: 'team-progress' }, progressBar(r.doneAssigned, r.assigned, { label: r.m.display_name }), h('span', { class: 'tiny muted' }, `${r.doneAssigned}/${r.assigned}`)) : h('span', { class: 'muted tiny' }, 'aucun lot attribué')),
+        h('td', null, r.treated),
+        h('td', null, r.corrected),
+        h('td', null, r.avg ? fmtDuration(r.avg) : '—'))))));
 }

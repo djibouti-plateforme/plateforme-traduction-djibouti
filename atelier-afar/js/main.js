@@ -1,19 +1,15 @@
 // Point d'entrée : initialise le service de données, l'en-tête et le routage par fragment d'URL.
 import { h, icon, mount, isTypingTarget } from './utils/dom.js';
-import { MockDataService } from './services/MockDataService.js';
 import { SupabaseDataService } from './services/SupabaseDataService.js';
-import { SUPABASE, useLocalDemo } from './config.js';
+import { LOCK_TTL_MS } from './config.js';
 import { computeStats } from './pages/dashboard.js';
 import { mountDashboard } from './pages/dashboard.js';
 import { mountReview } from './pages/review.js';
 import { mountRecording } from './pages/recording.js';
 import { mountSettings } from './pages/settings.js';
 import { openModal, toast } from './components/ui.js';
-import { loadUi, saveUi } from './ui-state.js';
 
-// Supabase par défaut ; `?demo` dans l'adresse : démonstration 100 % locale, sans compte.
-const service = useLocalDemo() ? new MockDataService() : new SupabaseDataService();
-const isCloud = service.mode === 'supabase';
+const service = new SupabaseDataService();
 
 const ROUTES = [
   { key: 'dashboard', path: 'tableau-de-bord', label: 'Tableau de bord', icon: 'dashboard', mount: mountDashboard },
@@ -56,20 +52,21 @@ function navigate() {
 // ---- En-tête -------------------------------------------------------------------
 const header = h('header', { class: 'topbar' });
 
+/** Collègues ayant un segment ouvert (verrou récent). */
+function activeColleagues() {
+  const now = Date.now();
+  const names = new Map();
+  Object.values(service.snapshot().locks).forEach((l) => {
+    if (l.user_id !== service.user?.id && now - new Date(l.locked_at).getTime() < LOCK_TTL_MS) names.set(l.member_code, l.member_name);
+  });
+  return [...names.values()];
+}
+
 function paintHeader() {
   const snap = service.snapshot();
   const st = computeStats(snap);
-  const linguist = snap.linguists.find((l) => l.id === snap.settings.activeLinguistId);
-  let linguistSel;
-  if (isCloud) {
-    linguistSel = h('div', { class: 'user-chip' },
-      h('span', { class: 'user-name', title: service.user?.email }, service.member?.display_name ?? ''),
-      h('button', { class: 'link-btn on-dark', onclick: async () => { await service.signOut(); location.reload(); } }, 'Se déconnecter'));
-  } else {
-    linguistSel = h('select', { class: 'linguist-select', 'aria-label': 'Linguiste actif (sélection simulée)' },
-      snap.linguists.map((l) => h('option', { value: l.id, selected: l.id === linguist?.id }, l.name)));
-    linguistSel.addEventListener('change', () => service.saveSettings({ activeLinguistId: linguistSel.value }).then(() => toast('Linguiste actif modifié')));
-  }
+  const me = snap.me;
+  const colleagues = activeColleagues();
 
   mount(header,
     h('a', { class: 'brand', href: '#/tableau-de-bord', 'aria-label': 'Tableau de bord' },
@@ -82,13 +79,24 @@ function paintHeader() {
         'aria-current': currentRoute?.key === r.key ? 'page' : null,
       }, icon(r.icon, 16), h('span', null, r.label)))),
     h('div', { class: 'top-stats' },
+      colleagues.length ? h('span', { class: 'top-stat presence', title: `En train de réviser : ${colleagues.join(', ')}` },
+        h('i', { class: 'presence-dot' }), h('span', null, colleagues.length === 1 ? colleagues[0] : `${colleagues.length} collègues`), h('span', null, 'en ligne')) : null,
       h('a', { class: 'top-stat', href: '#/revision', title: 'Traductions restant à traiter' }, h('strong', null, st.remaining), h('span', null, 'à valider')),
       h('a', { class: 'top-stat', href: '#/enregistrement', title: 'Phrases avec un enregistrement validé' }, h('strong', null, st.recordedPhrases), h('span', null, 'enregistrées'))),
     h('div', { class: 'top-user' },
-      h('span', { class: 'avatar' }, (linguist?.name ?? '?').slice(0, 1).toUpperCase()),
-      linguistSel),
+      h('span', { class: 'avatar' }, (me?.display_name ?? '?').slice(0, 1).toUpperCase()),
+      h('div', { class: 'user-chip' },
+        h('span', { class: 'user-name', title: service.user?.email }, me?.display_name ?? ''),
+        h('button', { class: 'link-btn on-dark', onclick: signOut }, 'Se déconnecter'))),
     h('button', { class: 'icon-btn on-dark', title: 'Raccourcis clavier (?)', onclick: showShortcuts }, icon('keyboard', 18)),
     h('a', { class: ['icon-btn on-dark', currentRoute?.key === 'settings' && 'active'], href: '#/parametres', title: 'Paramètres' }, icon('settings', 18)));
+}
+
+async function signOut() {
+  page?.unmount();
+  page = null;
+  await service.signOut();
+  location.reload();
 }
 
 function applySettings() {
@@ -127,20 +135,15 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// ---- Démarrage -------------------------------------------------------------------
-const bannerText = isCloud
-  ? `Données de démonstration fictives — Stockage connecté : Supabase (${SUPABASE.region})`
-  : 'Mode démonstration — Données fictives — Aucun serveur connecté';
-
-/** Écran de connexion (comptes créés par l'administrateur, pas d'inscription libre). */
+// ---- Connexion -------------------------------------------------------------------
 function renderAuthScreen(state) {
   const outlet = app.querySelector('.outlet');
   if (state.status === 'forbidden') {
     mount(outlet, h('div', { class: 'onboarding' }, h('div', { class: 'onboarding-card card login-card' },
       h('div', { class: 'onb-icon' }, icon('shield', 26)),
       h('h2', null, 'Accès non autorisé'),
-      h('p', null, `Le compte ${state.email} est bien connecté, mais il ne fait pas partie des membres du projet.`),
-      h('p', { class: 'muted' }, 'Demandez à l\'administrateur de vous ajouter dans Paramètres → Membres.'),
+      h('p', null, `Le compte ${state.email} n'a pas accès à cet atelier.`),
+      h('p', { class: 'muted' }, 'Contactez l\'administrateur du projet.'),
       h('div', { class: 'modal-actions' }, h('button', { class: 'btn btn-secondary', onclick: async () => { await service.signOut(); location.reload(); } }, 'Se déconnecter')))));
     return;
   }
@@ -169,46 +172,45 @@ function renderAuthScreen(state) {
   });
   mount(outlet, h('div', { class: 'onboarding' }, h('div', { class: 'onboarding-card card login-card' },
     h('div', { class: 'onb-icon' }, icon('languages', 26)),
-    h('h2', null, 'Connexion à l\'Atelier Afar'),
-    h('p', { class: 'muted' }, `Les révisions et les enregistrements sont stockés sur Supabase (${SUPABASE.region}). Les comptes sont créés par l'administrateur du projet.`),
+    h('h2', null, 'Atelier Afar'),
+    h('p', { class: 'muted' }, 'Connectez-vous avec le compte fourni par l\'administrateur du projet.'),
     form,
-    h('p', { class: 'tiny muted login-foot' }, 'Mot de passe oublié ? Contactez l\'administrateur. ',
-      h('a', { href: '?demo' }, 'Essayer la démonstration locale sans compte')))));
+    h('p', { class: 'tiny muted login-foot' }, 'Mot de passe oublié ? Contactez l\'administrateur.'))));
   setTimeout(() => email.focus(), 50);
 }
 
+// ---- Démarrage -------------------------------------------------------------------
+let started = false;
+
 async function start() {
   mount(app,
-    h('div', { class: 'demo-banner', role: 'note' }, icon('info', 15), h('strong', null, bannerText),
-      !isCloud && h('a', { class: 'banner-link', href: location.pathname }, 'Revenir à la version connectée')),
     header,
     h('main', { class: 'outlet' }, h('div', { class: 'boot' }, h('div', { class: 'spinner' }), 'Chargement…')));
   try {
     const state = await service.init();
-    if (state && state.status !== 'ready') { renderAuthScreen(state); return; }
+    if (state.status !== 'ready') { renderAuthScreen(state); return; }
   } catch (err) {
     mount(app.querySelector('.outlet'), h('div', { class: 'page-pad' }, h('div', { class: 'callout callout-error' }, icon('alert'),
-      h('div', null, h('strong', null, 'Impossible de charger l\'application. '), err.message, h('br'), 'Vérifiez votre connexion internet, ou ouvrez l\'application via un serveur web (GitHub Pages, ou « python3 -m http.server » en local), pas directement depuis le fichier.'))));
+      h('div', null, h('strong', null, 'Impossible de charger l\'atelier. '), err.message, h('br'), 'Vérifiez votre connexion internet puis rechargez la page.'))));
     return;
   }
+  if (started) return;
+  started = true;
   applySettings();
-  service.subscribe((topic) => {
+  service.subscribe((topic, detail) => {
     if (topic === 'settings' || topic === 'reset') applySettings();
-    if (topic === 'storage-error') toast('Le stockage local est plein ou indisponible : exportez votre travail.', { type: 'error' });
-    if (topic === 'sync-error') toast('Une modification n\'a pas pu être enregistrée sur le serveur : les données ont été rechargées. Réessayez.', { type: 'error' });
+    if (topic === 'sync-error') toast('Une modification n\'a pas pu être enregistrée : les données ont été rechargées. Réessayez.', { type: 'error' });
     if (topic === 'signed-out') { location.reload(); return; }
     paintHeader();
-    page?.onData?.(topic);
+    page?.onData?.(topic, detail);
   });
   window.addEventListener('hashchange', navigate);
+  // Libère les segments réservés en quittant la page (au mieux ; sinon expiration automatique).
+  window.addEventListener('pagehide', () => { service.releaseMyLocks().catch(() => {}); });
+  // Rafraîchit l'indicateur de présence (expiration des verrous).
+  setInterval(paintHeader, 60_000);
   if (!location.hash) history.replaceState(null, '', '#/revision');
   navigate();
-
-  if (!isCloud && !loadUi().storageNoticeSeen) {
-    toast('Vos données sont enregistrées dans ce navigateur uniquement. Elles peuvent être perdues si vous effacez les données du site ou changez d\'appareil : exportez régulièrement.', { type: 'info', duration: 12000 });
-    saveUi({ storageNoticeSeen: true });
-  }
-  if (service.audioAvailable === false) toast(`Stockage audio indisponible : ${service.audioError}`, { type: 'warning' });
 }
 
 start();
