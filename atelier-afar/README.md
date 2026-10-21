@@ -12,6 +12,33 @@ Adresse : `https://djibouti-plateforme.github.io/plateforme-traduction-djibouti/
 
 ---
 
+## Deux modes de fonctionnement
+
+| | **Supabase** (par défaut) | **Démonstration locale** (`?demo`) |
+|---|---|---|
+| Adresse | `…/atelier-afar/` | `…/atelier-afar/?demo` |
+| Compte | E-mail + mot de passe, créé par l'administrateur | Aucun (linguiste simulé) |
+| Données | Base Postgres + stockage de fichiers Supabase, **Francfort (UE)**, partagées entre membres | Navigateur uniquement (localStorage + IndexedDB) |
+| Persistance | Survit au changement d'appareil ou de navigateur | Perdue si les données du site sont effacées |
+
+Les textes et traductions restent des **données de démonstration fictives** dans les deux modes.
+
+### Stockage Supabase
+
+- Projet `atelier-afar` (`klppbbucaslphagjbmth`), région `eu-central-1`. Configuration côté client : `js/config.js` (URL et clé *publishable*, publique par conception).
+- Tables : `segments`, `reviews`, `glossary`, `speakers`, `consents`, `recordings`, `members`. Fichiers WAV dans le bucket **privé** `recordings` (`<locuteur>/<segment>/<prise>.wav`, WAV uniquement, 50 Mo max).
+- **Sécurité** : RLS activée sur toutes les tables et sur le stockage. Un visiteur non connecté ne voit rien ; un compte connecté ne voit rien non plus s'il n'est pas dans `members`. Les linguistes lisent et écrivent révisions, glossaire, locuteurs et prises ; seuls les administrateurs gèrent les membres, les segments, la réinitialisation de la démo et la suppression globale des enregistrements.
+- Les règles métier (versions du texte, invalidation des prises, éligibilité à l'export) restent dans `js/utils/status.js`, partagé par les deux modes.
+- Écritures sérialisées ; en cas d'échec réseau, l'interface recharge l'état depuis le serveur et prévient l'utilisateur. Pas encore de synchronisation en temps réel : si deux linguistes modifient le même segment, la dernière écriture l'emporte (recharger la page pour voir le travail des autres).
+
+### Ajouter un linguiste
+
+1. Dans l'atelier, connecté en administrateur : **Paramètres → Membres du projet** → adresse, nom, code (ex. `ling_02`) → *Autoriser ce membre*.
+2. Dans le [tableau de bord Supabase](https://supabase.com/dashboard/project/klppbbucaslphagjbmth/auth/users) : **Authentication → Users → Add user → Create new user**, même adresse, mot de passe provisoire, cocher **Auto Confirm User**.
+3. Communiquer le mot de passe ; la personne peut le changer dans **Paramètres → Mon compte**.
+
+Mot de passe oublié : l'administrateur le réinitialise depuis le même écran Supabase (l'envoi d'e-mails n'est pas configuré).
+
 ## Choix techniques : aucun serveur, aucune compilation
 
 Le cahier des charges initial proposait React + TypeScript + Vite + Tailwind. Comme demandé, la stack a été adaptée pour **n'exiger aucun serveur ni aucune étape de build** :
@@ -141,11 +168,13 @@ WAV RIFF, PCM signé 16 bits little-endian, **mono**, à la **fréquence native 
 - **GitHub Pages** (actuel) : le workflow `.github/workflows/pages.yml` publie tout le dépôt à chaque push sur `main` ; l'atelier est servi sous `/atelier-afar/`.
 - **Netlify / Vercel** : publier le dossier `atelier-afar/` comme site statique, sans commande de build (*Build command* vide, *Publish directory* `atelier-afar`).
 
-## Intégration future d'un backend
+## Évolutions possibles du backend
+
+`SupabaseDataService.js` est la première implémentation distante de `DataService`. Pour une autre API :
 
 1. Créer `js/services/ApiDataService.js` qui étend `DataService` et implémente les mêmes méthodes via HTTP (révisions, annotations, glossaire, locuteurs, consentements, prises audio).
    Conserver le principe actuel : un **instantané en mémoire** (`snapshot()`) pour l'affichage, des **commandes asynchrones** pour les écritures, et `subscribe()` pour notifier l'interface.
-2. Remplacer `new MockDataService()` par `new ApiDataService(...)` dans `js/main.js` (une seule ligne).
+2. Remplacer `new SupabaseDataService()` par `new ApiDataService(...)` dans `js/main.js` (une seule ligne).
 3. Côté serveur :
    - stocker `mt_afar` (sortie Claude, avec modèle, version de prompt et date) séparément des corrections humaines ;
    - appliquer les mêmes règles que `js/utils/status.js` (versionnement du texte approuvé, invalidation des prises, éligibilité à l'export) — ce module est sans dépendance et peut être réutilisé tel quel côté Node ;

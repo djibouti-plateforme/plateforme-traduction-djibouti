@@ -523,3 +523,19 @@ dialog::backdrop { background: rgba(8, 18, 38, .5); backdrop-filter: blur(3px); 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* ---------- Connexion et membres ---------- */
+.login-card { width: min(460px, 100%); }
+.login-form { margin-top: 16px; }
+.login-form .btn { width: 100%; }
+.login-foot { margin: 18px 0 0; }
+.user-chip { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.2; }
+.user-name { color: #fff; font-size: 13px; font-weight: 600; max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.link-btn.on-dark { color: #93c5fd; font-size: 11.5px; }
+.banner-link { margin-left: 10px; color: #78350f; font-size: 12px; }
+.member-list { list-style: none; margin: 0 0 12px; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.member-list li { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 9px; font-size: 13px; flex-wrap: wrap; }
+.member-form { display: flex; flex-direction: column; gap: 8px; padding: 12px; border-radius: 10px; background: var(--surface-2); border: 1px dashed var(--line-strong); margin-bottom: 10px; }
+.member-form .grid-2 { gap: 8px; }
+.member-form .btn { align-self: flex-start; }
+.studio.busy .take-review, .studio.busy .takes-old { opacity: .45; pointer-events: none; transition: opacity .2s; }

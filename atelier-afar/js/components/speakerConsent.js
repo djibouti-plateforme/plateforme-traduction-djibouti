@@ -79,7 +79,7 @@ export function consentScreen(service, onDone) {
       h('div', { class: 'onb-icon' }, icon('shield', 26)),
       h('h2', null, 'Avant d\'enregistrer votre voix'),
       existing.length ? h('div', { class: 'callout callout-info' }, icon('info', 18), h('div', null,
-        'Un profil avec consentement existe déjà sur ce navigateur : ',
+        service.mode === 'supabase' ? 'Un profil avec consentement existe déjà dans le projet : ' : 'Un profil avec consentement existe déjà sur ce navigateur : ',
         existing.map((s) => h('button', { class: 'link-btn', onclick: async () => { await service.saveSettings({ activeSpeakerId: s.id }); onDone(); } }, `utiliser « ${s.name} »`)))) : null,
       h('section', { class: 'consent-text' },
         h('h3', null, 'Utilisation de vos enregistrements'),

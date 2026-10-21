@@ -157,7 +157,7 @@ export function mountReview(container, { service, params, setRoute }) {
     const segment = segments.find((s) => s.id === currentId);
     if (!segment) { mount(center, emptyState('file', 'Aucun segment', 'Le jeu de données est vide.')); return; }
     // Ouvrir un segment « À réviser » le fait passer « En cours » (mise à jour synchrone de l'état local).
-    if (service.getReview(segment.id).status === 'a_reviser') service.touchReview(segment.id);
+    if (service.getReview(segment.id).status === 'a_reviser') service.touchReview(segment.id).catch(() => {}); // erreur signalée par le service
     const review = service.getReview(segment.id);
     shownSeconds = Math.round(review.duration_seconds || 0);
     timerEl.replaceChildren(icon('clock', 14), ` ${fmtDuration(shownSeconds)}`);

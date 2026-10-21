@@ -9,8 +9,18 @@ import { runTtsExport } from './dashboard.js';
 export function mountSettings(container, { service }) {
   const storageEl = h('div', { class: 'storage' }, 'Calcul…');
 
+  const cloud = service.mode === 'supabase';
+
   async function paintStorage() {
     const info = await service.storageInfo();
+    if (info.remote) {
+      mount(storageEl, h('dl', { class: 'meta-grid' },
+        h('div', null, h('dt', null, 'Hébergement'), h('dd', null, `Supabase — ${info.region}`)),
+        h('div', null, h('dt', null, 'Prises audio'), h('dd', null, `${info.takes} (${fmtBytes(info.audioBytes)})`)),
+        h('div', null, h('dt', null, 'Révisions'), h('dd', null, String(info.reviews))),
+        h('div', null, h('dt', null, 'Membres'), h('dd', null, String(info.members)))));
+      return;
+    }
     const pct = info.usage && info.quota ? Math.round((info.usage / info.quota) * 100) : null;
     mount(storageEl,
       h('dl', { class: 'meta-grid' },
@@ -55,13 +65,71 @@ export function mountSettings(container, { service }) {
       h('input', { type: 'checkbox', checked: settings[key], onchange: (e) => save({ [key]: e.target.checked }) }),
       h('span', null, label, help && h('span', { class: 'field-help block' }, help)));
 
+    function accountSection() {
+      const m = service.member;
+      return section('Mon compte', null,
+        h('dl', { class: 'meta-grid' },
+          h('div', null, h('dt', null, 'Nom'), h('dd', null, m.display_name)),
+          h('div', null, h('dt', null, 'Adresse e-mail'), h('dd', null, m.email)),
+          h('div', null, h('dt', null, 'Code linguiste'), h('dd', null, h('code', null, m.code))),
+          h('div', null, h('dt', null, 'Rôle'), h('dd', null, m.role === 'admin' ? 'Administrateur' : 'Linguiste'))),
+        h('p', { class: 'field-help' }, 'Le code linguiste est enregistré dans chaque révision (reviewer_id).'),
+        h('div', { class: 'row-gap wrap', style: { marginTop: '12px' } },
+          h('button', {
+            class: 'btn btn-sm btn-secondary',
+            onclick: async () => {
+              const pw = await promptDialog({ title: 'Changer de mot de passe', label: 'Nouveau mot de passe (8 caractères minimum)', confirmLabel: 'Changer', required: true });
+              if (!pw) return;
+              if (pw.length < 8) { toast('Le mot de passe doit contenir au moins 8 caractères.', { type: 'warning' }); return; }
+              try { await service.changePassword(pw); toast('Mot de passe modifié'); } catch (err) { toast(err.message, { type: 'error' }); }
+            },
+          }, icon('shield', 14), 'Changer de mot de passe'),
+          h('button', { class: 'btn btn-sm btn-ghost', onclick: async () => { await service.signOut(); location.reload(); } }, 'Se déconnecter')));
+    }
+
+    function membersSection() {
+      const { members } = service.snapshot();
+      const email = h('input', { class: 'input input-sm', type: 'email', placeholder: 'adresse@exemple.com' });
+      const name = h('input', { class: 'input input-sm', placeholder: 'Nom affiché' });
+      const code = h('input', { class: 'input input-sm', placeholder: 'Code (ex. ling_02)' });
+      const role = h('select', { class: 'input input-sm' }, h('option', { value: 'linguiste' }, 'Linguiste'), h('option', { value: 'admin' }, 'Administrateur'));
+      const add = async () => {
+        if (!/^\S+@\S+\.\S+$/.test(email.value.trim()) || !name.value.trim() || !/^[A-Za-z0-9_-]+$/.test(code.value.trim())) {
+          toast('Renseignez une adresse e-mail valide, un nom et un code (lettres, chiffres, _ ou -).', { type: 'warning' });
+          return;
+        }
+        try {
+          await service.addMember({ email: email.value, display_name: name.value, code: code.value, role: role.value });
+          toast('Membre autorisé. Créez maintenant son compte dans Supabase (voir l\'aide ci-dessous).', { duration: 8000 });
+          render();
+        } catch (err) { toast(err.message, { type: 'error' }); }
+      };
+      return section('Membres du projet', 'Seules les adresses listées ici peuvent voir et modifier les données.',
+        h('ul', { class: 'member-list' }, members.map((m) => h('li', null,
+          h('div', null, h('strong', null, m.display_name), ' ', h('span', { class: 'muted tiny' }, `${m.email} · ${m.code}`)),
+          h('span', { class: 'row-gap' },
+            h('span', { class: 'pill' }, m.role === 'admin' ? 'Administrateur' : 'Linguiste'),
+            m.email !== service.member.email && h('button', {
+              class: 'link-btn danger',
+              onclick: async () => {
+                if (!await confirmDialog({ title: 'Retirer ce membre ?', message: `${m.display_name} (${m.email}) n'aura plus accès aux données. Son travail déjà enregistré est conservé.`, confirmLabel: 'Retirer l\'accès', danger: true })) return;
+                try { await service.removeMember(m.email); toast('Accès retiré'); render(); } catch (err) { toast(err.message, { type: 'error' }); }
+              },
+            }, 'Retirer'))))),
+        h('div', { class: 'member-form' }, h('div', { class: 'grid-2' }, email, name, code, role),
+          h('button', { class: 'btn btn-sm btn-primary', onclick: add }, icon('plus', 14), 'Autoriser ce membre')),
+        h('p', { class: 'field-help' }, 'Étape 2 : dans le tableau de bord Supabase, ouvrez Authentication → Users → « Add user » → « Create new user », saisissez la même adresse et un mot de passe provisoire, cochez « Auto Confirm User », puis communiquez le mot de passe à la personne (elle pourra le changer dans « Mon compte »).'));
+    }
+
     mount(container, h('div', { class: 'page-pad settings' },
       h('div', { class: 'page-head' }, h('div', null, h('h1', null, 'Paramètres'), h('p', { class: 'muted' }, 'Réglages enregistrés dans ce navigateur uniquement.'))),
 
-      callout('info', h('strong', null, 'Où sont mes données ? '), 'Révisions, glossaire et réglages sont stockés dans le localStorage ; les enregistrements audio dans IndexedDB. Tout reste sur cet appareil : les données peuvent être perdues si vous effacez les données du site, utilisez la navigation privée ou changez d\'appareil. Exportez régulièrement votre travail.'),
+      cloud
+        ? callout('info', h('strong', null, 'Où sont mes données ? '), 'Révisions, annotations, glossaire, locuteurs, consentements et enregistrements sont stockés sur Supabase (Francfort, UE) et partagés entre les membres du projet. Seuls les réglages d\'affichage ci-dessous restent propres à ce navigateur.')
+        : callout('info', h('strong', null, 'Où sont mes données ? '), 'Révisions, glossaire et réglages sont stockés dans le localStorage ; les enregistrements audio dans IndexedDB. Tout reste sur cet appareil : les données peuvent être perdues si vous effacez les données du site, utilisez la navigation privée ou changez d\'appareil. Exportez régulièrement votre travail.'),
 
       h('div', { class: 'settings-grid' },
-        section('Projet et linguiste', null,
+        !cloud ? section('Projet et linguiste', null,
           h('label', { class: 'field' }, h('span', { class: 'field-label' }, 'Nom du projet'), projectName),
           h('label', { class: 'field' }, h('span', { class: 'field-label' }, 'Profil de linguiste actif'), linguistSel,
             h('span', { class: 'field-help' }, 'Sélection simulée, sans authentification. L\'identifiant est enregistré dans chaque révision (reviewer_id).')),
@@ -75,8 +143,9 @@ export function mountSettings(container, { service }) {
               toast(`Profil « ${l.name} » créé et activé`);
               render();
             },
-          }, icon('plus', 14), 'Ajouter un profil')),
-
+          }, icon('plus', 14), 'Ajouter un profil')) : null,
+        cloud ? accountSection() : null,
+        cloud && service.isAdmin ? membersSection() : null,
         section('Affichage et saisie', null,
           h('div', { class: 'field' }, h('span', { class: 'field-label' }, 'Taille du texte'), h('div', { class: 'row-gap' }, scale, scaleVal)),
           toggle('Afficher la palette de voyelles accentuées', 'accentPalette', `Boutons ${ACCENTED_VOWELS.join(' ')} sous les champs afar. Les caractères ne sont insérés que sur clic, jamais automatiquement.`),
@@ -99,13 +168,13 @@ export function mountSettings(container, { service }) {
             h('button', { class: 'btn btn-secondary', onclick: () => { exportRevisions(service, 'csv'); toast('revisions.csv téléchargé'); } }, 'CSV'),
             h('button', { class: 'btn btn-teal', onclick: () => runTtsExport(service) }, icon('download', 15), 'Exporter le corpus TTS'))),
 
-        section('Stockage local', null, storageEl,
-          h('div', { class: 'danger-zone' },
+        section(cloud ? 'Stockage' : 'Stockage local', null, storageEl,
+          (!cloud || service.isAdmin) && h('div', { class: 'danger-zone' },
             h('button', {
               class: 'btn btn-outline-warning',
               onclick: async () => {
-                if (!await confirmDialog({ title: 'Réinitialiser les données de démonstration ?', message: 'Toutes les révisions, annotations et modifications du glossaire seront remplacées par le jeu de démonstration d\'origine (avec ses statuts simulés). Les locuteurs et les enregistrements audio sont conservés ; les prises liées à des traductions qui ne sont plus approuvées seront exclues des exports.', confirmLabel: 'Réinitialiser', danger: true })) return;
-                await service.resetDemo();
+                if (!await confirmDialog({ title: 'Réinitialiser les données de démonstration ?', message: (cloud ? 'Action partagée par tous les membres. ' : '') + 'Toutes les révisions, annotations et modifications du glossaire seront remplacées par le jeu de démonstration d\'origine (avec ses statuts simulés). Les locuteurs et les enregistrements audio sont conservés ; les prises liées à des traductions qui ne sont plus approuvées seront exclues des exports.', confirmLabel: 'Réinitialiser', danger: true })) return;
+                try { await service.resetDemo(); } catch (err) { toast(err.message, { type: 'error' }); return; }
                 toast('Données de démonstration réinitialisées');
                 render();
               },
@@ -116,13 +185,15 @@ export function mountSettings(container, { service }) {
                 const n = service.snapshot().takes.length;
                 if (!n) { toast('Aucun enregistrement local.', { type: 'info' }); return; }
                 if (!await confirmDialog({ title: 'Supprimer tous les enregistrements ?', message: `Les ${n} prise(s) audio stockée(s) dans ce navigateur seront définitivement supprimées. Exportez d'abord le corpus TTS si nécessaire.`, confirmLabel: `Supprimer ${n} prise(s)`, danger: true })) return;
-                await service.deleteAllTakes();
-                toast('Enregistrements locaux supprimés');
+                try { await service.deleteAllTakes(); } catch (err) { toast(err.message, { type: 'error' }); return; }
+                toast(cloud ? 'Enregistrements supprimés du serveur' : 'Enregistrements locaux supprimés');
                 paintStorage();
               },
-            }, icon('trash', 15), 'Supprimer les enregistrements locaux')))),
+            }, icon('trash', 15), cloud ? 'Supprimer tous les enregistrements' : 'Supprimer les enregistrements locaux')))),
 
-      h('p', { class: 'muted tiny' }, `Mode : démonstration locale · ${fmtNumber(service.snapshot().segments.length)} segments fictifs · aucun serveur connecté.`)));
+      h('p', { class: 'muted tiny' }, cloud
+        ? `Mode : Supabase · ${fmtNumber(service.snapshot().segments.length)} segments (données de démonstration fictives).`
+        : `Mode : démonstration locale · ${fmtNumber(service.snapshot().segments.length)} segments fictifs · aucun serveur connecté.`)));
     paintStorage();
   }
 

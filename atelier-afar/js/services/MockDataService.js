@@ -15,7 +15,7 @@ export const uid = (prefix) =>
 
 const nowIso = () => new Date().toISOString();
 
-function defaultSettings() {
+export function defaultSettings() {
   return {
     projectName: 'Atelier Afar',
     activeLinguistId: 'ling_demo',

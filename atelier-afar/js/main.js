@@ -1,6 +1,8 @@
 // Point d'entrée : initialise le service de données, l'en-tête et le routage par fragment d'URL.
 import { h, icon, mount, isTypingTarget } from './utils/dom.js';
 import { MockDataService } from './services/MockDataService.js';
+import { SupabaseDataService } from './services/SupabaseDataService.js';
+import { SUPABASE, useLocalDemo } from './config.js';
 import { computeStats } from './pages/dashboard.js';
 import { mountDashboard } from './pages/dashboard.js';
 import { mountReview } from './pages/review.js';
@@ -9,8 +11,9 @@ import { mountSettings } from './pages/settings.js';
 import { openModal, toast } from './components/ui.js';
 import { loadUi, saveUi } from './ui-state.js';
 
-/** Le jour où un backend existera : remplacer par `new ApiDataService(...)`. */
-const service = new MockDataService();
+// Supabase par défaut ; `?demo` dans l'adresse : démonstration 100 % locale, sans compte.
+const service = useLocalDemo() ? new MockDataService() : new SupabaseDataService();
+const isCloud = service.mode === 'supabase';
 
 const ROUTES = [
   { key: 'dashboard', path: 'tableau-de-bord', label: 'Tableau de bord', icon: 'dashboard', mount: mountDashboard },
@@ -57,9 +60,16 @@ function paintHeader() {
   const snap = service.snapshot();
   const st = computeStats(snap);
   const linguist = snap.linguists.find((l) => l.id === snap.settings.activeLinguistId);
-  const linguistSel = h('select', { class: 'linguist-select', 'aria-label': 'Linguiste actif (sélection simulée)' },
-    snap.linguists.map((l) => h('option', { value: l.id, selected: l.id === linguist?.id }, l.name)));
-  linguistSel.addEventListener('change', () => service.saveSettings({ activeLinguistId: linguistSel.value }).then(() => toast('Linguiste actif modifié')));
+  let linguistSel;
+  if (isCloud) {
+    linguistSel = h('div', { class: 'user-chip' },
+      h('span', { class: 'user-name', title: service.user?.email }, service.member?.display_name ?? ''),
+      h('button', { class: 'link-btn on-dark', onclick: async () => { await service.signOut(); location.reload(); } }, 'Se déconnecter'));
+  } else {
+    linguistSel = h('select', { class: 'linguist-select', 'aria-label': 'Linguiste actif (sélection simulée)' },
+      snap.linguists.map((l) => h('option', { value: l.id, selected: l.id === linguist?.id }, l.name)));
+    linguistSel.addEventListener('change', () => service.saveSettings({ activeLinguistId: linguistSel.value }).then(() => toast('Linguiste actif modifié')));
+  }
 
   mount(header,
     h('a', { class: 'brand', href: '#/tableau-de-bord', 'aria-label': 'Tableau de bord' },
@@ -118,22 +128,75 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ---- Démarrage -------------------------------------------------------------------
+const bannerText = isCloud
+  ? `Données de démonstration fictives — Stockage connecté : Supabase (${SUPABASE.region})`
+  : 'Mode démonstration — Données fictives — Aucun serveur connecté';
+
+/** Écran de connexion (comptes créés par l'administrateur, pas d'inscription libre). */
+function renderAuthScreen(state) {
+  const outlet = app.querySelector('.outlet');
+  if (state.status === 'forbidden') {
+    mount(outlet, h('div', { class: 'onboarding' }, h('div', { class: 'onboarding-card card login-card' },
+      h('div', { class: 'onb-icon' }, icon('shield', 26)),
+      h('h2', null, 'Accès non autorisé'),
+      h('p', null, `Le compte ${state.email} est bien connecté, mais il ne fait pas partie des membres du projet.`),
+      h('p', { class: 'muted' }, 'Demandez à l\'administrateur de vous ajouter dans Paramètres → Membres.'),
+      h('div', { class: 'modal-actions' }, h('button', { class: 'btn btn-secondary', onclick: async () => { await service.signOut(); location.reload(); } }, 'Se déconnecter')))));
+    return;
+  }
+  const email = h('input', { class: 'input', type: 'email', autocomplete: 'username', required: true });
+  const password = h('input', { class: 'input', type: 'password', autocomplete: 'current-password', required: true });
+  const err = h('p', { class: 'field-error', hidden: true });
+  const submit = h('button', { class: 'btn btn-primary btn-lg', type: 'submit' }, 'Se connecter');
+  const form = h('form', { class: 'login-form' },
+    h('label', { class: 'field' }, h('span', { class: 'field-label' }, 'Adresse e-mail'), email),
+    h('label', { class: 'field' }, h('span', { class: 'field-label' }, 'Mot de passe'), password),
+    err, submit);
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    err.hidden = true;
+    submit.disabled = true;
+    submit.textContent = 'Connexion…';
+    try {
+      await service.signIn(email.value, password.value);
+      start();
+    } catch (e2) {
+      err.textContent = e2.message;
+      err.hidden = false;
+      submit.disabled = false;
+      submit.textContent = 'Se connecter';
+    }
+  });
+  mount(outlet, h('div', { class: 'onboarding' }, h('div', { class: 'onboarding-card card login-card' },
+    h('div', { class: 'onb-icon' }, icon('languages', 26)),
+    h('h2', null, 'Connexion à l\'Atelier Afar'),
+    h('p', { class: 'muted' }, `Les révisions et les enregistrements sont stockés sur Supabase (${SUPABASE.region}). Les comptes sont créés par l'administrateur du projet.`),
+    form,
+    h('p', { class: 'tiny muted login-foot' }, 'Mot de passe oublié ? Contactez l\'administrateur. ',
+      h('a', { href: '?demo' }, 'Essayer la démonstration locale sans compte')))));
+  setTimeout(() => email.focus(), 50);
+}
+
 async function start() {
   mount(app,
-    h('div', { class: 'demo-banner', role: 'note' }, icon('info', 15), h('strong', null, 'Mode démonstration — Données fictives — Aucun serveur connecté')),
+    h('div', { class: 'demo-banner', role: 'note' }, icon('info', 15), h('strong', null, bannerText),
+      !isCloud && h('a', { class: 'banner-link', href: location.pathname }, 'Revenir à la version connectée')),
     header,
     h('main', { class: 'outlet' }, h('div', { class: 'boot' }, h('div', { class: 'spinner' }), 'Chargement…')));
   try {
-    await service.init();
+    const state = await service.init();
+    if (state && state.status !== 'ready') { renderAuthScreen(state); return; }
   } catch (err) {
     mount(app.querySelector('.outlet'), h('div', { class: 'page-pad' }, h('div', { class: 'callout callout-error' }, icon('alert'),
-      h('div', null, h('strong', null, 'Impossible de charger l\'application. '), err.message, h('br'), 'Ouvrez l\'application via un serveur web (GitHub Pages, ou « python3 -m http.server » en local), pas directement depuis le fichier.'))));
+      h('div', null, h('strong', null, 'Impossible de charger l\'application. '), err.message, h('br'), 'Vérifiez votre connexion internet, ou ouvrez l\'application via un serveur web (GitHub Pages, ou « python3 -m http.server » en local), pas directement depuis le fichier.'))));
     return;
   }
   applySettings();
   service.subscribe((topic) => {
     if (topic === 'settings' || topic === 'reset') applySettings();
     if (topic === 'storage-error') toast('Le stockage local est plein ou indisponible : exportez votre travail.', { type: 'error' });
+    if (topic === 'sync-error') toast('Une modification n\'a pas pu être enregistrée sur le serveur : les données ont été rechargées. Réessayez.', { type: 'error' });
+    if (topic === 'signed-out') { location.reload(); return; }
     paintHeader();
     page?.onData?.(topic);
   });
@@ -141,7 +204,7 @@ async function start() {
   if (!location.hash) history.replaceState(null, '', '#/revision');
   navigate();
 
-  if (!loadUi().storageNoticeSeen) {
+  if (!isCloud && !loadUi().storageNoticeSeen) {
     toast('Vos données sont enregistrées dans ce navigateur uniquement. Elles peuvent être perdues si vous effacez les données du site ou changez d\'appareil : exportez régulièrement.', { type: 'info', duration: 12000 });
     saveUi({ storageNoticeSeen: true });
   }

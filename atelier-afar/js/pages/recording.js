@@ -331,6 +331,8 @@ export function mountRecording(container, { service, params, setRoute }) {
   // ---- Enregistrement -------------------------------------------------------------------
   function paintRecButton() {
     if (!studio) return;
+    // Pendant une prise ou son enregistrement, l'ancienne prise ne doit pas pouvoir être validée.
+    studio.recBtn.closest('.studio')?.classList.toggle('busy', phase !== 'idle');
     studio.recBtn.classList.toggle('recording', phase === 'recording');
     studio.recBtn.classList.toggle('waiting', phase === 'countdown' || phase === 'saving');
     studio.recBtn.setAttribute('aria-label', phase === 'recording' ? 'Arrêter l\'enregistrement' : 'Enregistrer');
