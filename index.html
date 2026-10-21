@@ -3,91 +3,181 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Traduction Français → Afar</title>
-  <meta name="description" content="Plateforme de traduction collaborative du français vers l'afar (Qafar af) de Djibouti.">
+  <title>Atelier de traduction</title>
+  <meta name="description" content="Plateforme de traduction collaborative du français vers les langues de Djibouti.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" defer></script>
 </head>
 <body>
-  <header class="topbar">
+  <header class="app-header">
     <div class="brand">
-      <span class="logo">FR → AA</span>
-      <div>
-        <h1>Traduction Français → Afar</h1>
-        <p class="subtitle">Qafar af · Djibouti</p>
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32"><path d="M6 8h12M12 5v3m-4 0c0 6 4 10 9 12M16 8c-1 5-5 9-10 11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M18 27l5-12 5 12m-8.5-4h7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <div class="brand-text">
+        <strong>Atelier de traduction</strong>
+        <span>Langues de Djibouti</span>
       </div>
     </div>
-    <div class="user" id="userBox">
-      <label for="translatorName">Traducteur·rice</label>
-      <input id="translatorName" type="text" placeholder="Votre nom" autocomplete="name">
+
+    <div class="lang-route" aria-label="Langues de traduction">
+      <span class="lang-chip src">Français</span>
+      <span class="arrow" aria-hidden="true">→</span>
+      <label class="lang-chip tgt">
+        <span class="sr-only">Langue cible</span>
+        <select id="langSelect"></select>
+      </label>
+    </div>
+
+    <div class="header-actions">
+      <button class="icon-btn" id="exportBtn" title="Exporter en Excel"><span aria-hidden="true">⤓</span><span class="lbl">Excel</span></button>
+      <button class="icon-btn" id="syncBtn" title="Enregistrer sur GitHub"><span aria-hidden="true">☁</span><span class="lbl">GitHub</span></button>
+      <button class="icon-btn" id="settingsBtn" title="Paramètres GitHub"><span aria-hidden="true">⚙</span></button>
+      <button class="avatar" id="userBtn" title="Changer de traducteur·rice">?</button>
     </div>
   </header>
 
+  <nav class="tabs" role="tablist">
+    <button role="tab" data-view="focus" aria-selected="true">Traduire</button>
+    <button role="tab" data-view="list" aria-selected="false">Tout voir</button>
+    <button role="tab" data-view="load" aria-selected="false">Charger du français</button>
+    <span class="tab-indicator" aria-hidden="true"></span>
+  </nav>
+
   <main>
-    <section class="toolbar">
-      <div class="progress">
-        <div class="progress-text"><strong id="doneCount">0</strong> / <span id="totalCount">0</span> phrases traduites</div>
-        <div class="bar"><div class="bar-fill" id="barFill"></div></div>
+    <!-- ===== Traduction élément par élément ===== -->
+    <section class="view" id="view-focus">
+      <div class="focus-top">
+        <div class="progress-block">
+          <div class="progress-line">
+            <span><strong id="doneCount">0</strong> / <span id="totalCount">0</span> traduits</span>
+            <span id="position" class="muted"></span>
+          </div>
+          <div class="bar"><div class="bar-fill" id="barFill"></div></div>
+        </div>
+        <div class="focus-filters">
+          <select id="focusLot" aria-label="Lot"></select>
+          <label class="switch"><input type="checkbox" id="onlyTodo" checked><span class="track"><span class="thumb"></span></span>Non traduits seulement</label>
+        </div>
       </div>
-      <div class="actions">
-        <button id="exportBtn" class="primary">⬇ Exporter en Excel</button>
-        <button id="syncBtn">☁ Enregistrer sur GitHub</button>
-        <label class="button">⬆ Importer un Excel<input id="importInput" type="file" accept=".xlsx,.xls,.csv" hidden></label>
-        <button id="settingsBtn" title="Paramètres">⚙</button>
+
+      <div class="stage">
+        <article class="focus-card" id="focusCard">
+          <div class="card-meta">
+            <span class="badge" id="fType"></span>
+            <span class="badge ghost" id="fLot"></span>
+            <span class="spacer"></span>
+            <span class="muted small" id="fId"></span>
+          </div>
+          <p class="source" id="fSource" lang="fr"></p>
+          <label for="fTarget" class="target-label" id="fLangName"></label>
+          <textarea id="fTarget" rows="2"></textarea>
+          <details class="notes">
+            <summary>Notes (variante, prononciation, contexte…)</summary>
+            <textarea id="fNotes" rows="2"></textarea>
+          </details>
+          <p class="muted small" id="fMeta"></p>
+        </article>
+
+        <div class="done-card" id="doneCard" hidden>
+          <div class="done-icon" aria-hidden="true">✓</div>
+          <h2 id="doneTitle">Bravo, tout est traduit !</h2>
+          <p class="muted" id="doneText">Pensez à enregistrer votre travail.</p>
+          <div class="done-actions">
+            <button class="btn primary" data-act="export">⤓ Exporter en Excel</button>
+            <button class="btn" data-act="sync">☁ Enregistrer sur GitHub</button>
+            <button class="btn ghost" data-act="load">Charger du français</button>
+          </div>
+        </div>
       </div>
+
+      <div class="focus-nav" id="focusNav">
+        <button class="btn ghost" id="prevBtn">← Précédent</button>
+        <button class="btn review-btn" id="reviewBtn" aria-pressed="false">⚑ À revoir</button>
+        <button class="btn primary next-btn" id="nextBtn">Suivant →</button>
+      </div>
+      <p class="kbd-hint"><kbd>Ctrl</kbd> + <kbd>Entrée</kbd> suivant · <kbd>Alt</kbd> + <kbd>←</kbd> précédent</p>
     </section>
 
-    <section class="filters">
-      <input id="search" type="search" placeholder="Rechercher en français ou en afar…">
-      <select id="filterStatus">
-        <option value="all">Toutes les phrases</option>
-        <option value="todo">À traduire</option>
-        <option value="done">Traduites</option>
-        <option value="review">À revoir</option>
-      </select>
-      <select id="filterCategory"><option value="all">Toutes les catégories</option></select>
-      <button id="addBtn">＋ Ajouter une phrase</button>
+    <!-- ===== Vue d'ensemble ===== -->
+    <section class="view" id="view-list" hidden>
+      <div class="list-filters">
+        <input id="search" type="search" placeholder="Rechercher en français ou dans la traduction…">
+        <select id="filterStatus" aria-label="Statut">
+          <option value="all">Tous les statuts</option>
+          <option value="todo">À traduire</option>
+          <option value="done">Traduits</option>
+          <option value="review">À revoir</option>
+        </select>
+        <select id="filterLot" aria-label="Lot"></select>
+        <button class="btn ghost danger" id="deleteLotBtn" hidden>Supprimer ce lot</button>
+        <label class="btn ghost">⤒ Importer un Excel<input id="importInput" type="file" accept=".xlsx,.xls,.csv" hidden></label>
+      </div>
+      <div class="rows" id="rows"></div>
     </section>
 
-    <p id="status" class="status" role="status" aria-live="polite"></p>
-
-    <section id="list" class="list"></section>
+    <!-- ===== Chargement de contenu français ===== -->
+    <section class="view" id="view-load" hidden>
+      <div class="load-grid">
+        <div class="panel">
+          <h2>1. Le contenu en français</h2>
+          <textarea id="loadText" rows="9" placeholder="Collez ici un texte, une liste de phrases (une par ligne) ou une liste de mots…"></textarea>
+          <label class="drop" id="dropZone">
+            <input type="file" id="loadFile" accept=".txt,.csv,.xlsx,.xls" hidden>
+            <span><strong>ou déposez un fichier</strong> .txt, .csv ou .xlsx (1re colonne ou colonne «&nbsp;Français&nbsp;»)</span>
+          </label>
+        </div>
+        <div class="panel">
+          <h2>2. Découper en éléments</h2>
+          <div class="segmented" role="radiogroup" aria-label="Découpage">
+            <label><input type="radio" name="split" value="phrase" checked><span>Phrases</span></label>
+            <label><input type="radio" name="split" value="ligne"><span>Lignes</span></label>
+            <label><input type="radio" name="split" value="mot"><span>Mots</span></label>
+            <label><input type="radio" name="split" value="texte"><span>Texte entier</span></label>
+          </div>
+          <label class="field">Nom du lot<input id="lotName" type="text"></label>
+          <div class="preview">
+            <p><strong id="previewCount">0</strong> élément(s) à traduire <span class="muted" id="previewDup"></span></p>
+            <ol class="chips" id="previewList"></ol>
+          </div>
+          <button class="btn primary wide" id="loadBtn" disabled>Ajouter et commencer à traduire →</button>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <dialog id="addDialog">
-    <form method="dialog" id="addForm">
-      <h2>Ajouter une phrase française</h2>
-      <label>Phrase en français<textarea id="newFr" rows="3" required></textarea></label>
-      <label>Catégorie<input id="newCat" type="text" placeholder="ex. Santé, Salutations…"></label>
-      <div class="dialog-actions">
-        <button value="cancel" formnovalidate>Annuler</button>
-        <button value="ok" class="primary">Ajouter</button>
-      </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <dialog id="userDialog">
+    <form method="dialog">
+      <h2>Bienvenue 👋</h2>
+      <p class="muted">Indiquez votre nom : il sera associé à chacune de vos traductions.</p>
+      <label class="field">Votre nom<input id="userName" type="text" required autocomplete="name"></label>
+      <label class="field">Langue vers laquelle vous traduisez<select id="userLang"></select></label>
+      <div class="dialog-actions"><button class="btn primary" value="ok">Commencer</button></div>
     </form>
   </dialog>
 
   <dialog id="settingsDialog">
-    <form method="dialog" id="settingsForm">
+    <form method="dialog">
       <h2>Enregistrement sur GitHub</h2>
-      <p class="hint">Les traductions sont toujours sauvegardées automatiquement dans ce navigateur.
-        Pour les centraliser, la plateforme peut déposer le fichier Excel directement dans le dépôt GitHub
-        (dossier <code>data/traductions/</code>). Il faut pour cela un <em>jeton d'accès personnel</em>
-        (fine-grained token) avec la permission <strong>Contents : Read and write</strong> sur ce dépôt.</p>
-      <label>Dépôt (propriétaire/nom)<input id="ghRepo" type="text" placeholder="djibouti-plateforme/traduction-francais-afar"></label>
-      <label>Branche<input id="ghBranch" type="text" placeholder="main"></label>
-      <label>Jeton GitHub<input id="ghToken" type="password" placeholder="github_pat_…" autocomplete="off"></label>
-      <p class="hint">Le jeton reste uniquement dans ce navigateur (localStorage). Ne l'utilisez pas sur un ordinateur partagé.</p>
+      <p class="muted small">Le travail est toujours sauvegardé dans ce navigateur. Pour le centraliser, la plateforme dépose
+        le fichier Excel dans le dépôt (<code>data/traductions/&lt;langue&gt;/&lt;nom&gt;.xlsx</code>). Il faut un jeton
+        <em>fine-grained</em> avec la permission <strong>Contents : Read and write</strong> sur ce dépôt.</p>
+      <label class="field">Dépôt (propriétaire/nom)<input id="ghRepo" type="text" placeholder="djibouti-plateforme/plateforme-traduction-djibouti"></label>
+      <label class="field">Branche<input id="ghBranch" type="text" placeholder="main"></label>
+      <label class="field">Jeton GitHub<input id="ghToken" type="password" placeholder="github_pat_…" autocomplete="off"></label>
+      <p class="muted small">Le jeton reste uniquement dans ce navigateur. Ne l'utilisez pas sur un ordinateur partagé.</p>
       <div class="dialog-actions">
-        <button value="cancel" formnovalidate>Fermer</button>
-        <button value="ok" class="primary">Enregistrer</button>
+        <button class="btn ghost" value="cancel" formnovalidate>Fermer</button>
+        <button class="btn primary" value="ok">Enregistrer</button>
       </div>
     </form>
   </dialog>
 
-  <footer>
-    <p>Sauvegarde automatique dans le navigateur · Export Excel (.xlsx) · Données : <code>data/phrases.json</code></p>
-  </footer>
-
-  <script src="app.js"></script>
+  <script src="app.js" defer></script>
 </body>
 </html>

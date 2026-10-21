@@ -1,0 +1,23 @@
+[
+ {
+  "code": "aa",
+  "nom": "Afar",
+  "autonyme": "Qafar af",
+  "dir": "ltr",
+  "exemple": "Qafar af…"
+ },
+ {
+  "code": "so",
+  "nom": "Somali",
+  "autonyme": "Af-Soomaali",
+  "dir": "ltr",
+  "exemple": "Af-Soomaali…"
+ },
+ {
+  "code": "ar",
+  "nom": "Arabe",
+  "autonyme": "العربية",
+  "dir": "rtl",
+  "exemple": "…بالعربية"
+ }
+]
