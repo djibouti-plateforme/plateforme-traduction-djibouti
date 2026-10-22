@@ -551,7 +551,7 @@ dialog::backdrop { background: rgba(8, 18, 38, .5); backdrop-filter: blur(3px); 
 .editor-card.is-readonly { border-left-color: #f59e0b; }
 .editor-card.is-readonly .editor { background: var(--surface-2); color: var(--ink-2); }
 .actions.is-disabled { background: var(--surface-2); }
-.settings-wide { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 14px; margin-bottom: 14px; }
+.settings-wide { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; margin-bottom: 14px; }
 .team-card { margin-bottom: 12px; overflow-x: auto; }
 .team-table { width: 100%; border-collapse: collapse; font-size: 13px; }
 .team-table th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); font-weight: 600; padding: 6px 8px; border-bottom: 1px solid var(--line); }
@@ -569,3 +569,39 @@ dialog::backdrop { background: rgba(8, 18, 38, .5); backdrop-filter: blur(3px); 
 .pill-wait { background: #fef3c7; color: #92400e; }
 .auth-success { text-align: center; }
 .pw-hint { font-size: 12px; color: var(--muted); margin: -8px 0 12px; }
+
+/* ---------- Équipe ---------- */
+.team-section .card-head { align-items: flex-start; }
+.member-list { gap: 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin: 0; }
+.member-list li.member-row { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 12px 14px; border: 0; border-radius: 0; border-bottom: 1px solid var(--line); background: var(--surface); }
+.member-list li.member-row:last-child { border-bottom: 0; }
+.member-list li.member-row:hover { background: var(--surface-2); }
+.member-avatar { align-self: start; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 13px; color: var(--teal-strong); background: var(--teal-soft); }
+.member-avatar.is-admin { color: #fff; background: var(--navy-700); }
+.member-id { min-width: 0; }
+.member-name { font-weight: 600; font-size: 14px; }
+.member-mail { font-size: 12.5px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.member-tags { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; margin-top: 6px; }
+.role-tag, .status-tag { font-size: 11.5px; font-weight: 600; padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+.role-admin { background: #e8eefb; color: var(--navy-700); }
+.role-ling { background: #eef2f7; color: var(--ink-2); }
+.status-ok { background: #f0fdf4; color: #15803d; }
+.status-wait { background: #fef3c7; color: #92400e; }
+.member-code { font-size: 11px; }
+.member-actions { display: flex; gap: 4px; align-items: center; justify-content: flex-end; }
+.danger-icon:hover { color: var(--danger); background: #fef2f2; }
+.invite-form .field { margin-bottom: 16px; }
+.role-options { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.role-option { display: flex; gap: 10px; align-items: flex-start; padding: 12px; border: 1px solid var(--line-strong); border-radius: 11px; cursor: pointer; transition: border-color .15s, background .15s; }
+.role-option:hover { border-color: var(--teal); }
+.role-option:has(input:checked) { border-color: var(--teal); background: var(--teal-soft); }
+.role-option input { margin-top: 3px; accent-color: var(--teal); }
+.role-option-body { display: flex; flex-direction: column; gap: 2px; font-size: 13.5px; }
+.invite-advanced { margin: 4px 0 12px; font-size: 13px; color: var(--muted); }
+.invite-advanced summary { cursor: pointer; width: fit-content; }
+.invite-advanced[open] summary { margin-bottom: 10px; }
+@media (max-width: 760px) {
+  .member-list li.member-row { grid-template-columns: 40px minmax(0, 1fr); }
+  .member-actions { grid-column: 2; justify-content: flex-start; }
+  .role-options { grid-template-columns: 1fr; }
+}

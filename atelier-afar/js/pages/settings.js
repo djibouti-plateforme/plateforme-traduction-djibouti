@@ -117,58 +117,124 @@ export function mountSettings(container, { service }) {
         }, icon('shield', 14), 'Changer de mot de passe')));
   }
 
-  /** Équipe : invitations par e-mail, nouveaux liens d'accès, suppression. */
+  /** Équipe : liste des membres et invitations par e-mail. */
   function teamSection() {
     const { members } = service.snapshot();
-    const email = h('input', { class: 'input input-sm', type: 'email', placeholder: 'adresse@exemple.com', 'aria-label': 'Adresse e-mail' });
-    const name = h('input', { class: 'input input-sm', placeholder: 'Nom affiché', 'aria-label': 'Nom affiché' });
-    const code = h('input', { class: 'input input-sm', placeholder: 'Code (ex. ling_02)', 'aria-label': 'Code linguiste' });
-    const role = h('select', { class: 'input input-sm', 'aria-label': 'Rôle' }, h('option', { value: 'linguiste' }, 'Linguiste'), h('option', { value: 'admin' }, 'Administrateur'));
-    const inviteBtn = h('button', { class: 'btn btn-sm btn-primary' }, icon('plus', 14), 'Inviter');
-    inviteBtn.addEventListener('click', async () => {
-      if (!/^\S+@\S+\.\S+$/.test(email.value.trim()) || !name.value.trim() || !/^[A-Za-z0-9_-]+$/.test(code.value.trim())) {
-        toast('Renseignez une adresse e-mail valide, un nom et un code (lettres, chiffres, _ ou -).', { type: 'warning' });
-        return;
-      }
-      inviteBtn.disabled = true;
-      try {
-        const res = await service.inviteMember({ email: email.value, display_name: name.value, code: code.value, role: role.value });
-        showAccessResult(res.member.display_name, res.member.email, res, 'invite');
-        render();
-      } catch (err) { toast(err.message, { type: 'error' }); } finally { inviteBtn.disabled = false; }
+    const initials = (n) => n.split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0].toUpperCase()).join('') || '?';
+    const pendingCount = members.filter((m) => !m.activated_at).length;
+
+    const rows = members.map((m) => {
+      const pending = !m.activated_at;
+      const self = m.email === service.member.email;
+      const resend = async () => {
+        const msg = pending
+          ? `Un nouveau lien d'activation sera envoyé à ${m.display_name} (${m.email}). Le lien précédent ne fonctionnera plus.`
+          : `Un lien permettant à ${m.display_name} de choisir un nouveau mot de passe sera envoyé à ${m.email}. Son mot de passe actuel reste valable tant que le lien n'est pas utilisé.`;
+        if (!await confirmDialog({ title: pending ? 'Renvoyer l\'invitation ?' : 'Réinitialiser le mot de passe ?', message: msg, confirmLabel: 'Envoyer le lien' })) return;
+        try { const res = await service.sendAccessLink(m.email); showAccessResult(m.display_name, m.email, res, res.purpose); } catch (err) { toast(err.message, { type: 'error' }); }
+      };
+      const remove = async () => {
+        if (!await confirmDialog({ title: 'Supprimer ce compte ?', message: `${m.display_name} (${m.email}) ne pourra plus se connecter. Son travail déjà enregistré est conservé ; ses segments attribués redeviennent non attribués.`, confirmLabel: 'Supprimer le compte', danger: true })) return;
+        try { await service.deleteMember(m.email); toast('Compte supprimé'); render(); } catch (err) { toast(err.message, { type: 'error' }); }
+      };
+      return h('li', { class: 'member-row' },
+        h('span', { class: ['member-avatar', m.role === 'admin' && 'is-admin'] }, initials(m.display_name)),
+        h('div', { class: 'member-id' },
+          h('div', { class: 'member-name' }, m.display_name, self && h('span', { class: 'muted tiny' }, ' (vous)')),
+          h('div', { class: 'member-mail', title: m.email }, m.email),
+          h('div', { class: 'member-tags' },
+            h('span', { class: ['role-tag', m.role === 'admin' ? 'role-admin' : 'role-ling'] }, m.role === 'admin' ? 'Administrateur' : 'Linguiste'),
+            pending ? h('span', { class: 'status-tag status-wait' }, 'Invitation en attente') : h('span', { class: 'status-tag status-ok' }, 'Actif'),
+            h('code', { class: 'member-code', title: 'Code linguiste' }, m.code))),
+        h('div', { class: 'member-actions' },
+          !self && h('button', { class: 'btn btn-sm btn-ghost', onclick: resend, title: pending ? 'Envoyer un nouveau lien d\'activation' : 'Envoyer un lien pour choisir un nouveau mot de passe' },
+            icon(pending ? 'rotate' : 'shield', 14), pending ? 'Renvoyer l\'invitation' : 'Réinitialiser'),
+          !self && h('button', { class: 'icon-btn ghost danger-icon', onclick: remove, title: 'Supprimer le compte', 'aria-label': `Supprimer le compte de ${m.display_name}` }, icon('trash', 15))));
     });
 
-    return h('section', { class: 'card settings-section' },
-      h('header', { class: 'card-head' }, h('div', null, h('h3', null, 'Équipe'), h('p', { class: 'muted tiny' }, 'Seules les personnes listées ici peuvent se connecter à l\'atelier.'))),
-      h('ul', { class: 'member-list' }, members.map((m) => {
-        const pending = !m.activated_at;
-        const self = m.email === service.member.email;
-        return h('li', null,
-          h('div', null, h('strong', null, m.display_name), ' ', h('span', { class: 'muted tiny' }, `${m.email} · ${m.code}`)),
-          h('span', { class: 'row-gap' },
-            pending && h('span', { class: 'pill pill-wait' }, 'Invitation en attente'),
-            h('span', { class: 'pill' }, m.role === 'admin' ? 'Administrateur' : 'Linguiste'),
-            !self && h('button', {
-              class: 'link-btn',
-              onclick: async () => {
-                const msg = pending
-                  ? `Un nouveau lien d'activation sera envoyé à ${m.display_name}. Le lien précédent ne fonctionnera plus.`
-                  : `Un lien permettant à ${m.display_name} de choisir un nouveau mot de passe sera envoyé. Son mot de passe actuel reste valable tant que le lien n'est pas utilisé.`;
-                if (!await confirmDialog({ title: pending ? 'Renvoyer l\'invitation ?' : 'Envoyer un lien de réinitialisation ?', message: msg, confirmLabel: 'Envoyer' })) return;
-                try { const res = await service.sendAccessLink(m.email); showAccessResult(m.display_name, m.email, res, res.purpose); } catch (err) { toast(err.message, { type: 'error' }); }
-              },
-            }, pending ? 'Renvoyer l\'invitation' : 'Réinitialiser le mot de passe'),
-            !self && h('button', {
-              class: 'link-btn danger',
-              onclick: async () => {
-                if (!await confirmDialog({ title: 'Supprimer ce compte ?', message: `${m.display_name} (${m.email}) ne pourra plus se connecter. Son travail déjà enregistré est conservé ; ses segments attribués redeviennent non attribués.`, confirmLabel: 'Supprimer le compte', danger: true })) return;
-                try { await service.deleteMember(m.email); toast('Compte supprimé'); render(); } catch (err) { toast(err.message, { type: 'error' }); }
-              },
-            }, 'Supprimer')));
-      })),
-      h('div', { class: 'member-form' },
-        h('div', { class: 'member-form-row' }, email, name, code, role, inviteBtn),
-        h('p', { class: 'field-help' }, 'La personne reçoit un lien pour activer son compte : elle confirme son nom et choisit elle-même son mot de passe.')));
+    return h('section', { class: 'card settings-section team-section' },
+      h('header', { class: 'card-head' },
+        h('div', null,
+          h('h3', null, 'Équipe'),
+          h('p', { class: 'muted tiny' }, `${members.length} membre(s)${pendingCount ? ` · ${pendingCount} invitation(s) en attente` : ''} · seules ces personnes peuvent se connecter.`)),
+        h('button', { class: 'btn btn-primary', onclick: openInviteDialog }, icon('plus', 15), 'Inviter un membre')),
+      h('ul', { class: 'member-list' }, rows));
+  }
+
+  /** Fenêtre d'invitation : champs étiquetés, code proposé automatiquement, choix du rôle explicite. */
+  function openInviteDialog() {
+    const { members } = service.snapshot();
+    const codes = new Set(members.map((m) => m.code));
+    const nextCode = (prefix) => { let n = 1; while (codes.has(`${prefix}_${String(n).padStart(2, '0')}`)) n++; return `${prefix}_${String(n).padStart(2, '0')}`; };
+
+    openModal({
+      title: 'Inviter un membre',
+      render: (close) => {
+        let role = 'linguiste';
+        let codeTouched = false;
+        const email = h('input', { class: 'input', type: 'email', placeholder: 'prenom.nom@exemple.com', autocomplete: 'off', required: true });
+        const name = h('input', { class: 'input', placeholder: 'Ex. : Amina Hassan', autocomplete: 'off', required: true });
+        const code = h('input', { class: 'input', value: nextCode('ling'), autocomplete: 'off', spellcheck: 'false' });
+        code.addEventListener('input', () => { codeTouched = true; });
+        const err = h('p', { class: 'field-error', hidden: true });
+
+        const roleCard = (value, title, desc) => h('label', { class: 'role-option' },
+          h('input', { type: 'radio', name: 'invite-role', value, checked: value === role, onchange: () => {
+            role = value;
+            if (!codeTouched) code.value = nextCode(value === 'admin' ? 'admin' : 'ling');
+          } }),
+          h('span', { class: 'role-option-body' }, h('strong', null, title), h('span', { class: 'muted tiny' }, desc)));
+
+        const submit = h('button', { class: 'btn btn-primary', type: 'submit' }, icon('plus', 15), 'Envoyer l\'invitation');
+        const form = h('form', { class: 'invite-form', novalidate: true },
+          h('label', { class: 'field' }, h('span', { class: 'field-label' }, 'Adresse e-mail'), email,
+            h('span', { class: 'field-help' }, 'Le lien d\'activation sera envoyé à cette adresse ; elle servira d\'identifiant.')),
+          h('label', { class: 'field' }, h('span', { class: 'field-label' }, 'Nom affiché'), name,
+            h('span', { class: 'field-help' }, 'La personne pourra le corriger lors de l\'activation.')),
+          h('div', { class: 'field' }, h('span', { class: 'field-label' }, 'Rôle'),
+            h('div', { class: 'role-options' },
+              roleCard('linguiste', 'Linguiste', 'Révise les traductions et enregistre des phrases.'),
+              roleCard('admin', 'Administrateur', 'Gère aussi l\'équipe, la répartition et les exports.'))),
+          h('details', { class: 'invite-advanced' },
+            h('summary', null, 'Code linguiste : ', h('code', null, code.value)),
+            h('label', { class: 'field' }, h('span', { class: 'field-label' }, 'Code linguiste'), code,
+              h('span', { class: 'field-help' }, 'Identifiant court enregistré dans chaque révision (lettres, chiffres, _ ou -). Proposé automatiquement.'))),
+          err,
+          h('div', { class: 'modal-actions' },
+            h('button', { class: 'btn btn-ghost', type: 'button', onclick: () => close(false) }, 'Annuler'),
+            submit));
+        code.addEventListener('input', () => { form.querySelector('.invite-advanced summary code').textContent = code.value; });
+        form.addEventListener('input', () => { err.hidden = true; });
+        const syncSummary = () => { form.querySelector('.invite-advanced summary code').textContent = code.value; };
+        form.addEventListener('change', syncSummary);
+
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const fail = (m, el) => { err.textContent = m; err.hidden = false; el?.focus(); };
+          err.hidden = true;
+          const mail = email.value.trim().toLowerCase();
+          if (!/^\S+@\S+\.\S+$/.test(mail)) return fail('Indiquez une adresse e-mail valide.', email);
+          if (members.some((m) => m.email === mail)) return fail('Cette personne fait déjà partie de l\'équipe.', email);
+          if (!name.value.trim()) return fail('Indiquez le nom de la personne.', name);
+          if (!/^[A-Za-z0-9_-]+$/.test(code.value.trim())) { form.querySelector('.invite-advanced').open = true; return fail('Le code ne peut contenir que des lettres, chiffres, _ ou -.', code); }
+          if (codes.has(code.value.trim())) { form.querySelector('.invite-advanced').open = true; return fail('Ce code est déjà utilisé par un autre membre.', code); }
+          submit.disabled = true;
+          submit.textContent = 'Envoi en cours…';
+          try {
+            const res = await service.inviteMember({ email: mail, display_name: name.value.trim(), code: code.value.trim(), role });
+            close(true);
+            render();
+            showAccessResult(res.member.display_name, res.member.email, res, 'invite');
+          } catch (e2) {
+            fail(e2.message);
+            submit.disabled = false;
+            mount(submit, icon('plus', 15), 'Envoyer l\'invitation');
+          }
+        });
+        setTimeout(() => email.focus(), 40);
+        return form;
+      },
+    });
   }
 
   /** Résultat d'une invitation ou d'une réinitialisation : e-mail envoyé, ou lien à transmettre. */
