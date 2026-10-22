@@ -7,14 +7,6 @@ import { runTtsExport } from './dashboard.js';
 
 const DONE = new Set(['valide', 'corrige', 'rejete', 'signale']);
 
-/** Mot de passe provisoire lisible (sans caractères ambigus). */
-function tempPassword() {
-  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789';
-  const buf = new Uint32Array(12);
-  crypto.getRandomValues(buf);
-  return Array.from(buf, (n) => chars[n % chars.length]).join('');
-}
-
 /** @param {HTMLElement} container @param {{ service: import('../services/SupabaseDataService.js').SupabaseDataService }} ctx */
 export function mountSettings(container, { service }) {
   const storageEl = h('div', { class: 'storage' });
@@ -109,6 +101,14 @@ export function mountSettings(container, { service }) {
         h('button', {
           class: 'btn btn-sm btn-secondary',
           onclick: async () => {
+            const name = await promptDialog({ title: 'Modifier mon nom', label: 'Nom affiché', confirmLabel: 'Enregistrer', required: true, initial: m.display_name });
+            if (!name) return;
+            try { await service.updateMyName(name); toast('Nom mis à jour'); render(); } catch (err) { toast(err.message, { type: 'error' }); }
+          },
+        }, icon('user', 14), 'Modifier mon nom'),
+        h('button', {
+          class: 'btn btn-sm btn-secondary',
+          onclick: async () => {
             const pw = await promptDialog({ title: 'Changer de mot de passe', label: 'Nouveau mot de passe (8 caractères minimum)', confirmLabel: 'Changer', required: true });
             if (!pw) return;
             if (pw.length < 8) { toast('Le mot de passe doit contenir au moins 8 caractères.', { type: 'warning' }); return; }
@@ -117,64 +117,78 @@ export function mountSettings(container, { service }) {
         }, icon('shield', 14), 'Changer de mot de passe')));
   }
 
-  /** Équipe : création de comptes, réinitialisation de mot de passe, suppression. */
+  /** Équipe : invitations par e-mail, nouveaux liens d'accès, suppression. */
   function teamSection() {
     const { members } = service.snapshot();
     const email = h('input', { class: 'input input-sm', type: 'email', placeholder: 'adresse@exemple.com', 'aria-label': 'Adresse e-mail' });
     const name = h('input', { class: 'input input-sm', placeholder: 'Nom affiché', 'aria-label': 'Nom affiché' });
     const code = h('input', { class: 'input input-sm', placeholder: 'Code (ex. ling_02)', 'aria-label': 'Code linguiste' });
     const role = h('select', { class: 'input input-sm', 'aria-label': 'Rôle' }, h('option', { value: 'linguiste' }, 'Linguiste'), h('option', { value: 'admin' }, 'Administrateur'));
-    const createBtn = h('button', { class: 'btn btn-sm btn-primary' }, icon('plus', 14), 'Créer le compte');
-    createBtn.addEventListener('click', async () => {
+    const inviteBtn = h('button', { class: 'btn btn-sm btn-primary' }, icon('plus', 14), 'Inviter');
+    inviteBtn.addEventListener('click', async () => {
       if (!/^\S+@\S+\.\S+$/.test(email.value.trim()) || !name.value.trim() || !/^[A-Za-z0-9_-]+$/.test(code.value.trim())) {
         toast('Renseignez une adresse e-mail valide, un nom et un code (lettres, chiffres, _ ou -).', { type: 'warning' });
         return;
       }
-      const password = tempPassword();
-      createBtn.disabled = true;
+      inviteBtn.disabled = true;
       try {
-        const member = await service.createMember({ email: email.value, display_name: name.value, code: code.value, role: role.value, password });
-        showCredentials(member.display_name, member.email, password, 'Compte créé');
+        const res = await service.inviteMember({ email: email.value, display_name: name.value, code: code.value, role: role.value });
+        showAccessResult(res.member.display_name, res.member.email, res, 'invite');
         render();
-      } catch (err) { toast(err.message, { type: 'error' }); } finally { createBtn.disabled = false; }
+      } catch (err) { toast(err.message, { type: 'error' }); } finally { inviteBtn.disabled = false; }
     });
 
     return h('section', { class: 'card settings-section' },
       h('header', { class: 'card-head' }, h('div', null, h('h3', null, 'Équipe'), h('p', { class: 'muted tiny' }, 'Seules les personnes listées ici peuvent se connecter à l\'atelier.'))),
-      h('ul', { class: 'member-list' }, members.map((m) => h('li', null,
-        h('div', null, h('strong', null, m.display_name), ' ', h('span', { class: 'muted tiny' }, `${m.email} · ${m.code}`)),
-        h('span', { class: 'row-gap' },
-          h('span', { class: 'pill' }, m.role === 'admin' ? 'Administrateur' : 'Linguiste'),
-          m.email !== service.member.email && h('button', {
-            class: 'link-btn',
-            onclick: async () => {
-              if (!await confirmDialog({ title: 'Réinitialiser le mot de passe ?', message: `Un nouveau mot de passe provisoire sera créé pour ${m.display_name}. L'ancien ne fonctionnera plus.`, confirmLabel: 'Réinitialiser' })) return;
-              const password = tempPassword();
-              try { await service.resetMemberPassword(m.email, password); showCredentials(m.display_name, m.email, password, 'Mot de passe réinitialisé'); } catch (err) { toast(err.message, { type: 'error' }); }
-            },
-          }, 'Nouveau mot de passe'),
-          m.email !== service.member.email && h('button', {
-            class: 'link-btn danger',
-            onclick: async () => {
-              if (!await confirmDialog({ title: 'Supprimer ce compte ?', message: `${m.display_name} (${m.email}) ne pourra plus se connecter. Son travail déjà enregistré est conservé ; ses segments attribués redeviennent non attribués.`, confirmLabel: 'Supprimer le compte', danger: true })) return;
-              try { await service.deleteMember(m.email); toast('Compte supprimé'); render(); } catch (err) { toast(err.message, { type: 'error' }); }
-            },
-          }, 'Supprimer'))))),
+      h('ul', { class: 'member-list' }, members.map((m) => {
+        const pending = !m.activated_at;
+        const self = m.email === service.member.email;
+        return h('li', null,
+          h('div', null, h('strong', null, m.display_name), ' ', h('span', { class: 'muted tiny' }, `${m.email} · ${m.code}`)),
+          h('span', { class: 'row-gap' },
+            pending && h('span', { class: 'pill pill-wait' }, 'Invitation en attente'),
+            h('span', { class: 'pill' }, m.role === 'admin' ? 'Administrateur' : 'Linguiste'),
+            !self && h('button', {
+              class: 'link-btn',
+              onclick: async () => {
+                const msg = pending
+                  ? `Un nouveau lien d'activation sera envoyé à ${m.display_name}. Le lien précédent ne fonctionnera plus.`
+                  : `Un lien permettant à ${m.display_name} de choisir un nouveau mot de passe sera envoyé. Son mot de passe actuel reste valable tant que le lien n'est pas utilisé.`;
+                if (!await confirmDialog({ title: pending ? 'Renvoyer l\'invitation ?' : 'Envoyer un lien de réinitialisation ?', message: msg, confirmLabel: 'Envoyer' })) return;
+                try { const res = await service.sendAccessLink(m.email); showAccessResult(m.display_name, m.email, res, res.purpose); } catch (err) { toast(err.message, { type: 'error' }); }
+              },
+            }, pending ? 'Renvoyer l\'invitation' : 'Réinitialiser le mot de passe'),
+            !self && h('button', {
+              class: 'link-btn danger',
+              onclick: async () => {
+                if (!await confirmDialog({ title: 'Supprimer ce compte ?', message: `${m.display_name} (${m.email}) ne pourra plus se connecter. Son travail déjà enregistré est conservé ; ses segments attribués redeviennent non attribués.`, confirmLabel: 'Supprimer le compte', danger: true })) return;
+                try { await service.deleteMember(m.email); toast('Compte supprimé'); render(); } catch (err) { toast(err.message, { type: 'error' }); }
+              },
+            }, 'Supprimer')));
+      })),
       h('div', { class: 'member-form' },
-        h('div', { class: 'member-form-row' }, email, name, code, role, createBtn),
-        h('p', { class: 'field-help' }, 'Un mot de passe provisoire est généré : communiquez-le à la personne, qui pourra le changer dans « Mon compte ».')));
+        h('div', { class: 'member-form-row' }, email, name, code, role, inviteBtn),
+        h('p', { class: 'field-help' }, 'La personne reçoit un lien pour activer son compte : elle confirme son nom et choisit elle-même son mot de passe.')));
   }
 
-  function showCredentials(displayName, emailAddr, password, title) {
+  /** Résultat d'une invitation ou d'une réinitialisation : e-mail envoyé, ou lien à transmettre. */
+  function showAccessResult(displayName, emailAddr, res, purpose) {
+    const invite = purpose === 'invite';
+    if (res.mailed) {
+      toast(invite ? `Invitation envoyée à ${emailAddr} (lien valable ${res.expires}).` : `Lien de réinitialisation envoyé à ${emailAddr} (valable ${res.expires}).`, { duration: 7000 });
+      return;
+    }
     openModal({
-      title,
-      size: 'sm',
+      title: invite ? 'Invitation créée' : 'Lien de réinitialisation créé',
       render: (close) => {
-        const text = `Atelier Afar\n${location.href.split('#')[0]}\nIdentifiant : ${emailAddr}\nMot de passe provisoire : ${password}`;
+        const text = invite
+          ? `Bonjour ${displayName},\n\nUn compte a été créé pour vous sur l'Atelier Afar. Ouvrez ce lien pour activer votre compte et choisir votre mot de passe (valable ${res.expires}) :\n${res.link}\n\nIdentifiant : ${emailAddr}`
+          : `Bonjour ${displayName},\n\nVoici un lien pour choisir un nouveau mot de passe sur l'Atelier Afar (valable ${res.expires}) :\n${res.link}`;
         return [
-          h('p', { class: 'modal-text' }, `Transmettez ces informations à ${displayName}. Le mot de passe ne sera plus affiché ensuite.`),
+          h('p', { class: 'modal-text' }, `L'envoi automatique d'e-mails n'est pas encore activé. Transmettez ce message à ${displayName} (e-mail, WhatsApp…). Le lien est personnel et à usage unique.`),
           h('pre', { class: 'credentials' }, text),
           h('div', { class: 'modal-actions' },
+            h('a', { class: 'btn btn-secondary', href: `mailto:${encodeURIComponent(emailAddr)}?subject=${encodeURIComponent(invite ? 'Votre accès à l\'Atelier Afar' : 'Réinitialisation de votre mot de passe — Atelier Afar')}&body=${encodeURIComponent(text)}` }, icon('file', 14), 'Ouvrir dans ma messagerie'),
             h('button', { class: 'btn btn-secondary', onclick: async () => { try { await navigator.clipboard.writeText(text); toast('Copié dans le presse-papiers'); } catch { toast('Copie impossible : sélectionnez le texte manuellement.', { type: 'warning' }); } } }, 'Copier'),
             h('button', { class: 'btn btn-primary', onclick: () => close(true) }, 'Terminé')),
         ];

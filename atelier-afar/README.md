@@ -15,7 +15,8 @@ Adresse : `https://djibouti-plateforme.github.io/plateforme-traduction-djibouti/
 
 ## Travail à plusieurs
 
-- **Comptes** : l'administrateur crée les comptes dans *Paramètres → Équipe* (un mot de passe provisoire est généré et affiché une seule fois). Il peut aussi réinitialiser un mot de passe ou supprimer un compte. Chaque personne peut changer son mot de passe dans *Mon compte*.
+- **Comptes** : l'administrateur invite une personne dans *Paramètres → Équipe* (adresse, nom, code, rôle). Elle reçoit un **lien d'activation** (valable 7 jours, à usage unique) qui ouvre une page où elle confirme son nom et choisit son mot de passe, puis elle est connectée directement. Statut « Invitation en attente » tant que le lien n'est pas utilisé ; « Renvoyer l'invitation », « Réinitialiser le mot de passe » (lien valable 24 h) et « Supprimer » sont disponibles. Sur l'écran de connexion, « Mot de passe oublié ? » envoie un lien de réinitialisation. Chacun peut modifier son nom et son mot de passe dans *Mon compte*.
+- **Envoi des e-mails** : via [Brevo](https://www.brevo.com) (offre gratuite : 300 e-mails/jour) lorsque les secrets `BREVO_API_KEY` et `MAIL_SENDER` (adresse d'expéditeur validée dans Brevo) sont définis pour la fonction `admin-users` ; `MAIL_SENDER_NAME` est facultatif. Tant que ce n'est pas configuré, l'atelier affiche le message et le lien à transmettre soi-même (copie ou ouverture dans la messagerie).
 - **Répartition** : *Paramètres → Répartition du travail* attribue chaque lot à un linguiste ; il le retrouve avec le filtre « Mes segments ». Le tableau de bord affiche l'avancement par linguiste.
 - **Verrous** : un segment ouvert est réservé à la personne qui l'a ouvert. Les autres le voient « … y travaille » dans la liste et en lecture seule (avec « Prendre la main » si nécessaire). Le verrou est rafraîchi chaque minute et expire après 5 minutes d'inactivité.
 - **Temps réel** : révisions, verrous, attributions, glossaire et enregistrements se mettent à jour instantanément sur tous les postes. L'en-tête indique les collègues en train de réviser.
@@ -57,7 +58,7 @@ atelier-afar/
 │   └── utils/                     status.js (règles métier), diff.js, detect.js, export.js, exporter.js, dom.js, defaults.js
 ├── supabase/
 │   ├── migrations/                Schéma, règles d'accès (RLS), stockage audio, collaboration
-│   ├── functions/admin-users/     Fonction serveur de gestion des comptes (administrateurs uniquement)
+│   ├── functions/admin-users/     Fonction serveur : invitations, activation, mot de passe oublié, suppression de comptes
 │   └── seed/corpus.json           Les 514 sujets chargés
 └── tests/                         Tests unitaires (node --test)
 ```
@@ -79,5 +80,4 @@ Le déploiement est automatique à chaque push sur `main` (workflow GitHub Pages
 
 ## Limites connues
 - Offre gratuite Supabase : le projet est mis en pause après une période d'inactivité prolongée (le relancer depuis le tableau de bord Supabase) ; 1 Go de stockage de fichiers (≈ 3 h d'audio WAV 48 kHz).
-- L'envoi d'e-mails n'est pas configuré : les mots de passe sont communiqués par l'administrateur.
 - Le brouillon d'un segment est partagé : si un linguiste « prend la main », c'est la dernière version enregistrée qui fait foi.

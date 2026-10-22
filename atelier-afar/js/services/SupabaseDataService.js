@@ -545,8 +545,14 @@ export class SupabaseDataService extends DataService {
     this.#emit('settings');
   }
 
-  async #admin(body) {
-    const { data, error } = await this.client.functions.invoke(BACKEND.adminFunction, { body });
+  /** URL de l'atelier (sans fragment ni paramètres), utilisée dans les liens envoyés par e-mail. */
+  static siteUrl() {
+    return `${location.origin}${location.pathname.replace(/index\.html$/, '')}`;
+  }
+
+  async #invokeAccounts(body) {
+    await this.#ensureClient();
+    const { data, error } = await this.client.functions.invoke(BACKEND.adminFunction, { body: { ...body, site: SupabaseDataService.siteUrl() } });
     if (error) {
       let msg = error.message;
       try { msg = (await error.context.json()).error ?? msg; } catch { /* réponse non JSON */ }
@@ -555,22 +561,38 @@ export class SupabaseDataService extends DataService {
     return data;
   }
 
-  /** Crée le compte de connexion et l'autorisation d'accès (administrateurs uniquement). */
-  async createMember({ email, display_name, code, role, password }) {
-    const { member } = await this.#admin({ action: 'create', email, display_name, code, role, password });
-    if (!this.members.some((m) => m.email === member.email)) this.members = [...this.members, { ...member, created_at: nowIso() }];
+  /** Invite une personne : compte créé sans mot de passe, lien d'activation envoyé par e-mail (ou renvoyé si l'envoi n'est pas configuré). */
+  async inviteMember({ email, display_name, code, role }) {
+    const res = await this.#invokeAccounts({ action: 'invite', email, display_name, code, role });
+    if (!this.members.some((m) => m.email === res.member.email)) this.members = [...this.members, { ...res.member, created_at: nowIso() }];
     this.#emit('members');
-    return member;
+    return res;
+  }
+
+  /** Nouveau lien : invitation si le compte n'est pas encore activé, sinon réinitialisation du mot de passe. */
+  async sendAccessLink(email) {
+    const m = this.members.find((x) => x.email === email);
+    return this.#invokeAccounts({ action: m?.activated_at ? 'reset_link' : 'resend', email });
   }
 
   async deleteMember(email) {
-    await this.#admin({ action: 'delete', email });
+    await this.#invokeAccounts({ action: 'delete', email });
     this.members = this.members.filter((m) => m.email !== email);
     this.#emit('members');
   }
 
-  async resetMemberPassword(email, password) {
-    await this.#admin({ action: 'reset_password', email, password });
+  // Actions publiques (sans session) : activation et mot de passe oublié.
+  checkAccessToken(token) { return this.#invokeAccounts({ action: 'check_token', token }); }
+  activateAccount(token, { display_name, password }) { return this.#invokeAccounts({ action: 'activate', token, display_name, password }); }
+  requestPasswordReset(email) { return this.#invokeAccounts({ action: 'request_reset', email }); }
+
+  async updateMyName(display_name) {
+    const name = display_name.trim();
+    if (!name) throw new Error('Le nom ne peut pas être vide.');
+    await this.#write(async () => SupabaseDataService.#check(await this.client.from('members').update({ display_name: name }).eq('email', this.member.email)));
+    this.member = { ...this.member, display_name: name };
+    this.members = this.members.map((m) => (m.email === this.member.email ? this.member : m));
+    this.#emit('members');
   }
 
   async storageInfo() {

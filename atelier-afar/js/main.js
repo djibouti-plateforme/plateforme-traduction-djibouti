@@ -175,8 +175,91 @@ function renderAuthScreen(state) {
     h('h2', null, 'Atelier Afar'),
     h('p', { class: 'muted' }, 'Connectez-vous avec le compte fourni par l\'administrateur du projet.'),
     form,
-    h('p', { class: 'tiny muted login-foot' }, 'Mot de passe oublié ? Contactez l\'administrateur.'))));
+    h('p', { class: 'tiny muted login-foot' }, h('button', { class: 'link-btn', type: 'button', onclick: () => renderForgot(email.value) }, 'Mot de passe oublié ?')))));
   setTimeout(() => email.focus(), 50);
+}
+
+/** Demande d'un lien de réinitialisation par e-mail. */
+function renderForgot(prefill = '') {
+  const outlet = app.querySelector('.outlet');
+  const email = h('input', { class: 'input', type: 'email', autocomplete: 'username', required: true, value: prefill });
+  const msg = h('div');
+  const submit = h('button', { class: 'btn btn-primary btn-lg', type: 'submit' }, 'Recevoir un lien');
+  const form = h('form', { class: 'login-form' }, h('label', { class: 'field' }, h('span', { class: 'field-label' }, 'Adresse e-mail'), email), msg, submit);
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submit.disabled = true;
+    try {
+      const res = await service.requestPasswordReset(email.value);
+      mount(msg, h('div', { class: 'callout callout-info' }, icon('info', 18), h('div', null, res.mail
+        ? 'Si un compte existe pour cette adresse, un e-mail contenant un lien vient d\'être envoyé. Pensez à vérifier les courriers indésirables.'
+        : 'L\'envoi d\'e-mails n\'est pas disponible pour le moment : demandez un lien de réinitialisation à l\'administrateur du projet.')));
+    } catch (err) {
+      mount(msg, h('p', { class: 'field-error' }, err.message));
+      submit.disabled = false;
+    }
+  });
+  mount(outlet, h('div', { class: 'onboarding' }, h('div', { class: 'onboarding-card card login-card' },
+    h('div', { class: 'onb-icon' }, icon('shield', 26)),
+    h('h2', null, 'Mot de passe oublié'),
+    h('p', { class: 'muted' }, 'Indiquez votre adresse e-mail : vous recevrez un lien pour choisir un nouveau mot de passe.'),
+    form,
+    h('p', { class: 'tiny muted login-foot' }, h('button', { class: 'link-btn', type: 'button', onclick: () => renderAuthScreen({ status: 'login' }) }, '← Retour à la connexion')))));
+  setTimeout(() => email.focus(), 50);
+}
+
+/** Lien reçu par e-mail : activation du compte (invitation) ou nouveau mot de passe (réinitialisation). */
+async function renderActivation(token, kind) {
+  const outlet = app.querySelector('.outlet');
+  const card = (...content) => mount(outlet, h('div', { class: 'onboarding' }, h('div', { class: 'onboarding-card card login-card' }, ...content)));
+  const leave = () => { history.replaceState(null, '', location.pathname); start(); };
+  let info;
+  try {
+    info = await service.checkAccessToken(token);
+  } catch (err) {
+    card(h('div', { class: 'onb-icon' }, icon('alert', 26)), h('h2', null, 'Lien invalide'), h('p', null, err.message),
+      h('div', { class: 'modal-actions' }, h('button', { class: 'btn btn-primary', onclick: leave }, 'Aller à la connexion')));
+    return;
+  }
+  const invite = info.purpose === 'invite' || kind === 'invitation';
+  const name = h('input', { class: 'input', value: info.display_name, autocomplete: 'name', required: true });
+  const pw = h('input', { class: 'input', type: 'password', autocomplete: 'new-password', required: true, minlength: 8 });
+  const pw2 = h('input', { class: 'input', type: 'password', autocomplete: 'new-password', required: true });
+  const err = h('p', { class: 'field-error', hidden: true });
+  const submit = h('button', { class: 'btn btn-primary btn-lg', type: 'submit' }, invite ? 'Activer mon compte' : 'Enregistrer le mot de passe');
+  const form = h('form', { class: 'login-form' },
+    h('input', { type: 'email', value: info.email, autocomplete: 'username', hidden: true, readonly: true }),
+    h('label', { class: 'field' }, h('span', { class: 'field-label' }, 'Adresse e-mail (identifiant)'), h('input', { class: 'input', value: info.email, disabled: true })),
+    h('label', { class: 'field' }, h('span', { class: 'field-label' }, 'Votre nom'), name),
+    h('label', { class: 'field' }, h('span', { class: 'field-label' }, 'Mot de passe'), pw),
+    h('p', { class: 'pw-hint' }, '8 caractères minimum.'),
+    h('label', { class: 'field' }, h('span', { class: 'field-label' }, 'Confirmer le mot de passe'), pw2),
+    err, submit);
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const fail = (m) => { err.textContent = m; err.hidden = false; };
+    err.hidden = true;
+    if (!name.value.trim()) return fail('Indiquez votre nom.');
+    if (pw.value.length < 8) return fail('Le mot de passe doit contenir au moins 8 caractères.');
+    if (pw.value !== pw2.value) return fail('Les deux mots de passe ne correspondent pas.');
+    submit.disabled = true;
+    submit.textContent = 'Enregistrement…';
+    try {
+      await service.activateAccount(token, { display_name: name.value.trim(), password: pw.value });
+      await service.signIn(info.email, pw.value);
+      toast(invite ? 'Compte activé. Bienvenue dans l\'Atelier Afar !' : 'Mot de passe modifié.');
+      leave();
+    } catch (e2) {
+      fail(e2.message);
+      submit.disabled = false;
+      submit.textContent = invite ? 'Activer mon compte' : 'Enregistrer le mot de passe';
+    }
+  });
+  card(h('div', { class: 'onb-icon' }, icon(invite ? 'user' : 'shield', 26)),
+    h('h2', null, invite ? 'Bienvenue dans l\'Atelier Afar' : 'Nouveau mot de passe'),
+    h('p', { class: 'muted' }, invite ? 'Confirmez votre nom et choisissez votre mot de passe pour activer votre compte.' : 'Choisissez un nouveau mot de passe pour votre compte.'),
+    form);
+  setTimeout(() => (invite ? name : pw).focus(), 50);
 }
 
 // ---- Démarrage -------------------------------------------------------------------
@@ -186,6 +269,14 @@ async function start() {
   mount(app,
     header,
     h('main', { class: 'outlet' }, h('div', { class: 'boot' }, h('div', { class: 'spinner' }), 'Chargement…')));
+  const params = new URLSearchParams(location.search);
+  const accessKind = params.has('invitation') ? 'invitation' : params.has('reinitialisation') ? 'reinitialisation' : null;
+  if (accessKind) {
+    // Un lien d'activation ouvert alors qu'une autre session est active : on repart d'une session vierge.
+    await service.signOut().catch(() => {});
+    renderActivation(params.get(accessKind), accessKind);
+    return;
+  }
   try {
     const state = await service.init();
     if (state.status !== 'ready') { renderAuthScreen(state); return; }
